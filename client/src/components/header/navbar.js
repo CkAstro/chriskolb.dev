@@ -26,7 +26,7 @@ const Navbar = ({ scrollValue }) => {
       <Link key={dir.name}
          activeClass={style.active}
          smooth spy to={dir.link}
-         // containerId='mainContainer'
+         containerId='mainContainer'
          onDragStart={preventDraggable}
          className={`noselect ${style.link}`}
       >{dir.name}</Link>
