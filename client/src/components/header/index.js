@@ -1,13 +1,14 @@
+import { Element } from 'react-scroll';
 import style from './header.module.css';
 
 const Header = () => {
    return (
-      <div className={style.header}>
+      <Element id='home' className={style.header}>
          <div className='contentContainer'>
             <h1>Christopher Kolb</h1>
             <h2>Computational Astrophysics + Full Stack Development</h2>
          </div>
-      </div>
+      </Element>
    );
 }
 

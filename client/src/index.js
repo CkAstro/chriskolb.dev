@@ -1,21 +1,24 @@
-import React from 'react';
+import React, { useState } from 'react';
 import ReactDOM from 'react-dom/client';
 import Header from './components/header';
 import Navbar from './components/header/navbar';
+import ContentPage from './components/contentpage';
 import '@fontsource/roboto';
 import './index.css';      // global import
-import ContentPage from './components/contentpage';
 
 const Main = () => {
+   const [ scrollValue, setScrollValue ] = useState(0);
+
+   const handleScroll = event => setScrollValue(event.target.scrollTop);
 
    return (
-      <div className='mainContainer snap'>
+      <div id='mainContainer' className='mainContainer snap' onScroll={handleScroll}>
          <Header/>
-         <Navbar/>
-         <ContentPage title='Projects'>This is Projects content</ContentPage>
-         <ContentPage title='Research'>This is Research content</ContentPage>
-         <ContentPage title='Papers'>This is Papers content</ContentPage>
-         <ContentPage title='About'>This is About content</ContentPage>
+         <Navbar scrollValue={scrollValue}/>
+         <ContentPage title='Projects'>This is 'Projects' content</ContentPage>
+         <ContentPage title='Research'>This is 'Research' content</ContentPage>
+         <ContentPage title='Papers'>This is 'Papers' content</ContentPage>
+         <ContentPage title='About'>This is 'About' content</ContentPage>
       </div>
    );
 }
