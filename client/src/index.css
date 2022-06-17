@@ -43,23 +43,25 @@ body, html {
 } */
 
 
+/* ----- content containers ----- */
 .mainContainer {
-   width: 1000px;
-   margin: auto;
-   height: 100%;
-   box-sizing: border-box;
-}
-
-.mainLayout {
    display: grid;
-   grid-template-rows: auto 1fr;
+   grid-template-rows: auto auto 1fr;
    height: 100vh;
    font-family: 'Roboto', sans-serif;
    color: var(--ncsu-dark-gray);
    height: 100vh;
    overflow: auto;
 }
-.mainLayout.snap {
+
+.mainContainer.snap {
    scroll-behavior: smooth;
    scroll-snap-type: y mandatory;
+}
+
+.contentContainer {
+   width: 1000px;
+   margin: auto;
+   height: 100%;
+   box-sizing: border-box;
 }

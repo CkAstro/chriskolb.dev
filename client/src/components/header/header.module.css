@@ -1,0 +1,41 @@
+
+/* ----- index.js ----- */
+.header h1 {
+   margin: 0px;
+   padding: 0px;
+   padding-top: 12px;
+   font-size: 36px;
+   font-weight: 900;
+   color: var(--ncsu-dark-red);
+}
+
+.header h2 {
+   margin: 0px;
+   padding: 12px 60px;
+   font-size: 16px;
+   font-weight: bold;
+   padding-top: 6px;
+}
+
+/* ----- navbar.js ----- */
+.navContainer {
+   background: var(--ncsu-dark-gray);
+   border-bottom: 3px solid var(--ncsu-light-red);
+}
+
+.navbar {
+   display: flex;
+}
+
+.navbar .link {
+   color: white;
+   margin: 0px;
+   padding: 8px 16px;
+   width: 75px;
+   cursor: pointer;
+   text-align: center;
+   transition: all 0.2s;
+}
+
+.navbar .link.active { background: var(--ncsu-light-red); }
+.navbar .link:hover:not(.active) { background: var(--ncsu-dark-red); }
