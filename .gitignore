@@ -11,3 +11,6 @@
 
 # logs
 logs/*
+
+# build
+client/build
