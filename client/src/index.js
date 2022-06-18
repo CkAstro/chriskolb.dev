@@ -6,6 +6,15 @@ import ContentPage from './components/contentpage';
 import '@fontsource/roboto';
 import './index.css';      // global import
 
+const myContent = [
+   { image: require('./content/reversi.png')},
+   { image: require('./content/neuralnet.png')},
+   { image: require('./content/datavis.png')},
+   { image: require('./content/emission.png')},
+   { image: require('./content/csm.png')},
+   { image: require('./content/instability.png')},
+];
+
 const Main = () => {
    const [ scrollValue, setScrollValue ] = useState(0);
 
@@ -15,10 +24,10 @@ const Main = () => {
       <div id='mainContainer' className='mainContainer snap' onScroll={handleScroll}>
          <Header/>
          <Navbar scrollValue={scrollValue}/>
-         <ContentPage title='Projects'>This is 'Projects' content</ContentPage>
-         <ContentPage title='Research'>This is 'Research' content</ContentPage>
-         <ContentPage title='Papers'>This is 'Papers' content</ContentPage>
-         <ContentPage title='About'>This is 'About' content</ContentPage>
+         <ContentPage scrollValue={scrollValue} styleAdjust={{background: '#4f6272'}} title='Projects' content={myContent}/>
+         <ContentPage styleAdjust={{background: '#7eb09b'}} title='Research'  content={myContent}/>
+         <ContentPage styleAdjust={{background: '#f7f0f5'}} title='Papers'  content={myContent}/>
+         <ContentPage styleAdjust={{background: '#404e5c'}} title='About'  content={myContent}/>
       </div>
    );
 }

@@ -6,11 +6,19 @@
    scroll-snap-align: start;
 }
 
-.flexContent {
+.flexContainer {
    width: 100%;
    height: 100%;
    display: flex;
    flex-direction: column;
    align-items: center;
    justify-content: center;
+}
+
+.flexContent {
+   width: 100%;
+   height: 550px;
+   display: flex;
+   flex-wrap: wrap;
+   overflow: hidden;
 }
