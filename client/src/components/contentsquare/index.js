@@ -1,7 +1,8 @@
 import { useState } from 'react';
+import FancyButton from '../fancybutton';
 import style from './contentsquare.module.css';
 
-const ContentSquare = ({ image, isHidden, onClick }) => {
+const ContentSquare = ({ info, isHidden, onClick }) => {
    const [ isMouseOver, setIsMouseOver ] = useState(false);
    return (
       <div className={`${style.contentSquare}`} 
@@ -10,14 +11,14 @@ const ContentSquare = ({ image, isHidden, onClick }) => {
          onMouseLeave={() => setIsMouseOver(false)}
       >
          <div className={`${style.content} ${isHidden ? style.hidden : null} ${isMouseOver ? style.mouseOver : null}`}>
-            <img src={image}/>
+            <img src={info.image}/>
             <div className={style.topContent}>
-               <h1>Reversi</h1>
-               <p>React / Whatever</p>
+               <h1>{info.title}</h1>
+               <p>{info.making}</p>
             </div>
             <div className={style.bottomContent}>
-               <p>This is a bunch of text dawg here is some more text</p>
-               <div className={style.learnMoreButton}>Learn More</div>
+               <p>{info.description}</p>
+               <FancyButton>Learn More</FancyButton>
             </div>
          </div>
       </div>

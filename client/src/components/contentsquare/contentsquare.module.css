@@ -68,7 +68,7 @@
 
 .topContent {
    position: absolute;
-   top: 70px;
+   top: 50px;
    left: 0;
    right: 0;
    text-align: center;
@@ -93,7 +93,7 @@
 
 .bottomContent {
    position: absolute;
-   bottom: 30px;
+   bottom: 70px;
    left: 0;
    right: 0;
    text-align: center; 
@@ -101,7 +101,7 @@
    transition: all var(--mouseOver-timer);
 }
 
-.content:not(.mouseOver) .bottomContent { bottom: -110px; opacity: 0; }
+.content:not(.mouseOver) .bottomContent { bottom: -70px; opacity: 0; }
 .content.hidden .bottomContent{ opacity: 0; }
 
 .bottomContent .learnMoreButton {

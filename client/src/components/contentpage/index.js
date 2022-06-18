@@ -12,7 +12,7 @@ const ContentPage = ({ title, styleAdjust, content, scrollValue }) => {
 
    const buildContent = () => {
       return content.map((item, ind) => {
-         return <ContentSquare image={item.image} key={ind} onClick={() => setIsHidden(true)} isHidden={isHidden}/>;
+         return <ContentSquare info={item} key={ind} onClick={() => setIsHidden(true)} isHidden={isHidden}/>;
       });
    }
 

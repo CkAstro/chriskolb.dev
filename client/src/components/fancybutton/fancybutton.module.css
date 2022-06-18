@@ -1,0 +1,35 @@
+
+.buttonContainer {
+   position: relative;
+   cursor: pointer;
+}
+
+.normalButton {
+   position: absolute;
+   top: 0;
+   left: 0;
+   right: 0;
+   padding: 8px 16px;
+   width: 110px;
+   border: 2px solid var(--ncsu-light-red);
+   margin: auto;
+}
+
+.hoverButton {
+   position: absolute;
+   top: 0;
+   left: 0;
+   right: 0;
+   padding: 8px 16px;
+   width: 110px;
+   border: 2px solid var(--ncsu-light-red);
+   margin: auto;
+   background: var(--ncsu-light-red);
+   color: white;
+   clip-path: polygon(-120% 0, -20% 0, 0% 100%, -100% 100%);
+   transition: all 0.5s;
+}
+
+.hoverButton.hover {
+   clip-path: polygon(-20% 0%, 100% 0%, 120% 100%, 0% 100%);
+}
