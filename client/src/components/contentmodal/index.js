@@ -8,7 +8,7 @@ const ContentModal = () => {
 
    const handleClick = event => event.stopPropagation();
 
-   const handleClose = event => {
+   const handleClose = () => {
       closeModal();
       setIsEnabled(true);
    }
@@ -20,7 +20,7 @@ const ContentModal = () => {
          onClick={handleClose}
       >
          <div className={style.modal} onClick={handleClick}>
-            {modalProps.modalContent}
+            {modalProps.content}
             <div className={style.topBar}>
                <div className={style.closeButton} onClick={handleClose}>&times;</div>
             </div>
