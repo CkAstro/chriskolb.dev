@@ -7,6 +7,7 @@ import ContentPage from './components/contentpage';
 import ContentModal from './components/contentmodal';
 import '@fontsource/roboto';
 import './index.css';      // global import
+import { DisplayProvider, useDisplay } from './contexts/display';
 
 const myContent = [
    { 
@@ -50,9 +51,11 @@ const myContent = [
 
 const Main = () => {
    const [ scrollValue, setScrollValue ] = useState(0);
+   const { setIsEnabled } = useDisplay();
 
    const handleScroll = event => {
       setScrollValue(event.target.scrollTop);
+      setIsEnabled(true);
    }
 
    return (<>
@@ -75,7 +78,9 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
    <React.StrictMode>
       <ModalProvider>
-         <Main/>
+         <DisplayProvider>
+            <Main/>
+         </DisplayProvider>
       </ModalProvider>
    </React.StrictMode>
 );
