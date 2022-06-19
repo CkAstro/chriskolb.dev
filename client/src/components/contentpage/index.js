@@ -20,6 +20,7 @@ const ContentPage = ({ title, styleAdjust, content, scrollValue }) => {
       <Element id={title.toLowerCase()} style={styleAdjust} className={style.contentPage}>
          <div className='contentContainer'>
             <div className={style.flexContainer}>
+            <h1>{title}</h1>
             <div className={style.flexContent}>
                {buildContent()}
             </div>

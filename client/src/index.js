@@ -14,15 +14,15 @@ const myContent = [
       description: 'Online multi-player board game. Supports multiple games and replays.'
    },
    { 
-      title: 'Neural Network',
-      making: 'React / HTML5 Canvas / Canvas',
-      image: require('./content/neuralnet.png'),
-      description: 'Online multi-player board game. Supports multiple games and replays.'
-   },
-   { 
       title: 'DataVis',
       making: 'WebGL / GLSL / React / Node / REST',
       image: require('./content/datavis.png'),
+      description: 'Online multi-player board game. Supports multiple games and replays.'
+   },
+   { 
+      title: 'Neural Network',
+      making: 'React / HTML5 Canvas / Canvas',
+      image: require('./content/neuralnet.png'),
       description: 'Online multi-player board game. Supports multiple games and replays.'
    },
    { 
@@ -54,9 +54,9 @@ const Main = () => {
       <div id='mainContainer' className='mainContainer snap' onScroll={handleScroll}>
          <Header/>
          <Navbar scrollValue={scrollValue}/>
-         <ContentPage scrollValue={scrollValue} styleAdjust={{background: '#4f6272'}} title='Projects' content={myContent}/>
-         <ContentPage styleAdjust={{background: '#7eb09b'}} title='Research'  content={myContent}/>
-         <ContentPage styleAdjust={{background: '#af929d'}} title='Papers'  content={myContent}/>
+         <ContentPage scrollValue={scrollValue} styleAdjust={{background: '#ddd'}} title='Projects' content={myContent}/>
+         <ContentPage styleAdjust={{background: '#ddd'}} title='Research'  content={myContent}/>
+         <ContentPage styleAdjust={{background: '#ddd'}} title='Papers'  content={myContent}/>
          <ContentPage styleAdjust={{background: '#404e5c'}} title='About'  content={myContent}/>
       </div>
    );
