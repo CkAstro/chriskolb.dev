@@ -1,8 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
+import { ModalProvider } from './contexts/modal';
 import ReactDOM from 'react-dom/client';
 import Header from './components/header';
 import Navbar from './components/header/navbar';
 import ContentPage from './components/contentpage';
+import ContentModal from './components/contentmodal';
 import '@fontsource/roboto';
 import './index.css';      // global import
 
@@ -45,13 +47,20 @@ const myContent = [
    },
 ];
 
+
 const Main = () => {
    const [ scrollValue, setScrollValue ] = useState(0);
 
-   const handleScroll = event => setScrollValue(event.target.scrollTop);
+   const handleScroll = event => {
+      setScrollValue(event.target.scrollTop);
+   }
 
-   return (
-      <div id='mainContainer' className='mainContainer snap' onScroll={handleScroll}>
+   return (<>
+      <ContentModal/>
+      <div className='mainContainer snap' 
+         id='mainContainer' 
+         onScroll={handleScroll}
+      >
          <Header/>
          <Navbar scrollValue={scrollValue}/>
          <ContentPage scrollValue={scrollValue} styleAdjust={{background: '#ddd'}} title='Projects' content={myContent}/>
@@ -59,12 +68,14 @@ const Main = () => {
          <ContentPage styleAdjust={{background: '#ddd'}} title='Papers'  content={myContent}/>
          <ContentPage styleAdjust={{background: '#404e5c'}} title='About'  content={myContent}/>
       </div>
-   );
+   </>);
 }
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <React.StrictMode>
-    <Main/>
-  </React.StrictMode>
+   <React.StrictMode>
+      <ModalProvider>
+         <Main/>
+      </ModalProvider>
+   </React.StrictMode>
 );
