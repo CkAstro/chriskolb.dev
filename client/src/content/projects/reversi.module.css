@@ -8,14 +8,21 @@
 }
 
 .contentContainer {
+   background: #ddd;
+   color: var(--color-charcoal);
+   height: auto;
    padding: 20px 40px;
-   border-top: 3px solid #333;
+   flex-grow: 1;
+}
+
+.contentContainer:not(:first-child) {
+   border-top: 3px solid var(--color-charcoal);
 }
 
 .contentContainer h1 {
    margin: 0px;
    padding: 0px; 
-   border-bottom: 1px dotted #333;
+   border-bottom: 2px dotted var(--color-charcoal);
 }
 
 .contentContainer a {
