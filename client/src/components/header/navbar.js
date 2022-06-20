@@ -14,7 +14,7 @@ const Navbar = ({ scrollValue }) => {
    const [ isStatic, setIsStatic ] = useState(false);
 
    useEffect(() => {
-      scrollValue > 129
+      scrollValue > 90
          ? setIsStatic(true)
          : setIsStatic(false)
       ;
