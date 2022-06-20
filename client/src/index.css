@@ -22,7 +22,10 @@ body, html {
    --color-antique-brass: #b89685;
    --color-magnolia: #f7f0f5;
    --color-lilac-luster: #af929d;
-   --color-unbleached-silk: #f9dad0;
+   --color-unbleached-silk: #f9dad0; 
+
+   --contentPage-width: 1000px;
+   --contentPage-height: calc(0.7 * 100vh);
 }
 
 /* remove text selection */

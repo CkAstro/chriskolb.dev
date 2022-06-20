@@ -1,0 +1,9 @@
+
+.contentPage {
+   display: flex;
+   flex-direction: column;
+   width: var(--contentPage-width);
+   height: var(--contentPage-height);
+   justify-content: center;
+   align-items: flex-start;
+}
