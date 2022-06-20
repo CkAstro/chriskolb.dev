@@ -17,18 +17,7 @@
 .modalContainer.active {
    opacity: 1;
    visibility: visible;
-   animation: activate 0.5s;
-}
-
-@keyframes activate {
-   from {
-      opacity: 1;
-      visibility: 1;
-   }
-   to {
-      opacity: 1;
-      visibility: 1;
-   }
+   animation: none;
 }
 
 @keyframes deactivate {
@@ -52,15 +41,17 @@
    z-index: 100;
    padding-top: 30px;
    overflow: hidden;
-   transition: all 0.5s;
    display: flex;
    align-items: center;
    justify-content: center;
+   opacity: 1;
+   transition: all 0.5s, opacity 0.5s ease-in-out;
 }
 
 .modalContainer:not(.active) .modal {
    width: 0;
    height: 0;
+   opacity: 0;
 }
 
 .topBar {

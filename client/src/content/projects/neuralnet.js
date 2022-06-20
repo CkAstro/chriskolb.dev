@@ -2,7 +2,7 @@ import ContentPage from '../../components/contentpage';
 
 const neuralnet = {
    title: 'Neural Network',
-   making: 'React / HTML5 Canvas / Canvas',
+   making: 'React / HTML5 Canvas / Data Processing',
    image: require('./neuralnet.png'),
    description: 'Online multi-player board game. Supports multiple games and replays.',
    pages: [
