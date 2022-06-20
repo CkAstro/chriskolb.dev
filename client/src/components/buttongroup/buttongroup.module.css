@@ -16,13 +16,14 @@
    font-weight: bold;
    cursor: pointer;
    background: var(--ncsu-light-gray);
-   transition: all 0.2s;
+   transition: background 0.2s;
 }
 
 .button.header {
    background: var(--color-charcoal); 
    color: white;
    cursor: default; 
+   width: 125px;
 }
 .button.active { background: #999; }
 .button:not(.active):not(.header):hover { background: #bbb; }
