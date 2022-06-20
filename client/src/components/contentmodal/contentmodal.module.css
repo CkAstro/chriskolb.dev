@@ -31,7 +31,7 @@
    transition: all 0.5s;
    background: white;
    z-index: 100;
-   padding: 20px;
+   padding-top: 20px;
 }
 
 .topBar {
@@ -88,3 +88,16 @@
 }
 
 .prevButton:hover { background: var(--ncsu-dark-red); }
+
+.pageNumber {
+   position: absolute;
+   left: 0;
+   right: 0;
+   bottom: 0;
+   width: 100%;
+   height: 40px;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   text-align: center;
+}
