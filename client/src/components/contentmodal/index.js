@@ -32,7 +32,6 @@ const ContentModal = () => {
 
    return (
       <div className={`${style.modalContainer} ${modalProps.isActive ? style.active : null}`} 
-         onClick={closeModal}
          onScroll={closeModal}
          onClick={handleClose}
       >
@@ -42,8 +41,8 @@ const ContentModal = () => {
                <div className={style.closeButton} onClick={handleClose}>&times;</div>
             </div>
             <div className={style.pageNumber}>{`${page+1} / ${modalProps.content ? modalProps.content.length : 1}`}</div>
-            <div onClick={nextPage} className={style.nextButton}>&gt;</div>
-            <div onClick={prevPage} className={style.prevButton}>&lt;</div>
+            <div onClick={nextPage} className={style.nextButton}>&#x27A4;</div>
+            <div onClick={prevPage} className={style.prevButton}>&#x27A4;</div>
          </div>
       </div>
    );
