@@ -9,8 +9,8 @@ const FancyButton = ({ children }) => {
          onMouseEnter={() => setIsMouseOver(true)} 
          onMouseLeave={() => setIsMouseOver(false)}
       >
-         <div className={`${style.normalButton} ${isMouseOver ? style.hover : null}`}>{children}</div>
-         <div className={`${style.hoverButton} ${isMouseOver ? style.hover : null}`}>{children}</div>
+         <div className={`${style.normalButton1} ${isMouseOver ? style.hover : null}`}>{children}</div>
+         <div className={`${style.hoverButton1} ${isMouseOver ? style.hover : null}`}>{children}</div>
       </div>
    );
 }

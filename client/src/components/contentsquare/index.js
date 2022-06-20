@@ -28,7 +28,7 @@ const ContentSquare = ({ info, isHidden }) => {
             <div className={style.bottomContent}>
                <p>{info.description}</p>
                <div onClick={handleClick}>
-                  <FancyButton>Learn More</FancyButton>
+                  <FancyButton.Style1>Learn More</FancyButton.Style1>
                </div>
             </div>
          </div>

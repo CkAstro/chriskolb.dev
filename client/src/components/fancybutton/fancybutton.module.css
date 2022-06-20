@@ -1,10 +1,17 @@
 
+/* ----- TODO ----- */
+
+/* eventually need to make base button
+   class, so button1/button2/etc inherit
+   majority of properties... */
+
 .buttonContainer {
    position: relative;
    cursor: pointer;
 }
 
-.normalButton {
+/* ----- style1.js ------ */
+.normalButton1 {
    position: absolute;
    top: 0;
    left: 0;
@@ -15,7 +22,7 @@
    margin: auto;
 }
 
-.hoverButton {
+.hoverButton1 {
    position: absolute;
    top: 0;
    left: 0;
@@ -30,6 +37,82 @@
    transition: all 0.5s;
 }
 
-.hoverButton.hover {
+.hoverButton1.hover {
    clip-path: polygon(-20% 0%, 100% 0%, 120% 100%, 0% 100%);
+}
+
+
+/* ----- style2.js ----- */
+.normalButton2 {
+   position: absolute;
+   top: 0;
+   left: 0;
+   right: 0;
+   padding: 8px 16px;
+   width: 110px;
+   border: 2px solid var(--ncsu-light-red);
+   margin: auto;
+   border-radius: 19.5px;
+}
+
+.hoverButton2 {
+   position: absolute;
+   border-radius: 19.5px;
+   top: 0;
+   left: 0;
+   right: 0;
+   padding: 8px 16px;
+   width: 110px;
+   border: 2px solid var(--ncsu-light-red);
+   margin: auto;
+   background: var(--color-charcoal);
+   color: white;
+   /* clip-path: polygon(0% -100%,   100% 0%,   100% 0%,   0% 0%); */
+   clip-path: circle(25% at 125% 50%);
+   transition: all 1.0s;
+}
+
+.hoverButton2.hover {
+   /* clip-path: polygon(0% 100%,   100% 200%,   100% 0%,   0% 0%); */
+   clip-path: circle(25% at 0% 50%);
+}
+
+.extraButton2 {
+   position: absolute;
+   border-radius: 19.5px;
+   top: 0;
+   left: 0;
+   right: 0;
+   padding: 8px 16px;
+   width: 110px;
+   border: 2px solid var(--ncsu-light-red);
+   margin: auto;
+   background: var(--ncsu-light-red);
+   color: white;
+   clip-path: circle(25% at 135% 50%);
+   transition: all 1.0s;
+}
+
+.extraButton2.hover {
+   clip-path: circle(25% at 10% 50%);
+}
+
+.coverButton2 {
+   position: absolute;
+   border-radius: 19.5px;
+   top: 0;
+   left: 0;
+   right: 0;
+   padding: 8px 16px;
+   width: 110px;
+   border: 2px solid var(--ncsu-light-red);
+   margin: auto;
+   background: var(--ncsu-light-red);
+   color: white;
+   clip-path: polygon(100% 0%,   135% 0%,    135% 100%,    100% 100%);
+   transition: all 1.0s;
+}
+
+.coverButton2.hover {
+   clip-path: polygon(100% 0%,   10% 0%,    10% 100%,    100% 100%);
 }
