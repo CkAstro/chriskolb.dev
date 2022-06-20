@@ -52,12 +52,12 @@
    width: 110px;
    border: 2px solid var(--ncsu-light-red);
    margin: auto;
-   border-radius: 19.5px;
+   border-radius: 16px;
 }
 
 .hoverButton2 {
    position: absolute;
-   border-radius: 19.5px;
+   border-radius: 16px;
    top: 0;
    left: 0;
    right: 0;
@@ -68,18 +68,18 @@
    background: var(--color-charcoal);
    color: white;
    /* clip-path: polygon(0% -100%,   100% 0%,   100% 0%,   0% 0%); */
-   clip-path: circle(25% at 125% 50%);
+   clip-path: circle(25% at -25% 50%);
    transition: all 1.0s;
 }
 
 .hoverButton2.hover {
    /* clip-path: polygon(0% 100%,   100% 200%,   100% 0%,   0% 0%); */
-   clip-path: circle(25% at 0% 50%);
+   clip-path: circle(25% at 100% 50%);
 }
 
 .extraButton2 {
    position: absolute;
-   border-radius: 19.5px;
+   border-radius: 16px;
    top: 0;
    left: 0;
    right: 0;
@@ -89,17 +89,17 @@
    margin: auto;
    background: var(--ncsu-light-red);
    color: white;
-   clip-path: circle(25% at 135% 50%);
+   clip-path: circle(25% at -35% 50%);
    transition: all 1.0s;
 }
 
 .extraButton2.hover {
-   clip-path: circle(25% at 10% 50%);
+   clip-path: circle(25% at 90% 50%);
 }
 
 .coverButton2 {
    position: absolute;
-   border-radius: 19.5px;
+   border-radius: 16px;
    top: 0;
    left: 0;
    right: 0;
@@ -109,10 +109,10 @@
    margin: auto;
    background: var(--ncsu-light-red);
    color: white;
-   clip-path: polygon(100% 0%,   135% 0%,    135% 100%,    100% 100%);
+   clip-path: polygon(0% 0%,   -35% 0%,    -35% 100%,    0% 100%);
    transition: all 1.0s;
 }
 
 .coverButton2.hover {
-   clip-path: polygon(100% 0%,   10% 0%,    10% 100%,    100% 100%);
+   clip-path: polygon(0% 0%,   90% 0%,    90% 100%,    0% 100%);
 }
