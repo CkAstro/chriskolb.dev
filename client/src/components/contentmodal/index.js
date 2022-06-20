@@ -15,8 +15,20 @@ const ContentModal = () => {
       setIsEnabled(true);
    }
 
-   const nextPage = () => setPage(Math.min(page+1, modalProps.content.length-1));
-   const prevPage = () => setPage(Math.max(page-1, 0));
+   const nextPage = () => {
+      const newPage = page+1;
+      newPage > modalProps.content.length-1
+         ? setPage(0)
+         : setPage(newPage)
+      ;
+   }
+   const prevPage = () => {
+      const newPage = page-1;
+      newPage < 0
+         ? setPage(modalProps.content.length-1)
+         : setPage(newPage)
+      ;
+   }
 
    return (
       <div className={`${style.modalContainer} ${modalProps.isActive ? style.active : null}`} 
