@@ -57,6 +57,7 @@
    font-size: 20px;
    font-weight: bold;
    cursor: pointer;
+   transition: all 0.2s;
 }
 
 .closeButton:hover {
@@ -76,6 +77,7 @@
    justify-content: center;
    align-items: center;
    cursor: pointer;
+   transition: all 0.2s;
 }
 
 .nextButton:hover { background: var(--ncsu-dark-red); }
@@ -94,6 +96,7 @@
    align-items: center;
    cursor: pointer;
    transform: scale(-1,1);
+   transition: all 0.2s;
 }
 
 .prevButton:hover { background: var(--ncsu-dark-red); }
