@@ -1,12 +1,21 @@
 import { useState } from 'react';
+import { useDisplay } from '../../contexts/display';
+import { useModal } from '../../contexts/modal';
 import FancyButton from '../fancybutton';
 import style from './contentsquare.module.css';
 
-const ContentSquare = ({ info, isHidden, onClick }) => {
+const ContentSquare = ({ info, isHidden }) => {
    const [ isMouseOver, setIsMouseOver ] = useState(false);
+   const { setModalContent } = useModal();
+   const { setIsEnabled } = useDisplay();
+
+   const handleClick = () => {
+      setModalContent(info.pages);
+      setIsEnabled(false);
+   }
+
    return (
-      <div className={`${style.contentSquare}`} 
-         onClick={onClick}
+      <div className={`${style.contentSquare}`}
          onMouseEnter={() => setIsMouseOver(true)}
          onMouseLeave={() => setIsMouseOver(false)}
       >
@@ -18,7 +27,9 @@ const ContentSquare = ({ info, isHidden, onClick }) => {
             </div>
             <div className={style.bottomContent}>
                <p>{info.description}</p>
-               <FancyButton>Learn More</FancyButton>
+               <div onClick={handleClick}>
+                  <FancyButton>Learn More</FancyButton>
+               </div>
             </div>
          </div>
       </div>

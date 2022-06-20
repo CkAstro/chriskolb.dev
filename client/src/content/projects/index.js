@@ -1,12 +1,8 @@
 import ContentSection from '../../components/contentsection';
+import reversi from './reversi';
 
 const projectList = [
-   { 
-      title: 'Reversi',
-      making: 'React / Express / MongoDB / Websockets',
-      image: require('./reversi.png'),
-      description: 'Online multi-player board game. Supports multiple games and replays.'
-   },
+   reversi,
    { 
       title: 'DataVis',
       making: 'WebGL / GLSL / React / Node / REST',
