@@ -13,7 +13,7 @@ const reversi = {
             <img src={require('./reversi.png')}/>
          </div>
          <div className={style.contentContainer}>
-            <h1>Reversi (aka Othello)</h1>
+            <h1>Reversi</h1>
             <p>Play your friends in this online multi-player board game. Supports multiple games and a replay mode.</p>
             <p>Front end created with React and uses a Websocket to communicate with the server.</p>
             <p>Back end uses Node.js with Express to handle API requests, server/client communication via Websocket, and all game logic.</p>

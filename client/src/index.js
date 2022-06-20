@@ -27,9 +27,9 @@ const Main = () => {
          <Header/>
          <Navbar scrollValue={scrollValue}/>
          <Projects/>
-         {/* <ContentPage styleAdjust={{background: '#ddd'}} title='Research'  content={null}/> */}
-         {/* <ContentPage styleAdjust={{background: '#ddd'}} title='Papers'  content={null}/> */}
-         {/* <ContentPage styleAdjust={{background: '#404e5c'}} title='About'  content={null}/> */}
+         <Projects/>
+         <Projects/>
+         <Projects/>
       </div>
    </>);
 }
