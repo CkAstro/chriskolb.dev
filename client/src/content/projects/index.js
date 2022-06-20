@@ -1,38 +1,18 @@
 import ContentSection from '../../components/contentsection';
 import reversi from './reversi';
+import datavis from './datavis';
+import neuralnet from './neuralnet';
+import emission from './emission';
+import csm from './csm';
+import instability from './instability';
 
 const projectList = [
    reversi,
-   { 
-      title: 'DataVis',
-      making: 'WebGL / GLSL / React / Node / REST',
-      image: require('./datavis.png'),
-      description: 'Online multi-player board game. Supports multiple games and replays.'
-   },
-   { 
-      title: 'Neural Network',
-      making: 'React / HTML5 Canvas / Canvas',
-      image: require('./neuralnet.png'),
-      description: 'Online multi-player board game. Supports multiple games and replays.'
-   },
-   { 
-      title: 'Supernova Light',
-      making: 'WebGL / GLSL / Python / FORTRAN',
-      image: require('./emission.png'),
-      description: 'Online multi-player board game. Supports multiple games and replays.'
-   },
-   { 
-      title: 'Circumstellar Data',
-      making: 'HTML5 Canvas / REST / Post-Processing',
-      image: require('./csm.png'),
-      description: 'Online multi-player board game. Supports multiple games and replays.'
-   },
-   { 
-      title: 'Fluid Instabilities',
-      making: 'React / WebGL / Fetch API',
-      image: require('./instability.png'),
-      description: 'Online multi-player board game. Supports multiple games and replays.'
-   },
+   datavis,
+   neuralnet,
+   emission,
+   csm,
+   instability,
 ];
 
 const Projects = () => {
