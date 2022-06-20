@@ -1,5 +1,5 @@
-import ButtonGroup from '../../components/buttongroup';
 import ContentPage from '../../components/contentpage';
+import CSMApp from './csmapp';
 import style from './csm.module.css';
 
 const csm = {
@@ -10,25 +10,7 @@ const csm = {
    pages: [
       <ContentPage>
          <div className={style.contentContainer}>
-            <div className={style.buttonContainer}>
-               <ButtonGroup header={'Mass Ratio'}>{[
-                  {text: '1.0', value: '10'},
-                  {text: '1.5', value: '15'},
-                  {text: '2.0', value: '20'},
-                  {text: '2.5', value: '25'},
-               ]}</ButtonGroup>
-               <ButtonGroup header={'Wind Speed'}>{[
-                  {text: '15', value: '15'},
-                  {text: '20', value: '20'},
-                  {text: '25', value: '25'},
-               ]}</ButtonGroup>
-               <ButtonGroup header={'Speed Ratio'}>{[
-                  {text: '0.75', value: '075'},
-                  {text: '1.0', value: '10'},
-                  {text: '1.5', value: '15'},
-                  {text: '2.0', value: '20'},
-               ]}</ButtonGroup>
-            </div>
+            <CSMApp/>
          </div>
       </ContentPage>,
 
