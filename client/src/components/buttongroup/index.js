@@ -2,7 +2,7 @@ import { useState, useEffect, useRef } from 'react';
 import Button from "./button";
 import style from './buttongroup.module.css';
 
-const ButtonGroup = ({ header, children }) => {
+const ButtonGroup = ({ setter, header, children }) => {
    const [ headerWidth, setHeaderWidth ] = useState(null);
    const [ activeButton, setActiveButton ] = useState(0);
    const divRef = useRef(null);
@@ -23,6 +23,10 @@ const ButtonGroup = ({ header, children }) => {
    useEffect(() => {
       setHeaderWidth(divRef.current.clientWidth / 4.0);
    }, []);
+
+   useEffect(() => {
+      setter(children[activeButton].value);
+   }, [activeButton]);
 
    const gridStyle = {
       display: 'grid',
