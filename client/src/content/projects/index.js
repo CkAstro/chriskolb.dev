@@ -1,4 +1,4 @@
-import ContentPage from '../../components/contentpage';
+import ContentSection from '../../components/contentsection';
 
 const projectList = [
    { 
@@ -40,7 +40,7 @@ const projectList = [
 ];
 
 const Projects = () => {
-   return <ContentPage styleAdjust={{background: '#ddd'}} title='Projects' content={projectList}/>
+   return <ContentSection styleAdjust={{background: '#ddd'}} title='Projects' content={projectList}/>
 }
 
 export default Projects;
