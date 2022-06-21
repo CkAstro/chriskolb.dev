@@ -32,7 +32,7 @@ const InteractiveCanvas = ({ draw, onInteract, data, setStyle }) => {
       const { top, left } = canvasRef.current.getBoundingClientRect();
       const location = { x: event.clientX-left, y: event.clientY-top };
       setIsActive(true);
-      onInteract(location, data);
+      onInteract(ctxRef.current, location, data);
    }
 
    const handleMouseUp = event => {
@@ -45,7 +45,7 @@ const InteractiveCanvas = ({ draw, onInteract, data, setStyle }) => {
       if (!isActive) return;
       const { top, left } = canvasRef.current.getBoundingClientRect();
       const location = { x: event.clientX-left, y: event.clientY-top };
-      onInteract(location, data);
+      onInteract(ctxRef.current, location, data);
    }
 
    const handleMouseLeave = () => setIsActive(false);
