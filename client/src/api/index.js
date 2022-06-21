@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const baseUrl = window.location.host.includes('localhost')
-   ? 'http://localhost:3001/api'
+   ? 'http://localhost:3004/api'
    : '/api'
 ;
 
