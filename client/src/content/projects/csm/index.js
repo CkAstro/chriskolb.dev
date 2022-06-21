@@ -1,4 +1,4 @@
-import ContentPage from '../../components/contentpage';
+import ContentPage from '../../../components/contentpage';
 import CSMApp from './csmapp';
 import style from './csm.module.css';
 

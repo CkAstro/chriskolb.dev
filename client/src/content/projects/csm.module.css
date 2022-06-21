@@ -1,8 +1,0 @@
-
-.imageContainer { composes: imageContainer from '../index.module.css'; }
-.contentContainer { composes: contentContainer from '../index.module.css'; }
-
-.buttonContainer {
-   width: 500px;
-   margin: auto;
-}
