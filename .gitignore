@@ -16,4 +16,4 @@ logs/*
 client/build
 
 # data files
-server/data/*
+server/src/data/*
