@@ -1,8 +1,9 @@
 import { InteractiveCanvas } from '../../../components/canvas';
 const pi = Math.PI;
-const _boxSize = 4;
+const _boxSize = 4;     // for crosshairs
 
 const createImage = (ctx, {imax, imageData}) => {
+   // convert image data into canvas image
    const xSize = imax;
    const ySize = imax*2;    // purposefully using imax
    const image = ctx.createImageData(xSize, ySize);
@@ -19,6 +20,8 @@ const createImage = (ctx, {imax, imageData}) => {
 }
 
 const drawGrid = (ctx, {origin, zxc, imax}) => {
+   // grid outline, inner radius must depend on data
+   // ir == inner radius; or == outer radius
    const ir = zxc.vals[0] / zxc.vals[imax-1] * imax;
    const or = imax;
 
@@ -35,9 +38,14 @@ const drawGrid = (ctx, {origin, zxc, imax}) => {
 }
 
 const drawRadialAxis = (ctx, {origin, the0, rad1, rad2, ir, or}) => {
+   // we draw radial dashes this way so they remain consistent
+   // dash will always start at start of draw, so we draw from outer bound
+   //    to the box 
    ctx.strokeStyle = 'red';
    ctx.lineWidth = 2;
    ctx.setLineDash([5,5]);
+
+   // only draw segment if it's in bounds
    ctx.beginPath();
    ctx.moveTo(origin.x+ir*Math.sin(the0), origin.y-ir*Math.cos(the0));
    if (rad1 > ir)ctx.lineTo(origin.x+rad1*Math.sin(the0), origin.y-rad1*Math.cos(the0));
@@ -52,14 +60,16 @@ const drawRadialAxis = (ctx, {origin, the0, rad1, rad2, ir, or}) => {
    return;
 }
 
-const drawAngularAxis = (ctx, {origin, rad0, the1, the2, ir, or}) => {
+const drawAngularAxis = (ctx, {origin, rad0, the1, the2, or}) => {
    // we draw arcs as we do so the dashes remain consistent
-   // they will always start at start of arc, so starting 
-   //    arc at the box looks ugly
+   // they will always start at start of arc, so starting from outer bound
+   //    and moving arc to box will keep it from 'moving'
    const dashScale = rad0 / or;
    ctx.strokeStyle = 'red';
    ctx.lineWidth = 2;
    ctx.setLineDash([8*dashScale, 8*dashScale]);    // scale dashing
+
+   // only draw segment if it's in bounds
    ctx.beginPath();
    if (the1 > -pi/2.0) ctx.arc(origin.x, origin.y, rad0, -pi/2.0, the1, false);
    ctx.moveTo(origin.x, origin.y+rad0);
@@ -77,6 +87,7 @@ const drawLocationBox = (ctx, {xloc, yloc}) => {
    ctx.strokeStyle = 'white';
    ctx.lineWidth = 2;
 
+   // draw box around active pixel
    ctx.beginPath();
    ctx.rect(xloc-_boxSize, yloc-_boxSize, 2*_boxSize+1, 2*_boxSize+1);
    ctx.stroke();
@@ -87,20 +98,28 @@ const drawLocationBox = (ctx, {xloc, yloc}) => {
    return;
 }
 
-const drawCrosshair = (ctx, {zxc, zyc, imax, jmax, dataPoint, origin}) => {
+const drawCrosshair = (ctx, {zxc, zyc, imax, dataPoint, origin}) => {
+   // scale zxc to pixel radius
    const zxcScaled = zxc.vals.map(val => imax*val/zxc.vals[imax-1]);
-   const ir = zxc.vals[0] / zxc.vals[imax-1] * imax;
-   const or = imax;
+   const ir = zxc.vals[0] / zxc.vals[imax-1] * imax;  // inner rad
+   const or = imax;                                   // outer radius
 
+   // actual pixel coordinate is (rad0, the0) or (xloc, yloc)
    const rad0 = zxcScaled[dataPoint.x];
    const the0 = zyc.vals[dataPoint.y];
    const xloc = rad0*Math.sin(the0)+origin.x;
    const yloc = origin.y-rad0*Math.cos(the0);
 
+   // exclude the origin to find crosshair angles
    const xtmp = rad0*Math.sin(the0);
    const ytmp = rad0*Math.cos(the0);
 
-   let rad1, rad2, the1, the2;
+   
+   let rad1,   // 'below' crosshair box 
+      rad2,    // 'above' crosshair box
+      the1,    // 'before' crosshair box
+      the2;    // 'after' crosshair box
+
    if (the0 < pi/4.0) {
       rad1 = (ytmp-_boxSize)/Math.cos(the0);
       rad2 = (ytmp+_boxSize)/Math.cos(the0);
@@ -123,15 +142,17 @@ const drawCrosshair = (ctx, {zxc, zyc, imax, jmax, dataPoint, origin}) => {
       the2 =-Math.asin((xtmp-_boxSize)/rad0)+pi/2.0;
    }
 
+   // draw all elements
    drawRadialAxis(ctx, {origin, the0, rad1, rad2, ir, or});
    drawAngularAxis(ctx, {origin, rad0, the1, the2, ir, or});
    drawLocationBox(ctx, {xloc, yloc});
    return;
 }
 
-
 const drawPolarPlot = (ctx, data) => {
-   if (!data) return;
+   if (!data) return;   // this will init without data
+
+   // first, clear grid on update
    ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
    const origin = data.origin;
    
@@ -146,10 +167,7 @@ const drawPolarPlot = (ctx, data) => {
    drawGrid(ctx, data);
 }
 
-
 const PolarPlot = ({ data, setDataPoint }) => {
-
-
    const updateDataPoint = (clickLocation, data) => {
       if (!data) return;
       const {origin, imax, jmax, zxc, zyc } = data;
