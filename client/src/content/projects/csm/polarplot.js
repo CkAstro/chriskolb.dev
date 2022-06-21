@@ -2,7 +2,13 @@ import { InteractiveCanvas } from '../../../components/canvas';
 const pi = Math.PI;
 const _boxSize = 4;     // for crosshairs
 
-const createImage = (ctx, {imax, imageData}) => {
+const resetContext = ctx => {
+   ctx.strokeStyle = 'black';
+   ctx.lineWidth = 1;
+   ctx.setLineDash([]);
+}
+
+const drawImage = (ctx, {imax, origin, imageData}) => {
    // convert image data into canvas image
    const xSize = imax;
    const ySize = imax*2;    // purposefully using imax
@@ -16,7 +22,10 @@ const createImage = (ctx, {imax, imageData}) => {
          }
       }
    }
-   return image;
+   ctx.putImageData(image, origin.x, origin.y-imax);
+
+   // clean up and return
+   return resetContext(ctx);
 }
 
 const drawGrid = (ctx, {origin, zxc, imax}) => {
@@ -33,8 +42,8 @@ const drawGrid = (ctx, {origin, zxc, imax}) => {
    ctx.lineTo(origin.x, origin.y-or);
    ctx.stroke();
 
-   ctx.lineWidth = 1;
-   return;
+   // clean up and return
+   return resetContext(ctx);
 }
 
 const drawRadialAxis = (ctx, {origin, the0, rad1, rad2, ir, or}) => {
@@ -54,10 +63,7 @@ const drawRadialAxis = (ctx, {origin, the0, rad1, rad2, ir, or}) => {
    ctx.stroke();
 
    // clean up and return
-   ctx.strokeStyle = 'black';
-   ctx.lineWidth = 1;
-   ctx.setLineDash([]);
-   return;
+   return resetContext(ctx);
 }
 
 const drawAngularAxis = (ctx, {origin, rad0, the1, the2, or}) => {
@@ -77,10 +83,7 @@ const drawAngularAxis = (ctx, {origin, rad0, the1, the2, or}) => {
    ctx.stroke();
 
    // clean up and return
-   ctx.strokeStyle = 'black';
-   ctx.lineWidth = 1;
-   ctx.setLineDash([]);
-   return;
+   return resetContext(ctx);
 }
 
 const drawLocationBox = (ctx, {xloc, yloc}) => {
@@ -93,9 +96,7 @@ const drawLocationBox = (ctx, {xloc, yloc}) => {
    ctx.stroke();
 
    // clean up and return
-   ctx.strokeStyle = 'black';
-   ctx.lineWidth = 1;
-   return;
+   return resetContext(ctx);
 }
 
 const drawCrosshair = (ctx, {zxc, zyc, imax, dataPoint, origin}) => {
@@ -114,7 +115,7 @@ const drawCrosshair = (ctx, {zxc, zyc, imax, dataPoint, origin}) => {
    const xtmp = rad0*Math.sin(the0);
    const ytmp = rad0*Math.cos(the0);
 
-   
+   // get crosshair bounds
    let rad1,   // 'below' crosshair box 
       rad2,    // 'above' crosshair box
       the1,    // 'before' crosshair box
@@ -157,8 +158,7 @@ const drawPolarPlot = (ctx, data) => {
    const origin = data.origin;
    
    // load and display image data
-   const polarImage = createImage(ctx, data);
-   ctx.putImageData(polarImage, origin.x, origin.y-data.imax);
+   drawImage(ctx, data);
 
    // draw crosshairs
    drawCrosshair(ctx, data);
@@ -188,7 +188,6 @@ const PolarPlot = ({ data, setDataPoint }) => {
          x: Math.max(0,Math.min(imax-1, radAdjust)), 
          y: Math.max(0,Math.min(jmax-1, theAdjust)),
       });
-      console.log(radAdjust, theAdjust);
    }
 
    return <InteractiveCanvas
