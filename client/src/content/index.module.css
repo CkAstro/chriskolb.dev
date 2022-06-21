@@ -1,0 +1,35 @@
+
+.imageContainer {
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   width: 100%;
+   height: auto;
+}
+
+.contentContainer {
+   background: #ddd;
+   color: var(--color-charcoal);
+   height: auto;
+   width: 100%;
+   padding: 30px 50px;
+   text-align: justify;
+   flex-grow: 1;
+   box-sizing: border-box;
+}
+
+.contentContainer:not(:first-child) {
+   border-top: 3px solid var(--color-charcoal);
+}
+
+.contentContainer h1 {
+   margin: 0px;
+   padding: 0px; 
+   border-bottom: 2px dotted var(--color-charcoal);
+}
+
+.contentContainer a {
+   text-decoration: none;
+   text-align: center;
+   color: #333;
+}
