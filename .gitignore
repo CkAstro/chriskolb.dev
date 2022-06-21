@@ -14,3 +14,6 @@ logs/*
 
 # build
 client/build
+
+# data files
+server/data/*
