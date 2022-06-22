@@ -31,9 +31,14 @@ app.get('/api/csm/:mrto/:vwind/:vrto', (req, res) => {
       if (err) console.log(err);
       res.json(JSON.parse(data));
    });
-   // const data = require(`./data/csm/50-${mrto}-${vwind}-${vrto}-lri.json`);
-   // res.json(data);
 });
+
+app.get('/api/img/:file', (req, res) => {
+   fs.readFile(`./src/data/img/${file}.png`, (err, data) => {
+      if (err) console.log(err);
+      res.send(data);
+   });
+})
 
 // ----- static serving ----- //
 app.use(express.static('../client/build'));     // NOTE: this MUST come after API requests

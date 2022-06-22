@@ -10,5 +10,10 @@ const getCSMData = (mrto, vwind, vrto) => {
    return request.then(response => response.data);
 }
 
-export { getCSMData };
-export default { getCSMData };
+const getImage = imageName => {
+   const request = axios.get(`${baseUrl}/img/${imageName}`);
+   return request.then(response => response.config.url);
+}
+
+export { getCSMData, getImage };
+export default { getCSMData, getImage };
