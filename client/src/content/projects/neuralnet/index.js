@@ -1,9 +1,9 @@
-import ContentPage from '../../components/contentpage';
+import ContentPage from '../../../components/contentpage';
 
-const instability = {
-   title: 'Fluid Instabilities',
-   making: 'React / WebGL / Fetch API',
-   image: require('./instability.png'),
+const neuralnet = {
+   title: 'Neural Network',
+   making: 'React / HTML5 Canvas / Data Processing',
+   image: require('./neuralnet.png'),
    description: 'Online multi-player board game. Supports multiple games and replays.',
    pages: [
       <ContentPage>Hello World this is a content page</ContentPage>,
@@ -11,4 +11,4 @@ const instability = {
    ],
 }
 
-export default instability;
+export default neuralnet;

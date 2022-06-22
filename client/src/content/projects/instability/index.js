@@ -1,9 +1,9 @@
-import ContentPage from '../../components/contentpage';
+import ContentPage from '../../../components/contentpage';
 
-const emission = {
-   title: 'Supernova Light',
-   making: 'WebGL / GLSL / Python / FORTRAN',
-   image: require('./emission.png'),
+const instability = {
+   title: 'Fluid Instabilities',
+   making: 'React / WebGL / Fetch API',
+   image: require('./instability.png'),
    description: 'Online multi-player board game. Supports multiple games and replays.',
    pages: [
       <ContentPage>Hello World this is a content page</ContentPage>,
@@ -11,4 +11,4 @@ const emission = {
    ],
 }
 
-export default emission;
+export default instability;

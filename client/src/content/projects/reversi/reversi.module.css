@@ -1,20 +1,6 @@
 
-.imageContainer {
-   display: flex;
-   align-items: center;
-   justify-content: center;
-   width: 100%;
-   height: auto;
-}
-
-.contentContainer {
-   background: #ddd;
-   color: var(--color-charcoal);
-   height: auto;
-   padding: 30px 50px;
-   text-align: justify;
-   flex-grow: 1;
-}
+.imageContainer { composes: imageContainer from '../../index.module.css'; }
+.contentContainer { composes: contentContainer from '../../index.module.css'; }
 
 .contentContainer:not(:first-child) {
    border-top: 3px solid var(--color-charcoal);

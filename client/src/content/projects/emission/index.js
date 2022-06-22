@@ -1,9 +1,9 @@
-import ContentPage from '../../components/contentpage';
+import ContentPage from '../../../components/contentpage';
 
-const neuralnet = {
-   title: 'Neural Network',
-   making: 'React / HTML5 Canvas / Data Processing',
-   image: require('./neuralnet.png'),
+const emission = {
+   title: 'Supernova Light',
+   making: 'WebGL / GLSL / Python / FORTRAN',
+   image: require('./emission.png'),
    description: 'Online multi-player board game. Supports multiple games and replays.',
    pages: [
       <ContentPage>Hello World this is a content page</ContentPage>,
@@ -11,4 +11,4 @@ const neuralnet = {
    ],
 }
 
-export default neuralnet;
+export default emission;

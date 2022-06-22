@@ -1,3 +1,0 @@
-
-.imageContainer { composes: imageContainer from '../index.module.css'; }
-.contentContainer { composes: contentContainer from '../index.module.css'; }

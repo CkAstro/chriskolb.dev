@@ -1,5 +1,5 @@
-import ContentPage from '../../components/contentpage';
-import FancyButton from '../../components/fancybutton';
+import ContentPage from '../../../components/contentpage';
+import FancyButton from '../../../components/fancybutton';
 import style from './reversi.module.css';
 
 const reversi = {
