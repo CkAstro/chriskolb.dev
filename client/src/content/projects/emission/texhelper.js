@@ -1,6 +1,10 @@
 // NOTE: this is a custom texture helper implementation
 //    - loadDataFromImage scales texture data for emission calculation
 
+// NOTE: on page switch, a new gl instance is created and this must recreate
+//    all textures; attempted to save texture buffer and recreate from buffer
+//    data, but this is no faster than just recreating from image
+
 class TextureHelper {
    constructor() {
       this.textures = {
