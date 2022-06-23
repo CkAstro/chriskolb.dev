@@ -1,5 +1,4 @@
 import { useState, useEffect, useRef } from 'react';
-import style from './canvas.module.css';
 
 const useInteractiveCanvas = (ctxRef, draw, data) => {
    const canvasRef = useRef(null);
@@ -23,16 +22,37 @@ const useInteractiveCanvas = (ctxRef, draw, data) => {
 
 const InteractiveCanvas = ({ draw, onInteract, data, setStyle }) => {
    const [ isActive, setIsActive ] = useState(false);
+   const [ mouseLocation, setMouseLocation ] = useState({ x: null, y: null });
+   const [ clickLocation, setClickLocation ] = useState({ x: null, y: null });
 
    const ctxRef = useRef(null);
    const canvasRef = useInteractiveCanvas(ctxRef, draw, data);
+   
+   // this is necessary to get around 'passive' event listeners
+   // see more here: https://github.com/facebook/react/issues/19651
+   useEffect(() => {
+      const canvas = canvasRef.current.canvas;
+      canvas.addEventListener('wheel', handleScroll);
+      canvas.addEventListener('touchstart', e => e.preventDefault());
+      canvas.addEventListener('touchmove', e => e.preventDefault());
+   }, []);
 
    const handleMouseDown = event => {
       event.preventDefault();
-      const { top, left } = canvasRef.current.getBoundingClientRect();
-      const location = { x: event.clientX-left, y: event.clientY-top };
+      const rect = canvasRef.current.getBoundingClientRect();
+      const location = { x: event.clientX, y: event.clientY };
+      const mouseInfo = {
+         click: location,
+         location: location,
+         prevLocation: location,
+         rect: rect,
+         deltaY: null,
+         isActive: true,
+      }
+      onInteract(ctxRef.current, mouseInfo, data);
+      setMouseLocation(location);
+      setClickLocation(location);
       setIsActive(true);
-      onInteract(ctxRef.current, location, data);
    }
 
    const handleMouseUp = event => {
@@ -42,13 +62,48 @@ const InteractiveCanvas = ({ draw, onInteract, data, setStyle }) => {
 
    const handleMouseMove = event => {
       event.preventDefault();
-      if (!isActive) return;
-      const { top, left } = canvasRef.current.getBoundingClientRect();
-      const location = { x: event.clientX-left, y: event.clientY-top };
-      onInteract(ctxRef.current, location, data);
+      const rect = canvasRef.current.getBoundingClientRect();
+      const location = { x: event.clientX, y: event.clientY };
+      const mouseInfo = {
+         click: clickLocation,
+         location: location,
+         prevLocation: mouseLocation,
+         rect: rect,
+         deltaY: null,
+         isActive: isActive,
+      }
+      onInteract(ctxRef.current, mouseInfo, data);
+      setMouseLocation(location);
    }
 
    const handleMouseLeave = () => setIsActive(false);
+
+   const handleScroll = event => {
+      event.preventDefault();
+      const rect = canvasRef.current.getBoundingClientRect();
+      const location = { x: event.clientX, y: event.clientY };
+      const mouseInfo = {
+         click: clickLocation,
+         location: location,
+         prevLocation: mouseLocation,
+         rect: rect,
+         deltaY: event.deltaY,
+         isActive: isActive,
+      }
+      onInteract(ctxRef.current, mouseInfo, data);
+   }
+
+   const handleTouchStart = event => {
+      handleMouseDown(event.nativeEvent.changedTouches[0]);
+   }
+
+   const handleTouchEnd = event => {
+      handleMouseDown(event.nativeEvent.changedTouches[0]);
+   }
+
+   const handleTouchMove = event => {
+      handleMouseMove(event.nativeEvent.changedTouches[0]);
+   }
 
    return <canvas ref={canvasRef}
       style={setStyle}
@@ -57,6 +112,11 @@ const InteractiveCanvas = ({ draw, onInteract, data, setStyle }) => {
       onMouseUp={handleMouseUp}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
+      onWheel={handleScroll}
+
+      onTouchStart={handleTouchStart}
+      onTouchEnd={handleTouchEnd}
+      onTouchMove={handleTouchMove}
    />;
 }
 

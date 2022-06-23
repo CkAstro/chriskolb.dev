@@ -175,9 +175,10 @@ const drawRadialPlot = (ctx, data) => {
 }
 
 const RadialPlot = ({ data, setDataPoint }) => {
-   const updateDataPoint = (ctx, clickLocation, data) => {
-      console.log('hi')
-      if (!data) return;
+   const updateDataPoint = (ctx, mouseInfo, data) => {
+      if (!data || !mouseInfo.isActive) return;
+      const { top, left } = mouseInfo.rect;
+      const clickLocation = { x: mouseInfo.location.x-left, y: mouseInfo.location.y-top };
       const origin = {x: 30, y: ctx.canvas.height-45};
       const lengthX = data.scale.x * ctx.canvas.width;
       const lengthY = data.scale.y * ctx.canvas.height;

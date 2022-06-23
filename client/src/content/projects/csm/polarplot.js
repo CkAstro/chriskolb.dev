@@ -168,8 +168,10 @@ const drawPolarPlot = (ctx, data) => {
 }
 
 const PolarPlot = ({ data, setDataPoint }) => {
-   const updateDataPoint = (ctx, clickLocation, data) => {
-      if (!data) return;
+   const updateDataPoint = (ctx, mouseInfo, data) => {
+      if (!data || !mouseInfo.isActive) return;
+      const { top, left } = mouseInfo.rect;
+      const clickLocation = { x: mouseInfo.location.x-left, y: mouseInfo.location.y-top };
       const {origin, imax, jmax, zxc, zyc } = data;
       if (clickLocation.x < origin.x || clickLocation.x > origin.x+imax) return;
       if (clickLocation.y < origin.y-imax || clickLocation.y > origin.y+imax) return;
