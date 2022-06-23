@@ -1,3 +1,42 @@
 
 .imageContainer { composes: imageContainer from '../../index.module.css'; }
 .contentContainer { composes: contentContainer from '../../index.module.css'; }
+.contentContainer {
+   display: flex;
+   flex-direction: column;
+}
+
+.contentContainer h1 {
+   margin-bottom: 12px;
+}
+
+.buttonContainer {
+   display: flex;
+   justify-content: center;
+   margin: 12px auto;
+   border-style: double none;
+   border-color: var(--ncsu-dark-gray);
+}
+.interactButton {
+   cursor: pointer;
+   padding: 8px 16px;
+   transition: all 0.2s;
+   width: 75px;
+   text-align: center;
+   position: relative;
+}
+
+.interactButton:not(:last-child)::after {
+   display: block;
+   content: '';
+   position: absolute;
+   top: 20%;
+   right: 0;
+   width: 1px;
+   height: 60%;
+   background: var(--ncsu-dark-gray);
+}
+
+.interactButton:not(.active):hover { color: var(--ncsu-light-red); }
+
+.interactButton.active { color: var(--ncsu-dark-red); }

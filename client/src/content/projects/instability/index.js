@@ -1,4 +1,5 @@
 import ContentPage from '../../../components/contentpage';
+import App from './app';
 
 const instability = {
    title: 'Fluid Instabilities',
@@ -6,7 +7,7 @@ const instability = {
    image: require('./instability.png'),
    description: 'Online multi-player board game. Supports multiple games and replays.',
    pages: [
-      <ContentPage>Hello World this is a content page</ContentPage>,
+      <ContentPage><App/></ContentPage>,
       <ContentPage>Yo dawg it's page 2</ContentPage>,
    ],
 }
