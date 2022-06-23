@@ -31,7 +31,7 @@ const InteractiveCanvas = ({ draw, onInteract, data, setStyle }) => {
    // this is necessary to get around 'passive' event listeners
    // see more here: https://github.com/facebook/react/issues/19651
    useEffect(() => {
-      const canvas = canvasRef.current.canvas;
+      const canvas = canvasRef.current;
       canvas.addEventListener('wheel', handleScroll);
       canvas.addEventListener('touchstart', e => e.preventDefault());
       canvas.addEventListener('touchmove', e => e.preventDefault());
@@ -57,6 +57,17 @@ const InteractiveCanvas = ({ draw, onInteract, data, setStyle }) => {
 
    const handleMouseUp = event => {
       event.preventDefault();
+      const rect = canvasRef.current.getBoundingClientRect();
+      const location = { x: event.clientX, y: event.clientY };
+      const mouseInfo = {
+         click: null,
+         location: location,
+         prevLocation: location,
+         rect: rect,
+         deltaY: null,
+         isActive: false,
+      }
+      onInteract(ctxRef.current, mouseInfo, data);
       setIsActive(false);
    }
 
@@ -76,7 +87,21 @@ const InteractiveCanvas = ({ draw, onInteract, data, setStyle }) => {
       setMouseLocation(location);
    }
 
-   const handleMouseLeave = () => setIsActive(false);
+   const handleMouseLeave = event => {
+      event.preventDefault();
+      const rect = canvasRef.current.getBoundingClientRect();
+      const location = { x: event.clientX, y: event.clientY };
+      const mouseInfo = {
+         click: null,
+         location: location,
+         prevLocation: location,
+         rect: rect,
+         deltaY: null,
+         isActive: false,
+      }
+      onInteract(ctxRef.current, mouseInfo, data);
+      setIsActive(false);
+   }
 
    const handleScroll = event => {
       event.preventDefault();
