@@ -6,8 +6,8 @@ import buildShader from './shader';
 import style from './emission.module.css';
 
 const drawScene = (gl, scene, objects) => {
-   if (!texHelper.isInit) texHelper.init(gl);
-   if (!glHelper.isInit) {
+   if (!texHelper.isInit || texHelper.glInstance !== gl) texHelper.init(gl);
+   if (!glHelper.isInit || glHelper.glInstance !== gl) {
       const shader = buildShader(gl);
       glHelper.init(gl, shader);
    }

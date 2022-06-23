@@ -17,6 +17,10 @@ class TextureHelper {
 
    init(gl) {
       this.glInstance = gl;
+      this.textures = {
+         data: [],
+         cmap: [],
+      }
 
       // scaling process in data texture will lock up browser, delay added for CSS transition
       setTimeout(() => {
