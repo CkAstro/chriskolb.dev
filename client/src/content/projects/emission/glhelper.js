@@ -154,7 +154,7 @@ class GLHelper {
       const gl = this.glInstance;
 
       // clear window 
-      gl.clearColor(0, 1, 0, 1.0);
+      gl.clearColor(0, 0, 0, 1.0);
       gl.clearDepth(1.0);
       gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
       gl.enable(gl.DEPTH_TEST);
@@ -163,19 +163,15 @@ class GLHelper {
       const camera = scene.camera;
       this.getModelViewMatrix(camera);
 
-      const Nu = 9.5;
-      const UnHideCSM = true;
-      const volDim = 256;
-
       for (const obj of objects) {
          gl.useProgram(this.shader.program);
          gl.uniformMatrix4fv(this.shader.uniformLocations.projectionMatrix, false, this.projectionMatrix);
          gl.uniformMatrix4fv(this.shader.uniformLocations.modelViewMatrix, false, this.modelViewMatrix);
 
          gl.uniform3fv(this.shader.uniformLocations.eyePos, this.eyePosition);
-         gl.uniform1f(this.shader.uniformLocations.nu, 10.0**Nu);
-         gl.uniform1f(this.shader.uniformLocations.hideCSM, UnHideCSM);
-         gl.uniform1f(this.shader.uniformLocations.resolution, volDim);
+         gl.uniform1f(this.shader.uniformLocations.nu, 10.0**scene.nu);
+         gl.uniform1f(this.shader.uniformLocations.hideCSM, scene.unHideCSM);
+         gl.uniform1f(this.shader.uniformLocations.resolution, scene.volDim);
 
          // enable data texture
          gl.activeTexture(gl.TEXTURE0);
@@ -189,7 +185,6 @@ class GLHelper {
 
          this.renderable.render();
       }
-
    }
 }
 

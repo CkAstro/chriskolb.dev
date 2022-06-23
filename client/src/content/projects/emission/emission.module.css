@@ -1,3 +1,35 @@
 
 .imageContainer { composes: imageContainer from '../../index.module.css'; }
 .contentContainer { composes: contentContainer from '../../index.module.css'; }
+.contentContainer {
+   display: flex;
+   flex-direction: column;
+}
+
+.contentContainer h1 {
+   margin-bottom: 12px;
+}
+
+.controllContainer {
+   display: flex;
+   gap: 20px;
+   margin: 12px auto;
+}
+
+.csmButton {
+   cursor: pointer;
+   padding: 6px 12px;
+   background: #bbb;
+   border: 1px solid var(--ncsu-dark-gray);
+   text-align: center;
+   transition: all 0.2s;
+}
+
+.csmButton:hover { background: #999; }
+
+.valDisplay {
+   width: 50px;
+   padding: 6px 12px;
+}
+
+.valDisplay input { width: 40px; }
