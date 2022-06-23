@@ -45,7 +45,7 @@ const GL2Canvas = ({ draw, scene, objects, onInteract, setStyle }) => {
       event.preventDefault();
       const location = { x: event.clientX, y: event.clientY };
       const mouseInfo = {
-         clickLocation: clickLocation,
+         clickLocation: location,
          mouseLocation: location,
          lastMouseLocation: mouseLocation,
          deltaY: null,
