@@ -2,7 +2,9 @@ import axios from 'axios';
 
 const baseUrl = window.location.host.includes('localhost')
    ? 'http://localhost:3004/api'
-   : '/api'
+   : (window.location.host.includes('192')
+      ? 'http://192.168.3.105:3004/api'
+      : '/api')
 ;
 
 const getCSMData = (mrto, vwind, vrto) => {
@@ -15,10 +17,14 @@ const getNeuralNet = () => {
    return request.then(response => response.data);
 }
 
+const putNeuralNet = data => {
+   return axios.post(`${baseUrl}/nn`, data);
+}
+
 const getImage = imageName => {
    const request = axios.get(`${baseUrl}/img/${imageName}`);
    return request.then(response => response.config.url);
 }
 
-export { getCSMData, getNeuralNet, getImage };
-export default { getCSMData, getNeuralNet, getImage };
+export { getCSMData, getNeuralNet, putNeuralNet, getImage };
+export default { getCSMData, getNeuralNet, putNeuralNet, getImage };

@@ -38,7 +38,16 @@ app.get('/api/nn/:file', (req, res) => {
       if (err) console.log(err);
       res.json(JSON.parse(data));
    })
-})
+});
+
+app.post('/api/nn', (req, res) => {
+   const data = JSON.stringify(req.body, null, 3);
+   const filename = Date.now().toString(36);
+   fs.writeFile(`./src/data/nn/input_${filename}.json`, data, err => {
+      if (err) console.log(err);
+   });
+   res.send(true);
+});
 
 app.get('/api/img/:file', (req, res) => {
    res.sendFile(`./src/data/img/${req.params.file}`, {root: '.'});
