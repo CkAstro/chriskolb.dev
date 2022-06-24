@@ -65,7 +65,7 @@ const InteractiveCanvas = ({ draw, onInteract, data, setStyle }) => {
          prevLocation: location,
          rect: rect,
          deltaY: null,
-         isActive: false,
+         isActive: isActive,
       }
       onInteract(ctxRef.current, mouseInfo, data);
       setIsActive(false);
@@ -97,7 +97,7 @@ const InteractiveCanvas = ({ draw, onInteract, data, setStyle }) => {
          prevLocation: location,
          rect: rect,
          deltaY: null,
-         isActive: false,
+         isActive: isActive,
       }
       onInteract(ctxRef.current, mouseInfo, data);
       setIsActive(false);
