@@ -10,10 +10,15 @@ const getCSMData = (mrto, vwind, vrto) => {
    return request.then(response => response.data);
 }
 
+const getNeuralNet = () => {
+   const request = axios.get(`${baseUrl}/nn/network.json`);
+   return request.then(response => response.data);
+}
+
 const getImage = imageName => {
    const request = axios.get(`${baseUrl}/img/${imageName}`);
    return request.then(response => response.config.url);
 }
 
-export { getCSMData, getImage };
-export default { getCSMData, getImage };
+export { getCSMData, getNeuralNet, getImage };
+export default { getCSMData, getNeuralNet, getImage };

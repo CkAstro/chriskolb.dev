@@ -33,6 +33,13 @@ app.get('/api/csm/:mrto/:vwind/:vrto', (req, res) => {
    });
 });
 
+app.get('/api/nn/:file', (req, res) => {
+   fs.readFile(`./src/data/nn/${req.params.file}`, (err, data) => {
+      if (err) console.log(err);
+      res.json(JSON.parse(data));
+   })
+})
+
 app.get('/api/img/:file', (req, res) => {
    res.sendFile(`./src/data/img/${req.params.file}`, {root: '.'});
 });
