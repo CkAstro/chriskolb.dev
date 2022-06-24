@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import NetworkInput from './networkinput';
+import NetworkOutput from './networkoutput';
 import NetworkDisplay from './networkdisplay';
 import utils from './utils';
 import style from './neuralnet.module.css';
@@ -23,6 +24,8 @@ const App = () => {
    const [ input, setInput ] = useState(null);
    const [ mask, setMask ] = useState(null);
    const [ normalizedInput, setNormalizedInput ] = useState(null);
+   const [ output, setOutput ] = useState(Array(10).fill({z: null, a: null, i: null}));
+   const [ userResponse, setUserResponse ] = useState(null);
 
    const handleInteract = (ctx, mouseInfo, data) => {
       if (!mouseInfo.isActive) return;
@@ -57,19 +60,44 @@ const App = () => {
       setInput(null);
       setMask(null);
       setNormalizedInput(null);
+      setOutput(Array(10).fill({z: null, a: null, i: null}));
+      setUserResponse(null);
    }
+
+   const buildGuess = () => {
+      const maxVal = Math.max( ...output.map(n => n.a) );
+      const guess = output.filter((n, ind) => n.a === maxVal);
+      return guess[0]
+         ? (<>
+            <p>Is your number is a <span className={style.guess}>{guess[0].i}</span></p>
+            <p>{`(${(guess[0].a*100).toFixed()}% certainty)`}</p>
+            <p>Is this correct?</p>
+            <div className={style.responseContainer}>
+               <div onClick={() => setUserResponse('yes')}>Yes</div>
+               <div onClick={() => setUserResponse('no')}>No</div></div>
+            </>)
+         : null
+      ;
+   }
+
+   const afterResponseMessage = <div className={style.responseMessage}>
+      <p>If you would like to help build this system, please select the number you drew from above, and it will be submitted to the server.</p>
+   </div>;
 
    return <div className={style.contentContainer}>
       <h1>Neural Network</h1>
       <div className={style.networkContainer}>
-         <NetworkInput
-            onInteract={handleInteract}
-            draw={drawCanvas}
-            inputData={input}
-            outputData={normalizedInput}
-            handleClear={handleClear}
-         />
-         <NetworkDisplay draw={drawCanvas} mask={mask}/>
+         <div className={style.interactContainer}>
+            <NetworkInput
+               onInteract={handleInteract}
+               draw={drawCanvas}
+               inputData={input}
+               outputData={normalizedInput}
+            />
+            <NetworkOutput mask={mask} output={output} handleClear={handleClear} userResponse={userResponse}/>
+            <div className={style.guessContainer}>{userResponse ? afterResponseMessage : buildGuess()}</div>
+         </div>
+         <NetworkDisplay draw={drawCanvas} mask={mask} setOutput={setOutput}/>
       </div>
    </div>
 }

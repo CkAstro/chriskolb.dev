@@ -2,9 +2,9 @@
 import { InteractiveCanvas } from '../../../components/canvas';
 import style from './neuralnet.module.css';
 
-const NetworkInput = ({ onInteract, draw, inputData, outputData, handleClear }) => {
+const NetworkInput = ({ onInteract, draw, inputData, outputData }) => {
 
-   return <div>
+   return <div className={style.inputContainer}>
       <InteractiveCanvas
          draw={draw}
          onInteract={onInteract}
@@ -15,9 +15,8 @@ const NetworkInput = ({ onInteract, draw, inputData, outputData, handleClear }) 
          draw={draw}
          onInteract={() => null}
          data={outputData}
-         setStyle={{width: '112px', height: '112px', marginLeft: '10px'}}
+         setStyle={{width: '112px', height: '112px'}}
       />
-      <div onClick={handleClear}>clear</div>
    </div>;
 }
 
