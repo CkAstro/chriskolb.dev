@@ -4,8 +4,6 @@ import NetworkDisplay from './networkdisplay';
 import utils from './utils';
 import style from './neuralnet.module.css';
 
-
-
 const drawCanvas = (ctx, data) => {
    if (!data) {
       const img = ctx.createImageData(ctx.canvas.width, ctx.canvas.height);
@@ -27,13 +25,13 @@ const App = () => {
    const [ normalizedInput, setNormalizedInput ] = useState(null);
 
    const handleInteract = (ctx, mouseInfo, data) => {
+      if (!mouseInfo.isActive) return;
       const { top, left, width, height } = mouseInfo.rect;
       // check for mouse-up
       if (!mouseInfo.click) {
          const imageData = ctx.getImageData(0, 0, width, height);
          setInput(imageData.data);
       }
-      if (!mouseInfo.isActive) return;
       const thisPos = {
          x: mouseInfo.location.x-left,
          y: mouseInfo.location.y-top,
@@ -71,7 +69,7 @@ const App = () => {
             outputData={normalizedInput}
             handleClear={handleClear}
          />
-         <NetworkDisplay mask={mask}/>
+         <NetworkDisplay draw={drawCanvas} mask={mask}/>
       </div>
    </div>
 }
