@@ -24,7 +24,9 @@
    width: 100%;
    height: 38px;
    content: '';
+   background: var(--main-background);
 }
+
 .navContainer {
    background: var(--ncsu-dark-gray);
    border-bottom: 3px solid var(--ncsu-light-red);

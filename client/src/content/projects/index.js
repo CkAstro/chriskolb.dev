@@ -16,7 +16,7 @@ const projectList = [
 ];
 
 const Projects = () => {
-   return <ContentSection styleAdjust={{background: '#ddd'}} title='Projects' content={projectList}/>
+   return <ContentSection styleAdjust={{background: 'var(--main-background)'}} title='Projects' content={projectList}/>
 }
 
 export default Projects;
