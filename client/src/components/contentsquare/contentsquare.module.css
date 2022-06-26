@@ -1,8 +1,9 @@
 
 .contentSquare {
    --mouseOver-timer: 0.3s;
-   width: calc(100% / 3.0);
-   height: 50%;
+   border-radius: 12px;
+   width: calc(100% / 3.0 - 24px);
+   height: calc(50% - 12px);
    display: flex;
    align-items: center;
    justify-content: center;
