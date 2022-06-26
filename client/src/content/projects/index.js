@@ -7,8 +7,8 @@ import csm from './csm';
 import instability from './instability';
 
 const projectList = [
-   reversi,
    datavis,
+   reversi,
    neuralnet,
    emission,
    csm,
@@ -16,7 +16,11 @@ const projectList = [
 ];
 
 const Projects = () => {
-   return <ContentSection styleAdjust={{background: 'var(--main-background)'}} title='Projects' content={projectList}/>
+   return <ContentSection 
+      title='Developer Projects' 
+      content={projectList}
+      styleAdjust={{background: 'var(--main-background)'}} 
+   />
 }
 
 export default Projects;

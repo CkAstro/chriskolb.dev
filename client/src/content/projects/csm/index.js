@@ -6,7 +6,7 @@ const csm = {
    title: 'Circumstellar Data',
    making: 'HTML5 Canvas / REST / Post-Processing',
    image: require('./csm.png'),
-   description: 'Online multi-player board game. Supports multiple games and replays.',
+   description: 'Select from 36 CSM research models and view + export data in detail.',
    pages: [
       <ContentPage>
          <div className={style.contentContainer}>

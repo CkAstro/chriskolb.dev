@@ -6,7 +6,7 @@ const datavis = {
    title: 'DataVis',
    making: 'WebGL / GLSL / React / Node / REST',
    image: require('./datavis.png'),
-   description: 'Online multi-player board game. Supports multiple games and replays.',
+   description: 'Full-stack app which allows you to upload and view volumetric scalar data.',
    pages: [
       <ContentPage>
          <div className={style.imageContainer}>

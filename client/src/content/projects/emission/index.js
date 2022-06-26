@@ -5,7 +5,7 @@ const emission = {
    title: 'Supernova Light',
    making: 'WebGL / GLSL / Python / FORTRAN',
    image: require('./emission.png'),
-   description: 'Online multi-player board game. Supports multiple games and replays.',
+   description: 'Interact with a supernova simulation and see how emission changes with the view.',
    pages: [
       <ContentPage><App/></ContentPage>,
       <ContentPage>Yo dawg it's page 2</ContentPage>,
