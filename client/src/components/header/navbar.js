@@ -38,6 +38,7 @@ const Navbar = ({ scrollValue }) => {
             <div className='contentContainer'>
                <div className={style.navbar}>
                   {navlinks()}
+                  <div className={`noselect ${style.brand}`}>CHRISTOPHER KOLB</div>
                </div>
             </div>
          </div>
