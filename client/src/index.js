@@ -14,12 +14,8 @@ import './index.css';      // global impor
 
 const Main = () => {
    const [ scrollValue, setScrollValue ] = useState(0);
-   const { setIsEnabled } = useDisplay();
 
-   const handleScroll = event => {
-      setScrollValue(event.target.scrollTop);
-      setIsEnabled(true);
-   }
+   const handleScroll = event => setScrollValue(event.target.scrollTop);
 
    return <div id='mainContainer' className='mainContainer' onScroll={handleScroll}>
       <ContentModal/>

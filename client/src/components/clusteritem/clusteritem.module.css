@@ -13,6 +13,7 @@
    overflow: hidden;
    transition: all 1s;
    position: relative;
+   box-sizing: border-box;
 }
 
 .clusterItemContent {
@@ -74,5 +75,5 @@
 }
 
 @media screen and (max-width: 550px) {
-   .clusterItemContainer { width: 100%; border-radius: 0; }
+   .clusterItemContainer { width: 100%; margin: 0 12px; }
 }

@@ -1,34 +1,61 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useModal } from '../../contexts/modal';
+import { useDisplay } from '../../contexts/display';
 import FancyButton from '../fancybutton';
 import style from './clusteritem.module.css';
 
 const ClusterItem = ({ info }) => {
    const [ isMouseOver, setIsMouseOver ] = useState(false);
+   const { isEnabled, enableItem } = useDisplay();
    const { setModalContent } = useModal();
+   const [ isDragged, setIsDragged ] = useState(false);
 
-   const handleClick = () => {
+   useEffect(() => {
+      if (isEnabled !== info.title) return setIsMouseOver(false);
+      setIsMouseOver(true);
+   }, [isEnabled]);
+
+   const handleTouchMove = event => {
+      setIsDragged(true);
+   }
+
+   const handleTouchEnd = event => {
+      if (isDragged) return setIsDragged(false);
+      if (isEnabled === info.title) {
+         enableItem(null);
+      } else {
+         enableItem(info.title);
+      }
+   }
+
+   const handleClick = event => {
+      event.stopPropagation();
       setModalContent(info.pages);
    }
 
-   return <div className={style.clusterItemContainer}
-      onMouseEnter={() => setIsMouseOver(true)}
-      onMouseLeave={() => setIsMouseOver(false)}
-   >
-      <div className={`${style.clusterItemContent} ${isMouseOver ? style.mouseOver : null}`}>
-         <img src={info.image}/>
-         <div className={style.topContent}>
-            <h1>{info.title}</h1>
-            <h2>{info.components}</h2>
-         </div>
-         <div className={style.bottomContent}>
-            <p>{info.description}</p>
-            <div onClick={handleClick}>
-               <FancyButton.Style1>Learn More</FancyButton.Style1>
+   return (
+      <div className={`noselect ${style.clusterItemContainer}`}
+         onMouseEnter={() => setIsMouseOver(true)}
+         onMouseLeave={() => setIsMouseOver(false)}
+         onTouchMove={handleTouchMove}
+         onTouchEnd={handleTouchEnd}
+      >
+         <div className={`${style.clusterItemContent} ${isMouseOver ? style.mouseOver : null}`}>
+            <img src={info.image}/>
+            {/* <p style={{color: 'white', position: 'absolute', top: '0', bottom: '0', left: '0', right: '0'}}>{`${isMouseOver}, ${isEnabled}, ${touchPos.x}`}</p> */}
+            <div className={style.topContent}>
+               <h1>{info.title}</h1>
+               <h2>{info.components}</h2>
+            </div>
+            <div className={style.bottomContent}>
+               <p>{info.description}</p>
+               <div onClick={handleClick}>
+                  <FancyButton.Style1>Learn More</FancyButton.Style1>
+               </div>
             </div>
          </div>
       </div>
-   </div>;
+   );
 }
 
 export default ClusterItem;

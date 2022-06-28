@@ -3,7 +3,7 @@ import { useState, useContext, createContext } from 'react';
 const DisplayContext = createContext();
 
 const DisplayProvider = ({ children }) => {
-   const [ isEnabled, setIsEnabled ] = useState(true);
+   const [ isEnabled, setIsEnabled ] = useState(false);
 
    return (
       <DisplayContext.Provider value={[isEnabled, setIsEnabled]}>
@@ -15,9 +15,11 @@ const DisplayProvider = ({ children }) => {
 const useDisplay = () => {
    const [ isEnabled, setIsEnabled ] = useContext(DisplayContext);
 
+   const enableItem = itemId => setIsEnabled(itemId);
+
    return {
       isEnabled, 
-      setIsEnabled,
+      enableItem,
    }
 }
 
