@@ -9,7 +9,11 @@ const csnrs = {
    description: 'What is stellar wind? Learn how and why stars expel matter.',
    pages: [
       <ContentPage>
-         <p>page 1</p>
+      <div className={style.contentContainer}>
+         <div className={style.center}>
+            <p>Coming soon...</p>
+         </div>
+      </div>
       </ContentPage>
    ],
 }

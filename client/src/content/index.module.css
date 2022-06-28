@@ -8,14 +8,21 @@
 }
 
 .contentContainer {
-   background: #f8f8f8;
    color: var(--color-charcoal);
-   height: auto;
-   width: 1000px;
+   width: 100%;
+   height: 100%;
    padding: 30px 50px;
    text-align: justify;
    flex-grow: 1;
    box-sizing: border-box;
+}
+
+.contentContainer .center {
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   width: 100%;
+   height: 100%;
 }
 
 .contentContainer:not(:first-child) {

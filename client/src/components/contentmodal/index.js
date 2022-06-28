@@ -10,11 +10,15 @@ const ContentModal = () => {
 
    return (
       <div className={`${style.modalContainer} ${modalProps.isActive ? style.active : null}`} 
-         onScroll={closeModal}
+         // onWheel={handleScroll}
          onClick={handleClose}
       >
          <div className={style.modal} onClick={handleClick}>
-            {modalProps.content && modalProps.content[modalProps.page] ? modalProps.content[modalProps.page] : null}
+            <div className={style.modalContent}>
+               {modalProps.content && modalProps.content[modalProps.page] 
+                     ? modalProps.content[modalProps.page] 
+                     : null}
+            </div>
             <div className={style.topBar}>
                <div className={style.closeButton} onClick={handleClose}>&times;</div>
             </div>

@@ -9,7 +9,11 @@ const binary = {
    description: 'Explore the unique environment around evolved stars before they supernova.',
    pages: [
       <ContentPage>
-         <p>page 1</p>
+         <div className={style.contentContainer}>
+            <div className={style.center}>
+               <p>Coming soon...</p>
+            </div>
+         </div>
       </ContentPage>
    ],
 }

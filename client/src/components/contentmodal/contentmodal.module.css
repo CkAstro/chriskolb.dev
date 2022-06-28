@@ -32,18 +32,17 @@
 }
 
 .modalContainer .modal {
+   background: #f8f8f8;
    visibility: visible;
    position: relative;
    border: 3px solid var(--color-light-red);
-   width: 1000px;
+   width: var(--content-width);
+   max-width: 1000px;
    height: 70%;
    background: white;
    z-index: 100;
    padding-top: 30px;
-   overflow: hidden;
-   display: flex;
-   align-items: center;
-   justify-content: center;
+   overflow: none;
    opacity: 1;
    transition: all 0.5s, opacity 0.5s ease-in-out;
 }
@@ -52,6 +51,19 @@
    width: 0;
    height: 0;
    opacity: 0;
+}
+
+.modalContainer .modal .modalContent {
+   position: absolute;
+   top: 0;
+   left: 0;
+   right: 0;
+   bottom: 30px;
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   justify-content: flex-start;
+   overflow: auto;
 }
 
 .topBar {
