@@ -1,9 +1,10 @@
+import ClusterItem from '../../../components/clusteritem';
 import ContentPage from '../../../components/contentpage';
 import App from './app';
 
 const instability = {
    title: 'Fluid Instabilities',
-   making: 'React / WebGL / Fetch API',
+   components: 'React / WebGL / Fetch API',
    image: require('./instability.png'),
    description: 'Watch a fluid instability evolve in full 3D.',
    pages: [
@@ -12,4 +13,6 @@ const instability = {
    ],
 }
 
-export default instability;
+const Instability = () => <ClusterItem info={instability}/>;
+
+export default Instability;

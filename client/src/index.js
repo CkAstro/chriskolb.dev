@@ -2,10 +2,13 @@ import React, { useState } from 'react';
 import { ModalProvider } from './contexts/modal';
 import { DisplayProvider, useDisplay } from './contexts/display';
 import ReactDOM from 'react-dom/client';
+import Section from './components/section';
 import Header from './components/header';
-import Navbar from './components/header/navbar';
+import Navbar from './components/navbar';
 import ContentModal from './components/contentmodal';
 import Projects from './content/projects';
+import Research from './content/research';
+import About from './content/about';
 import '@fontsource/roboto';
 import './index.css';      // global impor
 
@@ -18,20 +21,16 @@ const Main = () => {
       setIsEnabled(true);
    }
 
-   return (<>
+   return <div id='mainContainer' className='mainContainer' onScroll={handleScroll}>
       <ContentModal/>
-      <div className='mainContainer snap' 
-         id='mainContainer' 
-         onScroll={handleScroll}
-      >
-         <Header/>
-         <Navbar scrollValue={scrollValue}/>
-         <Projects/>
-         <Projects/>
-         <Projects/>
-         <Projects/>
-      </div>
-   </>);
+      <Navbar scrollValue={scrollValue}/>
+      <Section navId='home' styleAdjust={{height: '100vh', background: '#1e1e1e'}}><Header/></Section>
+      <Section navId='about' styleAdjust={{minHeight: '100vh', background: 'linear-gradient(#1e1e1e, #0b3ce1)'}}><About/></Section>
+      <Section navId='projects' styleAdjust={{background: 'linear-gradient(#0b3ce1, #78e9ff)'}}><Projects/></Section>
+      <Section navId='research' styleAdjust={{background: 'linear-gradient(#78e9ff, #fff)'}}><Research/></Section>
+      <Section navId='contact' styleAdjust={{minHeight: '100vh'}}><About/></Section>
+      
+   </div>;
 }
 
 const root = ReactDOM.createRoot(document.getElementById('root'));

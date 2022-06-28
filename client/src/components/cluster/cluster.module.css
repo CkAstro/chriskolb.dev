@@ -1,0 +1,33 @@
+
+.clusterContainer {
+   --cluster-gap: var(--main-spacing);
+
+   width: 100%;
+   margin: 0 auto;
+   display: flex;
+   flex-wrap: wrap;
+   justify-content: center;
+   gap: var(--cluster-gap);
+
+   margin-bottom: 200px;
+}
+
+.clusterItem {
+   width: var(--cluster-item-size);
+   aspect-ratio: 1.618;
+   background: green;
+}
+
+@media screen and (max-width: 1000px) {
+   .clusterContainer {
+      --cluster-gap: var(--secondary-spacing);
+      --cluster-item-size: calc( (100% - var(--cluster-gap)) / 2 );
+      max-width: 900px;
+   }
+   .clusterItem { width: var(--cluster-item-size); }
+}
+
+@media screen and (max-width: 550px) {
+   .clusterContainer { max-width: 488px; }
+   .clusterItem { width: 100%; }
+}

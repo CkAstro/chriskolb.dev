@@ -1,25 +1,19 @@
 
-/* ----- index.js ----- */
-.contentSection {
-   width: 100vw;
-   height: 100vh;
-   scroll-snap-align: start;
+.sectionContainer {
+   box-sizing: border-box;
+   padding-top: 100px;
 }
 
-.flexContainer {
-   width: 100%;
-   height: 100%;
+.section {
    display: flex;
    flex-direction: column;
-   align-items: center;
-   justify-content: center;
+   gap: 100px;
 }
 
-.flexContent {
-   width: 100%;
-   height: 550px;
-   display: flex;
-   flex-wrap: wrap;
-   overflow: hidden;
-   gap: 12px;
+.section > h1 {
+   text-align: center;
+   margin: 0px;
+   padding: 0px;
 }
+
+.section > h1:not(:first-child) { margin-top: 100px; }

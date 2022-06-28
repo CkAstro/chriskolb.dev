@@ -1,12 +1,14 @@
 import ContentPage from '../../../components/contentpage';
 import FancyButton from '../../../components/fancybutton';
+import Showcase from '../../../components/showcase';
 import style from './datavis.module.css';
 
 const datavis = {
    title: 'DataVis',
-   making: 'WebGL / GLSL / React / Node / REST',
-   image: require('./datavis.png'),
+   components: 'WebGL / GLSL / React / Node / REST',
+   image: require('./datavis_display.png'),
    description: 'Full-stack app which allows you to upload and view volumetric scalar data.',
+   link: 'https://datavis.chriskolb.dev',
    pages: [
       <ContentPage>
          <div className={style.imageContainer}>
@@ -33,4 +35,6 @@ const datavis = {
    ],
 }
 
-export default datavis;
+const DataVis = () => <Showcase info={datavis}/>;
+
+export default DataVis;

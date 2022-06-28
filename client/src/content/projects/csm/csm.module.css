@@ -3,7 +3,7 @@
 .contentContainer { composes: contentContainer from '../../index.module.css'; }
 
 .buttonContainer {
-   width: 500px;
+   width: 600px;
    margin: auto;
 }
 

@@ -1,11 +1,12 @@
 import ContentPage from '../../../components/contentpage';
+import ClusterItem from '../../../components/clusteritem';
 import CSMApp from './csmapp';
 import style from './csm.module.css';
 
 const csm = {
    title: 'Circumstellar Data',
-   making: 'HTML5 Canvas / REST / Post-Processing',
-   image: require('./csm.png'),
+   components: 'HTML5 Canvas / REST / Post-Processing',
+   image: require('./test_img.png'),
    description: 'Select from 36 CSM research models and view + export data in detail.',
    pages: [
       <ContentPage>
@@ -18,4 +19,6 @@ const csm = {
    ],
 }
 
-export default csm;
+const CSM = () => <ClusterItem info={csm}/>;
+
+export default CSM;

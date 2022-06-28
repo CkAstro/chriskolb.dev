@@ -5,30 +5,27 @@ body, html, a {
    -moz-osx-font-smoothing: grayscale;
    font-family: 'Roboto', sans-serif;
    color: var(--ncsu-dark-gray);
+   width: 100vw;
+   height: 100vh;
 }
 
 
 /* ----- globals ----- */
 :root {
-   --ncsu-dark-red: #900;
-   --ncsu-light-red: #c00;
-   --ncsu-dark-gray: #333;
-   --ncsu-mid-gray: #555;
-   --ncsu-light-gray: #cacaca;
-   --main-spacing: 20px;
-   --main-padding: 20px;
-   --main-background: #f5f5f5;
-
+   --color-dark-red: #900;
+   --color-light-red: #c00;
+   --color-dark-gray: #333;
    --color-charcoal: #404e5c;
-   --color-green-sheen: #7eb09b;
-   --color-black-coral: #4f6272;
-   --color-antique-brass: #b89685;
-   --color-magnolia: #f7f0f5;
-   --color-lilac-luster: #af929d;
-   --color-unbleached-silk: #f9dad0; 
 
-   --contentPage-width: 1000px;
-   --contentPage-height: calc(0.7 * 100vh);
+   --content-ideal-width: 1220;
+   --content-min-width: 330px;
+   --content-max-width: calc( 1px * var(--content-ideal-width) );
+   --current-width: 100vw;
+   --content-width: clamp( var(--content-min-width), var(--current-width), var(--content-max-width) );
+
+   --main-spacing: 20px;
+   --secondary-spacing: 12px;
+   --main-padding: 20px;
 }
 
 /* remove text selection */
@@ -59,20 +56,13 @@ body, html, a {
 
 /* ----- content containers ----- */
 .mainContainer {
-   display: grid;
-   grid-template-rows: auto auto 1fr;
+   position: relative;
+   width: 100vw;
    height: 100vh;
-   overflow: auto;
-}
-
-.mainContainer.snap {
-   scroll-behavior: smooth;
-   scroll-snap-type: y mandatory;
+   overflow: hidden auto;
 }
 
 .contentContainer {
-   width: 1000px;
-   margin: auto;
-   height: 100%;
-   box-sizing: border-box;
+   width: var(--content-width);
+   margin: 0 auto;
 }

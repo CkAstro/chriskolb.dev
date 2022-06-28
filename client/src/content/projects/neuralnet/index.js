@@ -1,15 +1,19 @@
 import ContentPage from '../../../components/contentpage';
+import Showcase from '../../../components/showcase';
 import App from './app';
 
 const neuralnet = {
    title: 'Neural Network',
-   making: 'React / HTML5 Canvas / Data Processing',
-   image: require('./neuralnet.png'),
-   description: 'A hand-written number-guessing network. Learn in detail how it works.',
+   components: 'React / HTML5 Canvas / Data Processing / REST',
+   image: require('./network.png'),
+   description: 'A hand-written number-guessing network. Learn in detail how it works, and help train it.',
+   link: null,
    pages: [
       <ContentPage><App/></ContentPage>,
       <ContentPage>Yo dawg it's page 2</ContentPage>,
    ],
 }
 
-export default neuralnet;
+const NeuralNet = () => <Showcase info={neuralnet}/>;
+
+export default NeuralNet;

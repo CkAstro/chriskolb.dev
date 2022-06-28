@@ -2,7 +2,7 @@
 .modalContainer {
    visibility: hidden;
    opacity: 0;
-   position: absolute;
+   position: fixed;
    top: 0;
    left: 0;
    right: 0;
@@ -34,7 +34,7 @@
 .modalContainer .modal {
    visibility: visible;
    position: relative;
-   border: 3px solid var(--ncsu-light-red);
+   border: 3px solid var(--color-light-red);
    width: 1000px;
    height: 70%;
    background: white;
@@ -61,7 +61,7 @@
    right: 0;
    width: 100%;
    height: 30px;
-   background: var(--ncsu-light-red);
+   background: var(--color-light-red);
 }
 
 .closeButton {
@@ -81,7 +81,7 @@
 }
 
 .closeButton:hover {
-   background: var(--ncsu-dark-red);
+   background: var(--color-dark-red);
 }
 
 .nextButton {
@@ -91,7 +91,7 @@
    width: 33px;
    height: 33px;
    z-index: 101;
-   background: var(--ncsu-light-red);
+   background: var(--color-light-red);
    color: white;
    display: flex;
    justify-content: center;
@@ -100,7 +100,7 @@
    transition: all 0.2s;
 }
 
-.nextButton:hover { background: var(--ncsu-dark-red); }
+.nextButton:hover { background: var(--color-dark-red); }
 
 .prevButton {
    position: absolute;
@@ -109,7 +109,7 @@
    width: 33px;
    height: 33px;
    z-index: 101;
-   background: var(--ncsu-light-red);
+   background: var(--color-light-red);
    color: white;
    display: flex;
    justify-content: center;
@@ -119,7 +119,7 @@
    transition: all 0.2s;
 }
 
-.prevButton:hover { background: var(--ncsu-dark-red); }
+.prevButton:hover { background: var(--color-dark-red); }
 
 .pageNumber {
    position: absolute;

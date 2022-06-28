@@ -6,8 +6,13 @@
    majority of properties... */
 
 .buttonContainer {
+   --button-width: 146px;
    position: relative;
    cursor: pointer;
+   width: var(--button-width);
+   box-sizing: border-box;
+   text-align: center;
+   margin: 0 auto;
 }
 
 /* ----- style1.js ------ */
@@ -17,9 +22,10 @@
    left: 0;
    right: 0;
    padding: 8px 16px;
-   width: 110px;
-   border: 2px solid var(--ncsu-light-red);
+   width: var(--button-width);
+   border: 2px solid var(--color-light-red);
    margin: auto;
+   box-sizing: border-box;
 }
 
 .hoverButton1 {
@@ -28,13 +34,14 @@
    left: 0;
    right: 0;
    padding: 8px 16px;
-   width: 110px;
-   border: 2px solid var(--ncsu-light-red);
+   width: var(--button-width);
+   border: 2px solid var(--color-light-red);
    margin: auto;
-   background: var(--ncsu-light-red);
+   background: var(--color-light-red);
    color: white;
    clip-path: polygon(-120% 0, -20% 0, 0% 100%, -100% 100%);
    transition: all 0.5s;
+   box-sizing: border-box;
 }
 
 .hoverButton1.hover {
@@ -49,10 +56,11 @@
    left: 0;
    right: 0;
    padding: 8px 16px;
-   width: 110px;
-   border: 2px solid var(--ncsu-light-red);
+   width: var(--button-width);
+   border: 2px solid var(--color-light-red);
    margin: auto;
    border-radius: 16px;
+   box-sizing: border-box;
 }
 
 .hoverButton2 {
@@ -62,14 +70,15 @@
    left: 0;
    right: 0;
    padding: 8px 16px;
-   width: 110px;
-   border: 2px solid var(--ncsu-light-red);
+   width: var(--button-width);
+   border: 2px solid var(--color-light-red);
    margin: auto;
    background: var(--color-charcoal);
    color: white;
    /* clip-path: polygon(0% -100%,   100% 0%,   100% 0%,   0% 0%); */
    clip-path: circle(25% at -25% 50%);
    transition: all 1.0s;
+   box-sizing: border-box;
 }
 
 .hoverButton2.hover {
@@ -84,13 +93,14 @@
    left: 0;
    right: 0;
    padding: 8px 16px;
-   width: 110px;
-   border: 2px solid var(--ncsu-light-red);
+   width: var(--button-width);
+   border: 2px solid var(--color-light-red);
    margin: auto;
-   background: var(--ncsu-light-red);
+   background: var(--color-light-red);
    color: white;
    clip-path: circle(25% at -35% 50%);
    transition: all 1.0s;
+   box-sizing: border-box;
 }
 
 .extraButton2.hover {
@@ -104,13 +114,14 @@
    left: 0;
    right: 0;
    padding: 8px 16px;
-   width: 110px;
-   border: 2px solid var(--ncsu-light-red);
+   width: var(--button-width);
+   border: 2px solid var(--color-light-red);
    margin: auto;
-   background: var(--ncsu-light-red);
+   background: var(--color-light-red);
    color: white;
    clip-path: polygon(0% 0%,   -35% 0%,    -35% 100%,    0% 100%);
    transition: all 1.0s;
+   box-sizing: border-box;
 }
 
 .coverButton2.hover {

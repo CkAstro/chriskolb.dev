@@ -1,12 +1,14 @@
+import Showcase from '../../../components/showcase';
 import ContentPage from '../../../components/contentpage';
 import FancyButton from '../../../components/fancybutton';
 import style from './reversi.module.css';
 
 const reversi = {
    title: 'Reversi',
-   making: 'React / Node / MongoDB / Websockets',
-   image: require('./reversi.png'),
+   components: 'React / Node / MongoDB / Websockets',
+   image: require('./reversi_tablet.png'),
    description: 'Online multi-player board game. Supports multiple games and replays.',
+   link: 'https://reversi.chriskolb.dev',
    pages: [
       <ContentPage>
          <div className={style.imageContainer}>
@@ -50,4 +52,6 @@ const reversi = {
    ],
 }
 
-export default reversi;
+const Reversi = () => <Showcase info={reversi}/>
+
+export default Reversi;
