@@ -1,10 +1,11 @@
 import { InteractiveCanvas } from "../../../components/canvas";
 const _xTickCount = 6;
 const _boxSize = 4;
+const _mainLineWidth = 2;
 
 const resetContext = ctx => {
    ctx.strokeStyle = 'black';
-   ctx.lineWidth = 1;
+   ctx.lineWidth = _mainLineWidth;
    ctx.setLineDash([]);
 }
 
@@ -30,6 +31,7 @@ const drawData = (ctx, origin, {data, dataPoint}, lengthX, lengthY) => {
    const ymax = data.layout.radial.max[dataPoint.y];
    const vals = data.layout.radial.vals[dataPoint.y];
 
+   ctx.lineWidth = _mainLineWidth;
    ctx.beginPath();
    for (let i=0; i<vals.length; i++) {
       const x = i/vals.length * lengthX;

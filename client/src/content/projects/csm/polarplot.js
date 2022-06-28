@@ -1,10 +1,11 @@
 import { InteractiveCanvas } from '../../../components/canvas';
 const pi = Math.PI;
 const _boxSize = 4;     // for crosshairs
+const _mainLineWidth = 1;
 
 const resetContext = ctx => {
    ctx.strokeStyle = 'black';
-   ctx.lineWidth = 1;
+   ctx.lineWidth = _mainLineWidth;
    ctx.setLineDash([]);
 }
 
