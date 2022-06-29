@@ -10,7 +10,6 @@ const useGL2Canvas = (glRef, draw, scene, objects) => {
       gl.getExtension('OES_texture_float_linear');
 
       const rect = canvas.getBoundingClientRect();
-      console.log('rect', rect);
       canvas.width = rect.width;
       canvas.height = rect.height;
       gl.viewport(0, 0, canvas.width, canvas.height);
@@ -25,7 +24,7 @@ const useGL2Canvas = (glRef, draw, scene, objects) => {
    return canvasRef;
 }
 
-const GL2Canvas = ({ draw, scene, objects, onInteract, setStyle }) => {
+const GL2Canvas = ({ draw, scene, objects, onInteract, setStyle, canvasStyle }) => {
    const [ isActive, setIsActive ] = useState(false);
    const [ mouseLocation, setMouseLocation ] = useState({ x: null, y: null });
    const [ clickLocation, setClickLocation ] = useState({ x: null, y: null });
@@ -108,7 +107,7 @@ const GL2Canvas = ({ draw, scene, objects, onInteract, setStyle }) => {
 
    return <div style={setStyle}>
       <canvas ref={canvasRef}
-         style={setStyle}
+         style={canvasStyle}
 
          onMouseDown={handleMouseDown}
          onMouseUp={handleMouseUp}

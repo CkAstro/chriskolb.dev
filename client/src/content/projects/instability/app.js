@@ -86,7 +86,8 @@ const App = () => {
          scene={scene}
          objects={[null]}
          onInteract={updateCamera}
-         setStyle={{ width: '500px', height: '400px', margin: '0 auto', background: 'black' }}
+         setStyle={{ width: '500px', height: '400px', margin: '0 auto' }}
+         canvasStyle={{ width: '500px', height: '400px', background: 'black' }}
       />
       <div className={style.buttonContainer}>
          <div className={`noselect ${style.interactButton}`} onClick={handlePrev}>&laquo; prev</div>

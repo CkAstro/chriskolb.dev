@@ -112,7 +112,8 @@ const App = () => {
          scene={scene}
          objects={objs}
          onInteract={updateCamera}
-         setStyle={{ width: '600px', height: '400px', margin: '0 auto', }}
+         setStyle={{ width: '600px', height: '400px', margin: '0 auto' }}
+         canvasStyle={{ width: '600px', height: '400px' }}
       />
       <div className={style.controllContainer}>
          <input type='range'
