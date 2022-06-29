@@ -1,4 +1,5 @@
 import compression from 'compression';
+import nodeMailer from 'nodemailer';
 import express from 'express';
 import cors from 'cors';
 import fs from 'fs';
@@ -51,6 +52,31 @@ app.post('/api/nn', (req, res) => {
 
 app.get('/api/img/:file', (req, res) => {
    res.sendFile(`./src/data/img/${req.params.file}`, {root: '.'});
+});
+
+app.post('/api/contact', (req, res) => {
+   const { name, email, message } = req.body; 
+   const transporter = nodeMailer.createTransport({
+      host: 'smtp.gmail.com',
+      port: 465,
+      secure: true,
+      auth: {
+         user: 'astro.cekolb@gmail.com',
+      }
+   });
+   const mailOptions = {
+      from: 'astro.cekolb@gmail.com',
+      to: 'astro.cekolb@gmail.com',
+      subject: 'contacting from site!',
+      text: 'yo dawg',
+   }
+   transporter.sendMail(mailOptions, (err, info) => {
+      if (err) {
+         console.log(err);
+      } else {
+         console.log(info);
+      }
+   });
 });
 
 // ----- static serving ----- //
