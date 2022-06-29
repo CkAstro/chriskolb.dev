@@ -57,18 +57,16 @@ app.get('/api/img/:file', (req, res) => {
 app.post('/api/contact', (req, res) => {
    const { name, email, message } = req.body; 
    const transporter = nodeMailer.createTransport({
-      host: 'smtp.gmail.com',
-      port: 465,
-      secure: true,
+      service: 'gmail',
       auth: {
          user: 'astro.cekolb@gmail.com',
       }
    });
    const mailOptions = {
-      from: 'astro.cekolb@gmail.com',
+      from: email,
       to: 'astro.cekolb@gmail.com',
-      subject: 'contacting from site!',
-      text: 'yo dawg',
+      subject: `Contact Message: ${name}`,
+      text: message,
    }
    transporter.sendMail(mailOptions, (err, info) => {
       if (err) {
