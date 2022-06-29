@@ -6,9 +6,10 @@ import Section from './components/section';
 import Header from './components/header';
 import Navbar from './components/navbar';
 import ContentModal from './components/contentmodal';
+// import About from './content/about';
 import Projects from './content/projects';
 import Research from './content/research';
-import About from './content/about';
+import Contact from './content/contact';
 import '@fontsource/roboto';
 import './index.css';      // global impor
 
@@ -21,10 +22,10 @@ const Main = () => {
       <ContentModal/>
       <Navbar scrollValue={scrollValue}/>
       <Section navId='home' styleAdjust={{height: '100vh', background: '#1e1e1e'}}><Header/></Section>
-      <Section navId='about' styleAdjust={{minHeight: '100vh', background: 'linear-gradient(#1e1e1e, #0b3ce1)'}}><About/></Section>
+      {/* <Section navId='about' styleAdjust={{minHeight: '100vh', background: 'linear-gradient(#1e1e1e, #0b3ce1)'}}><About/></Section> */}
       <Section navId='projects' styleAdjust={{background: 'linear-gradient(#0b3ce1, #78e9ff)'}}><Projects/></Section>
       <Section navId='research' styleAdjust={{background: 'linear-gradient(#78e9ff, #fff)'}}><Research/></Section>
-      <Section navId='contact' styleAdjust={{minHeight: '100vh'}}><About/></Section>
+      <Section navId='contact' styleAdjust={{minHeight: '100vh'}}><Contact/></Section>
       
    </div>;
 }
