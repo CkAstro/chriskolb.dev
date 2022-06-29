@@ -10,6 +10,7 @@ const useGL2Canvas = (glRef, draw, scene, objects) => {
       gl.getExtension('OES_texture_float_linear');
 
       const rect = canvas.getBoundingClientRect();
+      console.log('rect', rect);
       canvas.width = rect.width;
       canvas.height = rect.height;
       gl.viewport(0, 0, canvas.width, canvas.height);
@@ -105,19 +106,21 @@ const GL2Canvas = ({ draw, scene, objects, onInteract, setStyle }) => {
       handleMouseMove(event.nativeEvent.changedTouches[0]);
    }
 
-   return <canvas ref={canvasRef}
-      style={setStyle}
+   return <div style={setStyle}>
+      <canvas ref={canvasRef}
+         style={setStyle}
 
-      onMouseDown={handleMouseDown}
-      onMouseUp={handleMouseUp}
-      onMouseMove={handleMouseMove}
-      onMouseLeave={handleMouseLeave}
-      onWheel={handleScroll}
+         onMouseDown={handleMouseDown}
+         onMouseUp={handleMouseUp}
+         onMouseMove={handleMouseMove}
+         onMouseLeave={handleMouseLeave}
+         onWheel={handleScroll}
 
-      onTouchStart={handleTouchStart}
-      onTouchEnd={handleTouchEnd}
-      onTouchMove={handleTouchMove}
-   />;
+         onTouchStart={handleTouchStart}
+         onTouchEnd={handleTouchEnd}
+         onTouchMove={handleTouchMove}
+      />
+   </div>;
 }
 
 export default GL2Canvas;
