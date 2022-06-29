@@ -5,6 +5,7 @@
    --mouseOver-timer: 0.3s;
 
    width: var(--cluster-item-size);
+   max-height: 286px;
    aspect-ratio: 1.618;
    border-radius: 16px;
    display: flex;
