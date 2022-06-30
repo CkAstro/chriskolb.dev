@@ -65,7 +65,7 @@ app.post('/api/contact', (req, res) => {
    const mailOptions = {
       from: email,
       to: 'astro.cekolb@gmail.com',
-      subject: `Contact Message: ${name}`,
+      subject: `Contact Message: ${name} (${email})`,
       text: message,
    }
    transporter.sendMail(mailOptions, (err, info) => {
