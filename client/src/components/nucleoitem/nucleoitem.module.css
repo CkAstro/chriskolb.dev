@@ -1,0 +1,61 @@
+
+.nucleoItemContainer {
+   --size: 60px;
+   box-sizing: border-box;
+   width: var(--size);
+   height: var(--size);
+   content: '';
+   transition: all 0.5s;
+   position: relative;
+   overflow: hidden;
+   background: #333;
+}
+
+.nucleoItemContainer.disable { opacity: 0; }
+
+.nucleoItemContainer::before {
+   position: absolute;
+   top: -400%;
+   left: -400%;
+   right: -400%;
+   bottom: -400%;
+   content: '';
+   background: radial-gradient(rgba(125, 125, 125, 0.5) 0%, rgba(0, 0, 0, 0) 75%);
+   transform: translate(var(--x), var(--y));
+}
+
+.nucleoItemContainer.stable::before {
+   background: radial-gradient(rgba(125, 30, 30, 0.5) 0%, rgba(0, 0, 0, 0) 75%);
+}
+
+.elementContainer {
+   position: absolute;
+   top: 2px;
+   left: 2px;
+   right: 2px;
+   bottom: 2px;
+   content: '';
+   background: #333;
+   overflow: hidden;
+   transition: all 1.0s;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   color: #1e1e1e;
+   font-size: 24px;
+   font-weight: 900;
+}
+
+.elementContainer:hover { background: #444; }
+
+.isotopeContainer {
+   position: absolute;
+   bottom: 6px;
+   left: 6px;
+   color: #1e1e1e;
+   font-size: 12px;
+   font-weight: 900;
+   transition: all 1s;
+}
+
+.nucleoItemContainer:hover.stable .isotopeContainer { color: rgba(125, 30, 30, 1.0); } 
