@@ -27,7 +27,8 @@ const getImage = imageName => {
 }
 
 const sendUserMessage = data => {
-   return axios.post(`${baseUrl}/contact`, data);
+   const request = axios.post(`${baseUrl}/contact`, data);
+   return request.then(response => response.data);
 } 
 
 export { getCSMData, getNeuralNet, putNeuralNet, getImage, sendUserMessage };

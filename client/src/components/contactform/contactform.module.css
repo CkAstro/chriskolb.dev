@@ -1,0 +1,51 @@
+
+form {
+   display: grid;
+   grid-template-columns: 100px 1fr 1fr 100px;
+   grid-column-gap: 6px;
+   grid-row-gap: 6px;
+   min-width: 330px;
+}
+
+.nameInput {
+   grid-column-start: 1;
+   grid-column-end: 3;
+   width: 100%;
+   box-sizing: border-box;
+}
+
+.emailInput {
+   grid-column-start: 3;
+   grid-column-end: 5;
+   width: 100%;
+   box-sizing: border-box;
+}
+
+.messageInput {
+   grid-column-start: 1;
+   grid-column-end: 5;
+   box-sizing: border-box;
+   margin: 0;
+   padding: 4px;
+   width: 600px;
+   min-width: 330px;
+   min-height: 5.5em;
+}
+
+.nameInput.inactive,
+.emailInput.inactive,
+.messageInput.inactive { color: #999; }
+
+.submitButton { 
+   grid-column-start: 1;
+   grid-column-end: 2;
+   margin: 0;
+   cursor: pointer;
+   padding: 8px 16px;
+   text-align: center;
+   background: #bbb;
+   border-radius: 3px;
+   transition: all 0.2s;
+}
+
+.submitButton:hover { background: #aaa; }
