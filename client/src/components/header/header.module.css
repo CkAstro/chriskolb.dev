@@ -1,20 +1,25 @@
 
 /* ----- index.js ----- */
-.header { scroll-snap-align: start; }
+.headerContainer {
+   z-index: 20;
+   text-align: right;
+   height: calc(100vh - 141px);
+   display: flex; 
+   flex-direction: column-reverse;
+}
 
-.header h1 {
+.headerContainer h1 {
    margin: 0px;
    padding: 0px;
-   padding-top: 12px;
-   font-size: 36px;
+   font-size: 48px;
    font-weight: 900;
    color: var(--ncsu-dark-red);
 }
 
-.header h2 {
+.headerContainer h2 {
    margin: 0px;
-   padding: 12px 60px;
-   font-size: 16px;
+   padding: 20px 0px;
+   font-size: 24px;
    font-weight: bold;
    padding-top: 6px;
 }

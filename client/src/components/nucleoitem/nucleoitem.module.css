@@ -11,8 +11,6 @@
    background: #333;
 }
 
-.nucleoItemContainer.disable { opacity: 0; }
-
 .nucleoItemContainer::before {
    position: absolute;
    top: -400%;
@@ -24,9 +22,12 @@
    transform: translate(var(--x), var(--y));
 }
 
-.nucleoItemContainer.stable::before {
-   background: radial-gradient(rgba(125, 30, 30, 0.5) 0%, rgba(0, 0, 0, 0) 75%);
-}
+.nucleoItemContainer.disable::before { opacity: 0; }
+
+.nucleoItemContainer.stable::before { background: radial-gradient(rgba(125, 30, 30, 0.5) 0%, rgba(0, 0, 0, 0) 75%); }
+/* .nucleoItemContainer.beta::before { background: radial-gradient(rgba(125, 75, 30, 0.5) 0%, rgba(0, 0, 0, 0) 75%); }
+.nucleoItemContainer.alpha::before { background: radial-gradient(rgba(125, 30, 75, 0.5) 0%, rgba(0, 0, 0, 0) 75%); }
+.nucleoItemContainer.EC::before { background: radial-gradient(rgba(75, 30, 75, 0.5) 0%, rgba(0, 0, 0, 0) 75%); } */
 
 .elementContainer {
    position: absolute;
@@ -59,3 +60,5 @@
 }
 
 .nucleoItemContainer:hover.stable .isotopeContainer { color: rgba(125, 30, 30, 1.0); } 
+/* .nucleoItemContainer:hover.beta .isotopeContainer { color: rgba(30, 30, 125, 1.0); } 
+.nucleoItemContainer:hover.alpha .isotopeContainer { color: rgba(30, 75, 125, 1.0); }  */
