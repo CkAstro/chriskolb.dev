@@ -71,12 +71,11 @@ app.post('/api/contact', (req, res) => {
    transporter.sendMail(mailOptions, (err, info) => {
       if (err) {
          console.log(err);
-         // res.send({success: false, message: 'Error sending message. Please try again later, or contact me directly at astro.cekolb@gmail.com'});
+         res.send({success: false, message: 'Error sending message. Please try again later, or contact me directly at astro.cekolb@gmail.com'});
       } else {
          console.log(info);
-         // res.send({success: true, message: 'Message sent. Thank you for contacting me.'});
+         res.send({success: true, message: 'Message sent. Thank you for contacting me.'});
       }
-      res.send({success: true, message: 'Message sent. Thank you for contacting me.'});
    });
 });
 
