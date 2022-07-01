@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import NucleoItem from '../nucleoitem';
+import NucleoItem, { EmptyItem } from '../nucleoitem';
 import style from './nucleodisplay.module.css';
 
 const isStable = 1;
@@ -18,6 +18,12 @@ const range = (start, end) => {
 
 // reference: https://upload.wikimedia.org/wikipedia/commons/b/b5/NuclideMap_stitched.png
 const nucleoChart = [
+   // {element: 'Si', isotopes: range(22, 44), decayType: range(22, 44)},
+   {element: 'Al', isotopes: range(21, 42), decayType: range(21, 42)},
+   {element: 'Mg', isotopes: range(19, 40), decayType: range(19, 40)},
+   {element: 'Na', isotopes: range(18, 37), decayType: range(18, 37), exclude: [36]},
+   {element: 'Ne', isotopes: range(16, 34), decayType: range(16, 34), exclude: [33]},
+   {element: 'F', isotopes: range(14, 31), decayType: [isP, isP, isP, isEC, isEC, isStable, isBeta, isBeta, isBeta, isBeta, isBeta, isBeta, isBeta, isBeta, null, isBeta, null, isBeta]},
    {element: 'O', isotopes: range(12, 28), decayType: [isP, isEC, isEC, isEC, isStable, isStable, isStable, isBeta, isBeta, isBeta, isBeta, isBeta, isBeta, null, null, null, null]},
    {element: 'N', isotopes: range(10, 25), decayType: [isP, isP, isEC, isEC, isStable, isStable, isBeta, isBeta, isBeta, isBeta, isBeta, isBeta, isBeta, isBeta, null, null]},
    {element: 'C', isotopes: range(8, 22), decayType: [isP, isEC, isEC, isEC, isStable, isStable, isBeta, isBeta, isBeta, isBeta, isBeta, null, isBeta, null, isBeta]},
@@ -32,20 +38,28 @@ const nucleoChart = [
 const NucleoDisplay = () => {
    const [ chart, setChart ] = useState(null);
 
-   useEffect(() => {
-      const maxIsotope = 28;
-      const bufferSize = 66;
+   const buildChart = () => {
+      const squareSize = window.innerWidth < 461 ? 54 : 66;
+      const maxRows = Math.floor(window.innerHeight / squareSize);
+      const maxCols = Math.floor(window.innerWidth / squareSize);
       const newChart = nucleoChart.map((row, rowInd) => {
-         const leftBufferCount = row.isotopes[0] ? row.isotopes[0] + rowInd - nucleoChart.length + 1 : 1;
-         const rightBufferCount = maxIsotope - row.isotopes.length - leftBufferCount;
-         return <div key={rowInd} className={style.nucleodisplayRow} style={{ padding: `0 ${rightBufferCount*bufferSize}px 0 ${leftBufferCount*bufferSize}px`}}>
+         const shiftedInd = nucleoChart.length - rowInd;
+         if (shiftedInd > maxRows) return;
+         return <div key={rowInd} className={style.nucleodisplayRow}>
+            {row.isotopes[0] ? range(1, row.isotopes[0]+1-shiftedInd).map(ind => <EmptyItem key={ind}/>) : <EmptyItem key={0}/>}
             {row.isotopes.map((col, colInd) => {
-               return <NucleoItem key={colInd} element={row.element} isotope={col} decayType={row.decayType[colInd]}/>;
+               if (col-shiftedInd+1 > maxCols) return;
+               if (row.exclude && row.exclude.includes(col)) return <EmptyItem key={colInd}/>;
+               return <NucleoItem key={colInd} element={row.element} isotope={col} proton={col ? shiftedInd : null} decayType={row.decayType[colInd]}/>;
             })}
-         </div>
+         </div>;
       });
       setChart(newChart);
-   }, []);
+   }
+
+   useEffect(() => {
+      buildChart();
+   }, [window.innerWidth, window.innerHeight]);
 
    return <div className={style.nucleodisplayContainer}>
       {chart}
