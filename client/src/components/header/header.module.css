@@ -1,11 +1,15 @@
 
 /* ----- index.js ----- */
 .headerContainer {
+   box-sizing: border-box;
+   position: relative;
    z-index: 20;
-   text-align: right;
-   height: calc(100vh - 141px);
+   height: calc(100vh - 38px);
    display: flex; 
-   flex-direction: column-reverse;
+   flex-direction: column;
+   align-items: flex-start;
+   padding: 40px 40px;
+   color: #999;
 }
 
 .headerContainer h1 {
@@ -13,7 +17,6 @@
    padding: 0px;
    font-size: 48px;
    font-weight: 900;
-   color: var(--ncsu-dark-red);
 }
 
 .headerContainer h2 {
@@ -24,63 +27,12 @@
    padding-top: 6px;
 }
 
-/* ----- navbar.js ----- */
-.navSpacer {
-   width: 100%;
-   height: 38px;
-   content: '';
-   background: var(--main-background);
+@media screen and (min-width: 1921px) {
+   .headerContainer h1 { font-size: 64px; }
+   .headerContainer h2 { font-size: 32px; }
 }
 
-.navContainer {
-   background: var(--ncsu-dark-gray);
-   border-bottom: 3px solid var(--ncsu-light-red);
-}
-
-.navContainer.static {
-   --stick-timer: 0.5s;
-   position: fixed;
-   top: 0;
-   left: 0;
-   right: 0;
-   z-index: 100;
-   animation: stick var(--stick-timer) ease-in-out;
-}
-
-@keyframes stick {
-   from { transform: translateY(-35px); }
-   to { transform: translateY(0px); }
-}
-
-.navbar {
-   display: flex;
-}
-
-.navbar .link {
-   color: white;
-   margin: 0px;
-   padding: 8px 16px;
-   width: 75px;
-   cursor: pointer;
-   text-align: center;
-   transition: all 0.2s;
-}
-
-.navbar .link.active { background: var(--ncsu-light-red); }
-.navbar .link:hover:not(.active) { background: var(--ncsu-dark-red); }
-
-.brand {
-   color: white;
-   padding: 8px 16px;
-   margin-left: auto;
-   flex: end;
-   visibility: hidden;
-   opacity: 0;
-   transition: all 0.5s;
-}
-
-.static .brand {
-   visibility: visible;
-   opacity: 1;
-   transition: all 1.5s;
+@media screen and (max-width: 460px) {
+   .headerContainer h1 { font-size: 40px; }
+   .headerContainer h2 { font-size: 20px; }
 }
