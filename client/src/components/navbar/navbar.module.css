@@ -5,7 +5,7 @@
    position: absolute;
    left: 0;
    right: 0;
-   top: calc(100vh - 40px);
+   top: calc(100vh - 38px);
    z-index: 100;
 }
 
