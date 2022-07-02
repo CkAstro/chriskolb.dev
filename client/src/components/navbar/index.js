@@ -5,7 +5,7 @@ import style from './navbar.module.css';
 const elements = [
    { name: 'Home', link: 'home' },
    { name: 'About', link: 'about' },
-   { name: 'Projects', link: 'projects' },
+   { name: 'Portfolio', link: 'projects' },
    { name: 'Research', link: 'research' },
    { name: 'Contact', link: 'contact' },
 ];
