@@ -4,7 +4,7 @@
    --base-color: #2e2e2e;
    --base-highlight: rgba(100, 100, 100, 0.5);
    --element-highlight: #3e3e3e;
-   --isotope-highlight: #900;
+   --isotope-highlight: #c22;
    box-sizing: border-box;
    width: var(--size);
    height: var(--size);
@@ -26,7 +26,7 @@
    transform: translate(var(--x), var(--y));
 }
 
-.nucleoItemContainer.stable .border { background: radial-gradient(#933 0%, rgba(0, 0, 0, 0) 75%); }
+.nucleoItemContainer.stable .border { background: radial-gradient(#722 0%, rgba(0, 0, 0, 0) 75%); }
 /* 939 looks good for a highlight */
 
 .elementContainer {
