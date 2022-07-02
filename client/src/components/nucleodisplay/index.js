@@ -32,56 +32,78 @@ const nucleoChart = [
 
 const NucleoDisplay = () => {
    const [ chart, setChart ] = useState(null);
+   const [ organizedChart, setOrganizedChart ] = useState(null);
    const { mousePosition } = useMousePosition();
 
    const divRef = useRef(null);
 
    const buildChart = () => {
+      if (!organizedChart) return;
       const paddingX = 10;
       const paddingY = 50;
-      const { top, height } = divRef.current.getBoundingClientRect();
-      const squareSize = window.innerWidth < 461 ? 54 : 66;
-      const maxRows = Math.floor(window.innerHeight / squareSize);
-      const maxCols = Math.floor(window.innerWidth / squareSize);
-      const newChart = nucleoChart.map((row, rowInd) => {
-         const shiftedInd = nucleoChart.length - rowInd;
-         const activeRow = Math.floor((top + height - paddingY - mousePosition.y) / squareSize) === shiftedInd - 1;
-         const ypos = shiftedInd*squareSize - (top + height - paddingY - mousePosition.y);
-         // const withinX = activeRow*squareSize < xpos && activeRow*(squareSize+1) > xpos;
-         if (shiftedInd > maxRows) return;
+      const squareSize = window.innerWidth < 461 ? 54 : window.innerWidth ? 66 : 84;
+      const newChart = organizedChart.map((row, rowInd) => {
+         if (!row) return;
          return <div key={rowInd} className={style.nucleodisplayRow}>
-            {row.isotopes[0] ? range(1, row.isotopes[0]+1-shiftedInd).map(ind => <EmptyItem key={ind}/>) : <EmptyItem key={0}/>}
-            {row.isotopes.map((col, colInd) => {
-               const activeCol = Math.floor((mousePosition.x-paddingX) / squareSize) === col-shiftedInd+1;
-               const xpos = mousePosition.x - paddingX - (col-shiftedInd+1)*squareSize;
+            {row.map((col, colInd) => {
+               if (!col) return <EmptyItem key={colInd}/>;
+               const activeRow = Math.floor((col.buffer - mousePosition.y - paddingY) / squareSize) === col.yloc;
+               const activeCol = Math.floor((mousePosition.x - paddingX) / squareSize) === col.xloc;
+               const ypos = (col.yloc+1)*squareSize - (col.buffer - mousePosition.y - paddingY);
+               const xpos = mousePosition.x - paddingX - col.xloc*squareSize;
                const isDisabled = xpos*xpos+ypos*ypos > 294*294;
-               if (col-shiftedInd+1 > maxCols) return;
-               if (row.exclude && row.exclude.includes(col)) return <EmptyItem key={colInd}/>;
-               return <NucleoItem 
-                  key={colInd} 
-                  element={row.element} 
-                  isotope={col} 
-                  proton={col ? shiftedInd : null} 
-                  stable={row.stable.includes(col)}
+               return <NucleoItem key={colInd}
+                  element={nucleoChart[rowInd].element}
+                  props={col.props}
                   isMouseOver={activeRow && activeCol}
                   isDisabled={isDisabled}
-                  setStyle={{ '--x': `${xpos}px`, '--y': `${ypos}px`}}
+                  setStyle={isDisabled ? null : { '--x': `${xpos}px`, '--y': `${ypos}px`}}
                />;
             })}
-         </div>;
+         </div>
       });
       setChart(newChart);
    }
 
    useEffect(() => {
+      const { top, height } = divRef.current.getBoundingClientRect();
+      const squareSize = window.innerWidth < 461 ? 54 : window.innerWidth ? 66 : 84;
+      const maxRows = Math.floor(window.innerHeight / squareSize);
+      const maxCols = Math.floor(window.innerWidth / squareSize);
+      const buffer = top + height;
+      const newChart = nucleoChart.map((row, rowInd) => {
+         const shiftedInd = nucleoChart.length - rowInd;
+         const yloc = shiftedInd - 1;
+         if (shiftedInd > maxRows) return;
+         const preContainer = Array(row.isotopes[0] ? row.isotopes[0]-yloc : 1).fill(null);
+         const rowContainer = row.isotopes.map((col, colInd) => {
+            const xloc = col-shiftedInd+1;
+            if (xloc > maxCols) return;
+            if (row.exclude && row.exclude.includes(col)) return null;
+            return {
+               buffer,
+               xloc,
+               yloc,
+               props: {
+                  element: row.element,
+                  isotope: col,
+                  proton: col ? shiftedInd : null,
+                  stable: row.stable.includes(col),
+               },
+            }
+         });
+         return preContainer.concat(rowContainer);
+      });
+      setOrganizedChart(newChart);
+   }, [window.innerWidth, window.innerHeight]);
+
+   useEffect(() => {
       buildChart();
-   // }, [window.innerWidth, window.innerHeight]);
    }, [mousePosition]);
 
    return <div ref={divRef} className={style.nucleodisplayContainer}>
-      {/* {console.log('display rerender')} */}
       {chart}
-   </div>
+   </div>;
 }
 
 export default NucleoDisplay;
