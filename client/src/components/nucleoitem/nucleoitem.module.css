@@ -38,7 +38,7 @@
    content: '';
    background: var(--base-color);
    overflow: hidden;
-   transition: all 1.0s;
+   transition: all 0.75s;
    display: flex;
    justify-content: center;
    align-items: center;
