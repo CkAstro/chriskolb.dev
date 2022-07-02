@@ -26,7 +26,8 @@
    transform: translate(var(--x), var(--y));
 }
 
-.nucleoItemContainer.stable .border { background: radial-gradient(rgba(125, 30, 30, 0.75) 0%, rgba(0, 0, 0, 0) 75%); }
+.nucleoItemContainer.stable .border { background: radial-gradient(#933 0%, rgba(0, 0, 0, 0) 75%); }
+/* 939 looks good for a highlight */
 
 .elementContainer {
    position: absolute;
