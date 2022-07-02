@@ -32,7 +32,7 @@
    text-align: center;
    background: var(--color-dark-gray);
    transition: all 0.2s;
-} 
+}
 
 .navbar .link.active { background: var(--color-light-red); }
 .navbar .link:hover:not(.active) { background: var(--color-dark-red); }
@@ -51,4 +51,17 @@
    opacity: 1;
    visibility: visible;
    transition: all 1.5s;
+}
+
+@media screen and (max-width: 775px) {
+   .navbar .link { font-size: 14px; padding: 8px 12px; max-width: 60px; }
+   .brand { font-size: 14px; padding: 8px 12px; }
+}
+
+@media screen and (max-width: 625px) {
+   .brand { display: none; }
+}
+
+@media screen and (max-width: 455px) {
+   .navbar .link { font-size: 12px; width: 20%; }
 }
