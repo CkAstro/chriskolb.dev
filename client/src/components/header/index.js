@@ -11,10 +11,11 @@ const Header = () => {
    }
 
    return <div onMouseMove={handleMouseMove}>
-      <div className={`noselect ${style.headerContainer}`}>
+      {/* <div className={`noselect ${style.headerContainer}`}>
+         {console.log('header rerender!')}
          <h1>Christopher Kolb</h1>
          <h2>Full Stack Development + Computational Astrophysics</h2>
-      </div>
+      </div> */}
       <NucleoDisplay/>
    </div>;
 }

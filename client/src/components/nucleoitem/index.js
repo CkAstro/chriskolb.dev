@@ -1,54 +1,15 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState, memo } from 'react';
 import { useMousePosition } from '../../contexts/mouseposition';
 import style from './nucleoitem.module.css';
 
-const EmptyItem = () => <div className={style.nucleoItemContainer} style={{background: 'none'}}/>;
+const EmptyItem = memo(() => <div className={style.nucleoItemContainer} style={{background: 'none'}}/>);
 
-const NucleoItem = ({ center, element, isotope, proton, decayType }) => {
-   const [ isMouseOver, setIsMouseOver ] = useState(false);
-   const [ pos, setPos ] = useState({ '--x': '0', '--y': '0' });
-   const [ isDisabled, setIsDisabled ] = useState(true);
-   const { mousePosition } = useMousePosition();
+const NucleoItem = ({ element, isotope, proton, stable, isMouseOver, isDisabled, setStyle }) => {
 
-   const divRef = useRef(null);
-
-   let color;
-   if (decayType === 1) {
-      color = style.stable;
-   } else if (decayType === 2) {
-      color = style.beta;
-   } else if (decayType === 3) {
-      color = style.alpha;
-   } else if (decayType === 4) {
-      color = style.EC;
-   }
-
-   useEffect(() => {
-      if (!divRef.current || !mousePosition) return;
-      const { top, left, width, height } = divRef.current.getBoundingClientRect();
-      const dx = mousePosition.x - left - width/2;
-      const dy = mousePosition.y - top - height/2;
-      if (dx*dx+dy*dy > 290*290) {
-         setIsDisabled(true);
-         if (isMouseOver) setIsMouseOver(false);
-         return;
-      }
-      if (mousePosition.x > left && mousePosition.x - left < width && mousePosition.y > top && mousePosition.y - top < height) {
-         setIsMouseOver(true);
-      } else {
-         setIsMouseOver(false);
-      }
-      setPos({
-         '--x': `${mousePosition.x-left-width/2}px`,
-         '--y': `${mousePosition.y-top-height/2}px`,
-      });
-      if (isDisabled) setIsDisabled(false);
-   }, [mousePosition]);
-
-   return <div ref={divRef} 
-      style={pos} 
-      className={`noselect ${color} ${style.nucleoItemContainer} ${center ? style.center : null} ${isDisabled ? style.disable : null} ${isMouseOver ? style.mouseOver : null}`}
+   return <div style={setStyle} 
+      className={`noselect ${stable ? style.stable : ''} ${style.nucleoItemContainer} ${isDisabled ? style.disable : null} ${isMouseOver ? style.mouseOver : null}`}
    >
+      {console.log('rerendered item')}
       <div className={style.background}/>
       <div className={style.border}/>
       <div className={style.elementContainer}>{element}</div>
@@ -57,5 +18,5 @@ const NucleoItem = ({ center, element, isotope, proton, decayType }) => {
    </div>;
 }
 
-export default NucleoItem;
+export default memo(NucleoItem);
 export { EmptyItem };
