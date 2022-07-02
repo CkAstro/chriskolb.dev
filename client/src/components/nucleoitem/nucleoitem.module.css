@@ -2,7 +2,7 @@
 .nucleoItemContainer {
    --size: 60px;
    --base-color: #2e2e2e;
-   --base-highlight: rgba(80, 80, 80, 0.5);
+   --base-highlight: rgba(100, 100, 100, 0.5);
    --element-highlight: #3e3e3e;
    --isotope-highlight: #900;
    box-sizing: border-box;
@@ -26,10 +26,7 @@
    transform: translate(var(--x), var(--y));
 }
 
-.nucleoItemContainer.stable .border { background: radial-gradient(rgba(125, 30, 30, 0.5) 0%, rgba(0, 0, 0, 0) 75%); }
-/* .nucleoItemContainer.beta::before { background: radial-gradient(rgba(125, 75, 30, 0.5) 0%, rgba(0, 0, 0, 0) 75%); }
-.nucleoItemContainer.alpha::before { background: radial-gradient(rgba(125, 30, 75, 0.5) 0%, rgba(0, 0, 0, 0) 75%); }
-.nucleoItemContainer.EC::before { background: radial-gradient(rgba(75, 30, 75, 0.5) 0%, rgba(0, 0, 0, 0) 75%); } */
+.nucleoItemContainer.stable .border { background: radial-gradient(rgba(125, 30, 30, 0.75) 0%, rgba(0, 0, 0, 0) 75%); }
 
 .elementContainer {
    position: absolute;
@@ -73,10 +70,6 @@
 
 .nucleoItemContainer.mouseOver .isotopeContainer { color: rgb(125, 125, 125); } 
 .nucleoItemContainer.mouseOver.stable .isotopeContainer { color: var(--isotope-highlight); } 
-/* .nucleoItemContainer:hover.beta .isotopeContainer { color: rgba(30, 30, 125, 1.0); } 
-.nucleoItemContainer:hover.alpha .isotopeContainer { color: rgba(30, 75, 125, 1.0); }  */
-
-
 
 
 @media screen and (min-width: 1921px) {

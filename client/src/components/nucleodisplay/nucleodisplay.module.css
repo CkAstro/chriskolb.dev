@@ -18,3 +18,10 @@
    display: flex;
    gap: 6px;
 }
+
+.learnMore, .learnMore p {
+   margin: 0;
+   padding: 0;
+   color: #aaa;
+   text-align: right;
+}

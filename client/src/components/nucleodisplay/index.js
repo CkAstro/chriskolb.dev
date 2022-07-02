@@ -11,6 +11,13 @@ const range = (start, end) => {
    return items;
 }
 
+const NucleoInfoContainer = ({ setStyle }) => {
+   return <div style={setStyle} className={style.learnMore}>
+      <p>nuclear isotopes</p>
+      <p>learn more</p>
+   </div>;
+}
+
 // reference: https://upload.wikimedia.org/wikipedia/commons/b/b5/NuclideMap_stitched.png
 const nucleoChart = [
    {element: 'Si', isotopes: range(22, 44), stable: [28, 29, 30]},
@@ -41,17 +48,19 @@ const NucleoDisplay = () => {
       if (!organizedChart) return;
       const paddingX = 10;
       const paddingY = 50;
-      const squareSize = window.innerWidth < 461 ? 54 : window.innerWidth ? 66 : 84;
+      const { top, height } = divRef.current.getBoundingClientRect();
+      const buffer = top + height;
+      const squareSize = window.innerWidth < 461 ? 54 : window.innerWidth ? 66 : 90;
       const newChart = organizedChart.map((row, rowInd) => {
          if (!row) return;
          return <div key={rowInd} className={style.nucleodisplayRow}>
             {row.map((col, colInd) => {
                if (!col) return <EmptyItem key={colInd}/>;
-               const activeRow = Math.floor((col.buffer - mousePosition.y - paddingY) / squareSize) === col.yloc;
+               const activeRow = Math.floor((buffer - mousePosition.y - paddingY) / squareSize) === col.yloc;
                const activeCol = Math.floor((mousePosition.x - paddingX) / squareSize) === col.xloc;
-               const ypos = (col.yloc+1)*squareSize - (col.buffer - mousePosition.y - paddingY);
+               const ypos = (col.yloc+1)*squareSize - (buffer - mousePosition.y - paddingY);
                const xpos = mousePosition.x - paddingX - col.xloc*squareSize;
-               const isDisabled = xpos*xpos+ypos*ypos > 294*294;
+               const isDisabled = xpos*xpos+ypos*ypos > 264*264;
                return <NucleoItem key={colInd}
                   element={nucleoChart[rowInd].element}
                   props={col.props}
@@ -60,28 +69,24 @@ const NucleoDisplay = () => {
                   setStyle={isDisabled ? null : { '--x': `${xpos}px`, '--y': `${ypos}px`}}
                />;
             })}
+            {rowInd === organizedChart.length-1 && <NucleoInfoContainer setStyle={{width: `${5*squareSize-6}px`}}/>}
          </div>
       });
       setChart(newChart);
    }
 
    useEffect(() => {
-      const { top, height } = divRef.current.getBoundingClientRect();
-      const squareSize = window.innerWidth < 461 ? 54 : window.innerWidth ? 66 : 84;
+      const squareSize = window.innerWidth < 461 ? 54 : window.innerWidth ? 66 : 90;
       const maxRows = Math.floor(window.innerHeight / squareSize);
       const maxCols = Math.floor(window.innerWidth / squareSize);
-      const buffer = top + height;
       const newChart = nucleoChart.map((row, rowInd) => {
          const shiftedInd = nucleoChart.length - rowInd;
          const yloc = shiftedInd - 1;
-         if (shiftedInd > maxRows) return;
          const preContainer = Array(row.isotopes[0] ? row.isotopes[0]-yloc : 1).fill(null);
          const rowContainer = row.isotopes.map((col, colInd) => {
             const xloc = col-shiftedInd+1;
-            if (xloc > maxCols) return;
             if (row.exclude && row.exclude.includes(col)) return null;
             return {
-               buffer,
                xloc,
                yloc,
                props: {
@@ -95,11 +100,12 @@ const NucleoDisplay = () => {
          return preContainer.concat(rowContainer);
       });
       setOrganizedChart(newChart);
+      buildChart();
    }, [window.innerWidth, window.innerHeight]);
 
    useEffect(() => {
       buildChart();
-   }, [mousePosition]);
+   }, [mousePosition, organizedChart]);
 
    return <div ref={divRef} className={style.nucleodisplayContainer}>
       {chart}
