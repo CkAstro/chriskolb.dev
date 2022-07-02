@@ -1,0 +1,112 @@
+
+.aboutContainer {
+   color: white;
+}
+
+.introContainer {
+   text-align: center;
+   margin-bottom: 100px;
+   color: #ddd;
+}
+
+.introContainer h1 {
+   font-size: 40px;
+   transform: translateX(500px); 
+   transition: transform 1.0s;
+}
+.introContainer.active h1 { transform: translateX(0px); }
+
+.introContainer.active p {
+   margin: 0;
+   padding: 2px 12px;
+   font-size: 20px;
+   opacity: 0;
+   animation: 0.5s var(--delay) 1 reveal;
+   -moz-animation: 0.5s var(--delay) 1 reveal;
+   -webkit-animation: 0.5s var(--delay) 1 reveal;
+
+   animation-fill-mode: forwards;
+   -moz-animation-fill-mode: forwards;
+   -webkit-animation-fill-mode: forwards;
+}
+
+.introContainer .test {
+   padding: 2px 20px;
+}
+
+.introContainer .test p {
+   display: inline;
+   padding: 0 3px;
+}
+
+@keyframes reveal {
+   from { opacity: 0; }
+   to { opacity: 1; }
+}
+
+
+
+
+.flexColumns {
+   --gap: 20px;
+   box-sizing: border-box;
+   display: flex;
+   flex-wrap: wrap;
+   justify-content: center;
+   gap: var(--gap);
+   padding: 0 var(--gap);
+}
+
+.card {
+   background: #59b;
+   color: #137;
+   box-sizing: border-box;
+   width: calc( (100% - 2 * var(--gap)) / 3 );
+   padding: 20px;
+   border-radius: 12px;
+   max-width: 475px; 
+}
+
+@media screen and (max-width: 1200px) {
+   .card { width: calc( (100% - var(--gap)) / 2 ); }
+}
+
+@media screen and (max-width: 750px) {
+   .card { width: 100%; }
+}
+
+.card h1 {
+   margin: 0;
+   padding: 0;
+   padding-bottom: 2px;
+   font-size: 24px;
+   border-bottom: 2px solid #137;
+   text-align: center;
+   margin-bottom: 12px;
+}
+
+.card .cardItem {
+   position: relative;
+   margin: 6px 0px;
+   padding: 4px 6px;
+   font-weight: bold;
+   background: #137;
+}
+
+.cardItem > * { position: relative; z-index: 1; }
+
+.percentContainer {
+   position: absolute;
+   top: 0;
+   left: 0;
+   bottom: 0;
+   width: 0;
+   background: white;
+   content: '';
+   z-index: 0;
+   transition: all 1.5s;
+}
+
+.card.active .percentContainer {
+   width: var(--width);
+}
