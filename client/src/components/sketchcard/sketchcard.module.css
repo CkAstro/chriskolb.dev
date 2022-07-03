@@ -1,0 +1,67 @@
+
+/* ----- SketchCard ----- */
+.sketchCard {
+   --gap: 20px;
+   --sketch-background: repeating-linear-gradient(
+      45deg,
+      var(--color-primary) 0px,
+      var(--color-primary) 2px,
+      var(--color-white) 2px,
+      var(--color-white) 6px
+   );
+
+   position: relative;
+   box-sizing: border-box;
+   overflow: hidden;
+   color: var(--color-primary);
+   padding: 20px 12px 12px 20px;
+   border-radius: 12px;
+   max-width: 475px;
+   width: calc((100% - 2*var(--gap)) / 3);
+   background: var(--sketch-background);
+}
+
+.sketchCard::before {
+   position: absolute;
+   top: -12px;
+   left: 12px;
+   right: 4px;
+   bottom: 12px;
+   content: '';
+   border-radius: 12px;
+   background: var(--color-white);
+}
+
+.sketchCard h1 {
+   position: relative;
+   margin: 0;
+   padding: 0;
+   padding-bottom: 2px;
+   font-size: 24px;
+   border-bottom: 2px solid var(--color-primary);
+   text-align: center;
+}
+
+
+/* ----- SketchItem ----- */
+.sketchItem {
+   position: relative;
+   margin: 6px 0px;
+   background: var(--sketch-background);
+   border: 2px solid var(--color-primary);
+}
+
+.sketchItemBar {
+   box-sizing: border-box;
+   background: var(--color-white);
+   border-right: 2px solid var(--color-primary);
+   white-space: nowrap;
+   overflow: hidden;
+   margin: 0;
+   padding: 4px 6px;
+   font-weight: bold;
+   width: 0;
+   transition: width 1s;
+}
+
+.sketchCard.active .sketchItemBar { width: var(--width); }
