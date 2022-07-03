@@ -8,5 +8,8 @@
 .section {
    display: flex;
    flex-direction: column;
-   gap: 100px;
+   height: auto;
+   margin: 0;
+   padding: 0;
+   /* gap: 50px; */
 }
