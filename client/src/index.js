@@ -11,7 +11,6 @@ import About from './content/about';
 import Projects from './content/projects';
 import Research from './content/research';
 import Contact from './content/contact';
-import '@fontsource/roboto';
 import './index.css';      // global impor
 
 const Main = () => {
@@ -23,7 +22,7 @@ const Main = () => {
       <ContentModal/>
       <Navbar scrollValue={scrollValue}/>
       <Section navId='home' styleAdjust={{height: '100vh', background: '#1e1e1e', paddingTop: '0'}}><Header/></Section>
-      <Section navId='about' isContent styleAdjust={{minHeight: '100vh', background: '#152b73'}}><About/></Section>
+      <Section navId='about' isContent styleAdjust={{minHeight: '100vh', background: '#fbf9ff'}}><About/></Section>
       <Section navId='projects' isContent styleAdjust={{background: '#618985'}}><Projects/></Section>
       <Section navId='research' isContent styleAdjust={{background: '#FBF9FF'}}><Research/></Section>
       <Section navId='contact' isContent styleAdjust={{minHeight: '100vh', background: '#568EA3'}}><Contact/></Section>
