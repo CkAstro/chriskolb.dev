@@ -4,10 +4,10 @@ import Showcase from '../../../components/showcase';
 import style from './datavis.module.css';
 
 const datavis = {
-   title: 'DataVis',
+   title: <div style={{fontWeight: '100'}}>use <span style={{fontWeight: '900'}}>DataVis</span> to view data anywhere</div>,
    components: 'WebGL / GLSL / React / Node / REST',
    image: require('./datavis_display.png'),
-   description: 'Full-stack app which allows you to upload and view volumetric scalar data.',
+   description: 'Upload and view volumetric scalar data.',
    link: 'https://datavis.chriskolb.dev',
    pages: [
       <ContentPage>

@@ -4,10 +4,10 @@ import FancyButton from '../../../components/fancybutton';
 import style from './reversi.module.css';
 
 const reversi = {
-   title: 'Reversi',
+   title: <><span style={{fontWeight: '100'}}>Multiplayer</span> <span style={{fontWeight: '700'}}>Reversi</span></>,
    components: 'React / Node / MongoDB / Websockets',
    image: require('./reversi_tablet.png'),
-   description: 'Online multi-player board game. Supports multiple games and replays.',
+   description: 'Online multi-player board game. Supports multiple games, observer mode, and replays.',
    link: 'https://reversi.chriskolb.dev',
    pages: [
       <ContentPage>
@@ -15,7 +15,7 @@ const reversi = {
             <img src={require('./reversi.png')}/>
          </div>
          <div className={style.contentContainer}>
-            <h1>Reversi</h1>
+            <h1 style={{fontWeight: '100'}}>Multiplayer <span style={{fontWeight: '700'}}>Reversi</span></h1>
 
             <p>Play Reversi (aka Othello) online with your friends in this web-app which supports multiple concurrent games, live-game observation, replay mode, and more.</p>
             
