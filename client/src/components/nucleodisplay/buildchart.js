@@ -8,7 +8,8 @@ const buildChart = (inputChart, mousePosition, divRef, setChart) => {
    const paddingY = 50;
    const { top, height } = divRef.current.getBoundingClientRect();
    const buffer = top + height;
-   const squareSize = window.innerWidth < 461 ? 54 : window.innerWidth ? 66 : 90;
+   const squareSize = window.innerWidth < 461 ? 54 
+      : (window.innerWidth < 1921 ? 66 : 90);
    const newChart = inputChart.map((row, rowInd) => {
       if (!row) return;
       return <div key={rowInd} className={style.nucleodisplayRow}>
