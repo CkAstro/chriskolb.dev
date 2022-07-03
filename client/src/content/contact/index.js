@@ -5,8 +5,8 @@ const Contact = () => {
    return <>
       <div className={style.headerContainer}>
          <h1 className={style.style1}>Contact</h1>
+         <p>Have a question or want to work together?</p>
       </div>
-      <p className={style.centerText}>Have a question or want to work together?</p>
       <ContactForm/>
    </>;
 }

@@ -33,28 +33,30 @@ const ContactForm = () => {
       });
    }
 
-   return <form style={{margin: '0 auto'}} onSubmit={handleSubmit}>
-      <input type='text'
-         className={`${style.nameInput} ${name === defaultName || name === sentMessage.name ? style.inactive : null}`}
-         onFocus={handleFocus} 
-         value={name} 
-         onChange={handleNameChange}
-      />
-      <input type='text' 
-         className={`${style.emailInput} ${email === defaultEmail || email === sentMessage.email ? style.inactive : null}`}
-         onFocus={handleFocus} 
-         value={email} 
-         onChange={handleEmailChange}
-      />
-      <textarea 
-         className={`${style.messageInput} ${message === defaultMessage || message === sentMessage.message ? style.inactive : null}`}
-         onFocus={handleFocus} 
-         value={message} 
-         onChange={handleMessageChange}
-         rows={8}
-      />
-      <div className={style.submitButton} onClick={handleSubmit}>Submit</div>
-   </form>;
+   return <div className={style.formContainer}>
+      <form onSubmit={handleSubmit}>
+         <input type='text'
+            className={`${style.nameInput} ${name === defaultName || name === sentMessage.name ? style.inactive : null}`}
+            onFocus={handleFocus} 
+            value={name} 
+            onChange={handleNameChange}
+         />
+         <input type='text' 
+            className={`${style.emailInput} ${email === defaultEmail || email === sentMessage.email ? style.inactive : null}`}
+            onFocus={handleFocus} 
+            value={email} 
+            onChange={handleEmailChange}
+         />
+         <textarea 
+            className={`${style.messageInput} ${message === defaultMessage || message === sentMessage.message ? style.inactive : null}`}
+            onFocus={handleFocus} 
+            value={message} 
+            onChange={handleMessageChange}
+            rows={8}
+         />
+         <div className={style.submitButton} onClick={handleSubmit}>Submit</div>
+      </form>
+   </div>;
 }
 
 export default ContactForm;
