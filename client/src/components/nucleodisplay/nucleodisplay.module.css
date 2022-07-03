@@ -19,10 +19,14 @@
    gap: 6px;
 }
 
-.learnMore {
+.learnMore p {
+   margin: 0; 
+   padding: 0; 
+   text-align: right; 
+   font-size: 14px; 
+   color: #aaa;
    color: #aaa;
    transition: all 0.5s;
 }
-.learnMore:hover { color: #933; }
 
-.learnMore p { margin: 0; padding: 0; text-align: right; font-size: 14px; }
+.learnMore:hover p { color: #933; }
