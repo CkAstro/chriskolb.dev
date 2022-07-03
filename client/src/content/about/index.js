@@ -1,6 +1,6 @@
-import { useRef, memo } from 'react';
-import useIsVisible from '../../hooks/useisvisible';
+import { memo } from 'react';
 import { SketchCard, SketchItem } from '../../components/sketchcard';
+import IntroContainer from './introcontainer';
 import style from './about.module.css';
 // idea: loop a bunch of super easy equations
 //    and then one really complex one
@@ -18,22 +18,6 @@ import style from './about.module.css';
 // 5 + 3 * 0 = 5 ?
 // "a b c triangle"
 // 'my' wind equation
-
-const IntroContainer = () => {
-   const divRef = useRef(null);
-   const isVisible = useIsVisible(divRef, true);
-
-   return <div ref={divRef} className={`${style.introContainer} ${isVisible ? style.active : null}`}>
-      <h1 style={{fontWeight: '100'}}>Hi, I'm <b style={{fontWeight: '900', fontSize: '40px'}}>Chris</b></h1>
-      <p style={{'--delay': '1.5s'}}>I love math and physics.</p>
-      <p style={{'--delay': '3.0s'}}>I also love designing awesome stuff,</p>
-      <div className={style.test}>
-         <p style={{'--delay': '4.5s'}}>like responsive sites,</p>
-         <p style={{'--delay': '5.5s'}}>interactive figures,</p>
-         <p style={{'--delay': '6.5s'}}>and complex simulations.</p>
-      </div>
-   </div>;
-}
 
 const About = () => {
    return <div className={style.aboutContainer}>
