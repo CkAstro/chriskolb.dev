@@ -23,7 +23,7 @@ const IntroContainer = () => {
    const isVisible = useIsVisible(divRef, true);
 
    return <div ref={divRef} className={`${style.introContainer} ${isVisible ? style.active : null}`}>
-      <h1>Hi, I'm Chris.</h1>
+      <h1 style={{fontWeight: '100'}}>Hi, I'm <b style={{fontWeight: '900', fontSize: '40px'}}>Chris</b></h1>
       <p style={{'--delay': '1.5s'}}>I love math and physics.</p>
       <p style={{'--delay': '3.0s'}}>I also love designing awesome stuff,</p>
       <div className={style.test}>
@@ -40,7 +40,7 @@ const About = () => {
 
       <div className={style.flexColumns}>
          <Card>
-            <h1>{'Languages'}</h1>
+            <h1>Languages</h1>
             <CardItem percent='90'>Javascript</CardItem>
             <CardItem percent='90'>HTML5 / CSS3 / SVG</CardItem>
             <CardItem percent='80'>Python</CardItem>
@@ -53,7 +53,7 @@ const About = () => {
             <CardItem percent='25'>Java</CardItem>
          </Card>
          <Card>
-            <h1>{'Frameworks & APIs'}</h1>
+            <h1>Frameworks <span style={{fontWeight: '100'}}>&</span> APIs</h1>
             <CardItem percent='90'>React</CardItem>
             <CardItem percent='90'>NodeJS / Express</CardItem>
             <CardItem percent='90'>RESTful</CardItem>
@@ -62,7 +62,7 @@ const About = () => {
             <CardItem percent='50'>OpenACC</CardItem>
          </Card>
          <Card>
-            <h1>{'Tools & Software'}</h1>
+            <h1>Tools <span style={{fontWeight: '100'}}>&</span> Software</h1>
             <CardItem percent='95'>NumPy / SciPy</CardItem>
             <CardItem percent='90'>UNIX / Linux / Windows</CardItem>
             <CardItem percent='90'>Microsoft Office Suite</CardItem>
