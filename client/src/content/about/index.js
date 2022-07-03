@@ -1,5 +1,6 @@
 import { useRef, memo } from 'react';
 import useIsVisible from '../../hooks/useisvisible';
+import { SketchCard, SketchItem } from '../../components/sketchcard';
 import style from './about.module.css';
 // idea: loop a bunch of super easy equations
 //    and then one really complex one
@@ -39,19 +40,19 @@ const About = () => {
       <IntroContainer/>
 
       <div className={style.flexColumns}>
-         <Card>
+         <SketchCard>
             <h1>Languages</h1>
-            <CardItem percent='90'>Javascript</CardItem>
-            <CardItem percent='90'>HTML5 / CSS3 / SVG</CardItem>
-            <CardItem percent='80'>Python</CardItem>
-            <CardItem percent='80'>OpenGL / WebGL / GLSL</CardItem>
-            <CardItem percent='75'>FORTRAN</CardItem>
-            <CardItem percent='75'>Bash</CardItem>
-            <CardItem percent='75'>LaTeX</CardItem>
-            <CardItem percent='50'>C / C++</CardItem>
-            <CardItem percent='50'>PHP</CardItem>
-            <CardItem percent='25'>Java</CardItem>
-         </Card>
+            <SketchItem percent='90'>Javascript</SketchItem>
+            <SketchItem percent='90'>HTML5 / CSS3 / SVG</SketchItem>
+            <SketchItem percent='80'>Python</SketchItem>
+            <SketchItem percent='80'>OpenGL / WebGL / GLSL</SketchItem>
+            <SketchItem percent='75'>FORTRAN</SketchItem>
+            <SketchItem percent='75'>Bash</SketchItem>
+            <SketchItem percent='75'>LaTeX</SketchItem>
+            <SketchItem percent='50'>C / C++</SketchItem>
+            <SketchItem percent='50'>PHP</SketchItem>
+            <SketchItem percent='25'>Java</SketchItem>
+         </SketchCard>
          <Card>
             <h1>Frameworks <span style={{fontWeight: '100'}}>&</span> APIs</h1>
             <CardItem percent='90'>React</CardItem>
