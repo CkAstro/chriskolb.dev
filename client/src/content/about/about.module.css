@@ -1,6 +1,6 @@
 
 .aboutContainer {
-   --color-percentContainer: #d0d4dc;
+   --color-percentContainer: #fbf9ff;
 
    color: var(--color-white);
 }
@@ -114,8 +114,26 @@
    padding: 4px 6px;
    background: var(--color-primary);
    color: var(--color-primary);
+   font-weight: 700;
    z-index: 2;
+   background: repeating-linear-gradient(
+      45deg,
+      var(--color-primary) 0px,
+      var(--color-primary) 2px,
+      var(--color-white) 2px,
+      var(--color-white) 6px
+   );
 }
+
+/* .card .cardItem {
+   position: relative;
+   margin: 6px 0px;
+   padding: 4px 6px;
+   background: var(--color-white);
+   color: var(--color-white);
+   font-weight: 400;
+   z-index: 2;
+} */
 
 .card .cardItem:last-child { margin-bottom: 0; }
 
@@ -135,8 +153,8 @@
 
 .percentContainer {
    position: absolute;
-   top: 0;
-   left: 0;
+   top: 2px;
+   left: 2px;
    bottom: 2px;
    width: 0;
    background: var(--color-percentContainer);
@@ -147,4 +165,50 @@
 
 .card.active .percentContainer {
    width: var(--width);
+   border-right: 2px solid var(--color-primary);
 }
+
+
+
+.percentContainer2 {
+   position: absolute;
+   right: 0;
+   bottom: 0;
+   top: 0;
+   left: 0;
+   border: 2px solid var(--color-primary);
+   content: '';
+   z-index: 0;
+   transition: all 1.5s;
+}
+
+.card:first-child .cardItem:last-child .percentContainer2 { border-radius: 0 0 6px 0; }
+
+/* .percentContainer {
+   position: absolute;
+   top: 0;
+   left: 0;
+   bottom: 0;
+   width: 0;
+   background: var(--color-primary);
+   content: '';
+   z-index: 1;
+   transition: all 1.5s;
+}
+
+.card.active .percentContainer {
+   width: var(--width);
+}
+
+.card.active .percentContainer2 {
+   position: absolute;
+   box-sizing: border-box;
+   left: 0;
+   top: 0;
+   right: 0;
+   bottom: 0;
+   border-bottom: 2px solid var(--color-primary);
+   border-top: 2px solid var(--color-primary);
+   content: '';
+   z-index: 100;
+} */

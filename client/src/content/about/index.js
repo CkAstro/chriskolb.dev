@@ -89,6 +89,7 @@ const CardItem = ({ percent, children }) => {
    return <div className={style.cardItem}>
       <div>{children}</div>
       <div style={{'--width': `${percent}%`}} className={style.percentContainer}/>
+      <div className={style.percentContainer2}/>
    </div>;
 }
 
