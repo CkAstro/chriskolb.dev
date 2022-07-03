@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;400;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;400;700;900&display=swap');
 
 body, html, a {
    margin: 0px;
@@ -6,15 +6,20 @@ body, html, a {
    -webkit-font-smoothing: antialiased;
    -moz-osx-font-smoothing: grayscale;
    font-family: 'Roboto', sans-serif;
-   color: var(--ncsu-dark-gray);
+   color: var(--color-black);
    width: 100vw;
    height: 100vh;
    text-decoration: none;
 }
 
-
 /* ----- globals ----- */
 :root {
+   --color-primary: #113377;
+   --color-white: #fbf9ff;
+   --color-black: #1e1e1e;
+
+
+
    --color-dark-red: #900;
    --color-light-red: #c00;
    --color-dark-gray: #333;

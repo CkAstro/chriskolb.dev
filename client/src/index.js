@@ -21,11 +21,11 @@ const Main = () => {
    return <div id='mainContainer' className='mainContainer' onScroll={handleScroll}>
       <ContentModal/>
       <Navbar scrollValue={scrollValue}/>
-      <Section navId='home' styleAdjust={{height: '100vh', background: '#1e1e1e', paddingTop: '0'}}><Header/></Section>
-      <Section navId='about' isContent styleAdjust={{minHeight: '100vh', background: '#fbf9ff'}}><About/></Section>
-      <Section navId='projects' isContent styleAdjust={{background: '#618985'}}><Projects/></Section>
-      <Section navId='research' isContent styleAdjust={{background: '#FBF9FF'}}><Research/></Section>
-      <Section navId='contact' isContent styleAdjust={{minHeight: '100vh', background: '#568EA3'}}><Contact/></Section>
+      <Section navId='home' styleAdjust={{height: '100vh', background: 'var(--color-black)', paddingTop: '0'}}><Header/></Section>
+      <Section navId='about' isContent styleAdjust={{minHeight: '100vh', background: 'var(--color-white)'}}><About/></Section>
+      <Section navId='projects' isContent styleAdjust={{background: 'var(--color-white)'}}><Projects/></Section>
+      <Section navId='research' isContent styleAdjust={{background: '#568ea3'}}><Research/></Section>
+      <Section navId='contact' isContent styleAdjust={{minHeight: '100vh', background: 'var(--color-white)'}}><Contact/></Section>
    </div>;
 }
 
