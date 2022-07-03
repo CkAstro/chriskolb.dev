@@ -42,7 +42,8 @@
 .showcaseContent h2 {
    margin: 0;
    padding: 0;
-   color: #38388f;
+   color: var(--color-primary);
+   font-weight: 400;
 }
 
 .showcaseContent p:first-of-type {
@@ -59,4 +60,17 @@
    }
    .showcaseImageContainer { width: 100%; }
    .showcaseContent { width: 100%; }
+}
+
+
+
+.showcaseContent,
+.showcaseImageContainer {
+   transform: translateY(200px);
+   transition: transform 1s;
+}
+
+.showcaseContainer.active .showcaseContent,
+.showcaseContainer.active .showcaseImageContainer {
+   transform: translateY(0);
 }
