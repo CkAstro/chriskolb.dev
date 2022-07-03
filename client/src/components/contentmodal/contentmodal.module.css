@@ -92,9 +92,7 @@
    transform: translate(1px, -1px);
 }
 
-.closeButton:hover {
-   background: var(--color-dark-red);
-}
+.closeButton:hover { background: #272764; }
 
 .nextButton {
    position: absolute;
@@ -112,7 +110,7 @@
    transition: all 0.2s;
 }
 
-.nextButton:hover { background: var(--color-dark-red); }
+.nextButton:hover { background: #272764; }
 
 .prevButton {
    position: absolute;
@@ -131,7 +129,7 @@
    transition: all 0.2s;
 }
 
-.prevButton:hover { background: var(--color-dark-red); }
+.prevButton:hover { background: #272764; }
 
 .pageNumber {
    position: absolute;

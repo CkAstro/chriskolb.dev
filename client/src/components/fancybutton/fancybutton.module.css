@@ -57,7 +57,7 @@
    right: 0;
    padding: 8px 16px;
    width: var(--button-width);
-   border: 2px solid var(--color-light-red);
+   border: 2px solid #38388f;
    margin: auto;
    border-radius: 16px;
    box-sizing: border-box;
@@ -71,9 +71,9 @@
    right: 0;
    padding: 8px 16px;
    width: var(--button-width);
-   border: 2px solid var(--color-light-red);
+   border: 2px solid #38388f;
    margin: auto;
-   background: var(--color-charcoal);
+   background: #0080a7;
    color: white;
    /* clip-path: polygon(0% -100%,   100% 0%,   100% 0%,   0% 0%); */
    clip-path: circle(25% at -25% 50%);
@@ -94,9 +94,9 @@
    right: 0;
    padding: 8px 16px;
    width: var(--button-width);
-   border: 2px solid var(--color-light-red);
+   border: 2px solid #38388f;
    margin: auto;
-   background: var(--color-light-red);
+   background: #38388f;
    color: white;
    clip-path: circle(25% at -35% 50%);
    transition: all 1.0s;
@@ -115,9 +115,9 @@
    right: 0;
    padding: 8px 16px;
    width: var(--button-width);
-   border: 2px solid var(--color-light-red);
+   border: 2px solid #38388f;
    margin: auto;
-   background: var(--color-light-red);
+   background: #38388f;
    color: white;
    clip-path: polygon(0% 0%,   -35% 0%,    -35% 100%,    0% 100%);
    transition: all 1.0s;
