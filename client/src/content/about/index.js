@@ -80,6 +80,7 @@ const Card = ({ children }) => {
    const isVisible = useIsVisible(divRef, true);
 
    return <div ref={divRef} className={`${style.card} ${isVisible ? style.active : null}`}>
+      <div className={style.cardAccent}/>
       {children}
    </div>
 };

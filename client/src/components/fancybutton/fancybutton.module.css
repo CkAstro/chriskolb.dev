@@ -23,7 +23,7 @@
    right: 0;
    padding: 8px 16px;
    width: var(--button-width);
-   border: 2px solid var(--color-light-red);
+   border: 2px solid #38388f;
    margin: auto;
    box-sizing: border-box;
 }
@@ -35,9 +35,9 @@
    right: 0;
    padding: 8px 16px;
    width: var(--button-width);
-   border: 2px solid var(--color-light-red);
+   border: 2px solid #38388f;
    margin: auto;
-   background: var(--color-light-red);
+   background: #38388f;
    color: white;
    clip-path: polygon(-120% 0, -20% 0, 0% 100%, -100% 100%);
    transition: all 0.5s;

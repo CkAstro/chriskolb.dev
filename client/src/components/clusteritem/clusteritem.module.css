@@ -46,7 +46,7 @@
    font-size: 18px;
    margin: 0px;
    padding: 0px;
-   color: var(--color-light-red);
+   color: #38388f;
 }
 
 .clusterItemContent:not(.mouseOver) .topContent { bottom: 155%; opacity: 0; }

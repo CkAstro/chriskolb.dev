@@ -1,7 +1,7 @@
 
 .sectionContainer {
    box-sizing: border-box;
-   padding-top: 100px;
+   padding: 100px 0;
    position: relative;
 }
 
@@ -10,11 +10,3 @@
    flex-direction: column;
    gap: 100px;
 }
-
-.section > h1 {
-   text-align: center;
-   margin: 0px;
-   padding: 0px;
-}
-
-.section > h1:not(:first-child) { margin-top: 100px; }

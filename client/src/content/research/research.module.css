@@ -21,8 +21,3 @@ h1.style1::after {
    content: '';
    border-bottom: 2px solid #1e1e1e;
 }
-
-.centerText {
-   margin: 0 auto;
-   text-align: center;
-}

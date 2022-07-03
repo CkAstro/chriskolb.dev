@@ -23,11 +23,10 @@ const Main = () => {
       <ContentModal/>
       <Navbar scrollValue={scrollValue}/>
       <Section navId='home' styleAdjust={{height: '100vh', background: '#1e1e1e', paddingTop: '0'}}><Header/></Section>
-      <Section navId='about' isContent styleAdjust={{minHeight: '100vh', background: 'linear-gradient(#1e1e1e, #0b3ce1)'}}><About/></Section>
-      <Section navId='projects' isContent styleAdjust={{background: 'linear-gradient(#0b3ce1, #78e9ff)'}}><Projects/></Section>
-      <Section navId='research' isContent styleAdjust={{background: 'linear-gradient(#78e9ff, #fff)'}}><Research/></Section>
-      <Section navId='contact' isContent styleAdjust={{minHeight: '100vh'}}><Contact/></Section>
-      
+      <Section navId='about' isContent styleAdjust={{minHeight: '100vh', background: '#152b73'}}><About/></Section>
+      <Section navId='projects' isContent styleAdjust={{background: '#618985'}}><Projects/></Section>
+      <Section navId='research' isContent styleAdjust={{background: '#FBF9FF'}}><Research/></Section>
+      <Section navId='contact' isContent styleAdjust={{minHeight: '100vh', background: '#568EA3'}}><Contact/></Section>
    </div>;
 }
 

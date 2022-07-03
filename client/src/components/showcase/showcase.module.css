@@ -9,6 +9,7 @@
    min-height: calc( var(--image-scale) * var(--content-width) );
    display: flex;
    flex-direction: row;
+   color: #1e1e1e;
 }
 
 .showcaseContainer:nth-child(2n) { flex-direction: row-reverse; }
@@ -41,7 +42,7 @@
 .showcaseContent h2 {
    margin: 0;
    padding: 0;
-   color: var(--color-light-red);
+   color: #38388f;
 }
 
 .showcaseContent p:first-of-type {
