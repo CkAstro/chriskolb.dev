@@ -49,10 +49,10 @@
    margin: 6px 0px;
    background: var(--sketch-background);
    border: 2px solid var(--color-primary);
+   overflow: hidden;
 }
 
 .sketchItemBar {
-   box-sizing: border-box;
    background: var(--color-white);
    border-right: 2px solid var(--color-primary);
    white-space: nowrap;
@@ -61,7 +61,18 @@
    padding: 4px 6px;
    font-weight: bold;
    width: 0;
-   transition: width 1s;
+   transition: width 1.5s;
 }
 
 .sketchCard.active .sketchItemBar { width: var(--width); }
+
+.sketchCard:first-child .sketchItem:last-child { border-radius: 0 0 6px 0; }
+@media only screen and (max-width: 1200px) {
+   .sketchCard { width: calc((100% - var(--gap)) /2); }
+   .sketchCard:last-child .sketchItem:last-child { border-radius: 0 0 6px 0; }
+}
+
+@media only screen and (max-width: 750px) {
+   .sketchCard { width: 100%; }
+   .sketchCard .sketchItem:last-child { border-radius: 0 0 6px 0; }
+}

@@ -53,44 +53,26 @@ const About = () => {
             <SketchItem percent='50'>PHP</SketchItem>
             <SketchItem percent='25'>Java</SketchItem>
          </SketchCard>
-         <Card>
+         <SketchCard>
             <h1>Frameworks <span style={{fontWeight: '100'}}>&</span> APIs</h1>
-            <CardItem percent='90'>React</CardItem>
-            <CardItem percent='90'>NodeJS / Express</CardItem>
-            <CardItem percent='90'>RESTful</CardItem>
-            <CardItem percent='90'>OpenMP / MPI</CardItem>
-            <CardItem percent='50'>Redux</CardItem>
-            <CardItem percent='50'>OpenACC</CardItem>
-         </Card>
-         <Card>
+            <SketchItem percent='90'>React</SketchItem>
+            <SketchItem percent='90'>NodeJS / Express</SketchItem>
+            <SketchItem percent='90'>RESTful</SketchItem>
+            <SketchItem percent='90'>OpenMP / MPI</SketchItem>
+            <SketchItem percent='50'>Redux</SketchItem>
+            <SketchItem percent='50'>OpenACC</SketchItem>
+         </SketchCard>
+         <SketchCard>
             <h1>Tools <span style={{fontWeight: '100'}}>&</span> Software</h1>
-            <CardItem percent='95'>NumPy / SciPy</CardItem>
-            <CardItem percent='90'>UNIX / Linux / Windows</CardItem>
-            <CardItem percent='90'>Microsoft Office Suite</CardItem>
-            <CardItem percent='80'>GiT</CardItem>
-            <CardItem percent='75'>PANDAS</CardItem>
-            <CardItem percent='75'>GIMP / Photoshop</CardItem>
-            <CardItem percent='50'>Blender</CardItem>
-         </Card>
+            <SketchItem percent='95'>NumPy / SciPy</SketchItem>
+            <SketchItem percent='90'>UNIX / Linux / Windows</SketchItem>
+            <SketchItem percent='90'>Microsoft Office Suite</SketchItem>
+            <SketchItem percent='80'>GiT</SketchItem>
+            <SketchItem percent='75'>PANDAS</SketchItem>
+            <SketchItem percent='75'>GIMP / Photoshop</SketchItem>
+            <SketchItem percent='50'>Blender</SketchItem>
+         </SketchCard>
       </div>
-   </div>;
-}
-
-const Card = ({ children }) => {
-   const divRef = useRef(null);
-   const isVisible = useIsVisible(divRef, true);
-
-   return <div ref={divRef} className={`${style.card} ${isVisible ? style.active : null}`}>
-      <div className={style.cardAccent}/>
-      {children}
-   </div>
-};
-
-const CardItem = ({ percent, children }) => {
-   return <div className={style.cardItem}>
-      <div>{children}</div>
-      <div style={{'--width': `${percent}%`}} className={style.percentContainer}/>
-      <div className={style.percentContainer2}/>
    </div>;
 }
 
