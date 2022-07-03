@@ -8,8 +8,6 @@
    flex-wrap: wrap;
    justify-content: center;
    gap: var(--cluster-gap);
-
-   margin-bottom: 200px;
 }
 
 .clusterItem {

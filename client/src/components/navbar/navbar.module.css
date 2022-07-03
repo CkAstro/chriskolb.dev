@@ -1,7 +1,7 @@
 
 .navContainer {
-   background: var(--color-dark-gray);
-   border-bottom: 3px solid var(--color-light-red);
+   background: var(--color-black);
+   border-bottom: 3px solid #205acf;
    position: absolute;
    left: 0;
    right: 0;
@@ -30,12 +30,12 @@
    height: auto;
    cursor: pointer;
    text-align: center;
-   background: var(--color-dark-gray);
+   background: var(--color-black);
    transition: all 0.2s;
 }
 
-.navbar .link.active { background: var(--color-light-red); }
-.navbar .link:hover:not(.active) { background: var(--color-dark-red); }
+.navbar .link.active { background: #205acf; }
+.navbar .link:hover:not(.active) { background: var(--color-primary); }
 
 .brand {
    color: white;
