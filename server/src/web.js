@@ -4,7 +4,7 @@ import express from 'express';
 import cors from 'cors';
 import fs from 'fs';
 
-import { PORT } from './config/index.js';
+import { PORT, MAIL } from './config/index.js';
 'use strict';
 
 // ----- init ----- //
@@ -60,6 +60,7 @@ app.post('/api/contact', (req, res) => {
       service: 'gmail',
       auth: {
          user: 'astro.cekolb@gmail.com',
+         pass: MAIL,
       }
    });
    const mailOptions = {
