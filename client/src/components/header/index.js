@@ -13,7 +13,7 @@ const Header = () => {
    return <div onMouseMove={handleMouseMove}>
       <div className={`noselect ${style.headerContainer}`}>
          <h1>Christopher Kolb</h1>
-         <h2>Full Stack Development + Computational Astrophysics</h2>
+         <h2>Full Stack Development <span style={{fontWeight: '400'}}>+</span> Computational Astrophysics</h2>
       </div>
       <NucleoDisplay/>
    </div>;

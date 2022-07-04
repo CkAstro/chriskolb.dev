@@ -14,11 +14,11 @@ class TextureHelper {
       this.glInstance = null;
       this.isInit = false;
       this.baseUrl = window.location.host.includes('localhost')
-      ? 'http://localhost:3004/api/img'
-      : (window.location.host.includes('192')
-         ? 'http://192.168.3.105:3004/api/img'
-         : '/api/img')
-   ;
+         ? 'http://localhost:3004/api/img'
+         : (window.location.host.includes('192')
+            ? 'http://192.168.3.105:3004/api/img'
+            : '/api/img')
+      ;
    }
 
    init(gl) {
