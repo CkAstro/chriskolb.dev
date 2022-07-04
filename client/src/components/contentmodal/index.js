@@ -5,14 +5,10 @@ const ContentModal = () => {
    const { modalProps, toNextPage, toPrevPage, closeModal } = useModal();
 
    const handleClick = event => event.stopPropagation();
-
    const handleClose = () => closeModal();
 
    return (
-      <div className={`${style.modalContainer} ${modalProps.isActive ? style.active : null}`} 
-         // onWheel={handleScroll}
-         onClick={handleClose}
-      >
+      <div className={`${style.modalContainer} ${modalProps.isActive ? style.active : null}`} onClick={handleClose}>
          <div className={style.modal} onClick={handleClick}>
             <div className={style.modalContent}>
                {modalProps.content && modalProps.content[modalProps.page] 

@@ -41,7 +41,6 @@
    height: 70%;
    background: white;
    z-index: 100;
-   padding-top: 30px;
    overflow: none;
    opacity: 1;
    transition: all 0.5s, opacity 0.5s ease-in-out;
@@ -55,7 +54,7 @@
 
 .modalContainer .modal .modalContent {
    position: absolute;
-   top: 0;
+   top: 30px;
    left: 0;
    right: 0;
    bottom: 30px;
