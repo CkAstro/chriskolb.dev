@@ -1,8 +1,15 @@
+import { useEffect, useRef } from 'react';
 import { useModal } from '../../contexts/modal';
 import style from './contentmodal.module.css';
 
 const ContentModal = () => {
+   const divRef = useRef(null);
    const { modalProps, toNextPage, toPrevPage, closeModal } = useModal();
+
+   useEffect(() => {
+      if (!divRef.current) return; 
+      divRef.current.scrollTop = 0;
+   }, [modalProps]);
 
    const handleClick = event => event.stopPropagation();
    const handleClose = () => closeModal();
@@ -10,7 +17,7 @@ const ContentModal = () => {
    return (
       <div className={`${style.modalContainer} ${modalProps.isActive ? style.active : null}`} onClick={handleClose}>
          <div className={style.modal} onClick={handleClick}>
-            <div className={style.modalContent}>
+            <div ref={divRef} className={style.modalContent}>
                {modalProps.content && modalProps.content[modalProps.page] 
                      ? modalProps.content[modalProps.page] 
                      : null}

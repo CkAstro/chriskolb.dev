@@ -25,6 +25,14 @@
    .clusterItem { width: var(--cluster-item-size); }
 }
 
+@media screen and (max-width: 725px) {
+   .clusterContainer {
+      --cluster-item-size: 100%;
+      max-width: 488px;
+   }
+   .clusterItem { width: 488px; }
+}
+
 @media screen and (max-width: 550px) {
    .clusterContainer { max-width: 488px; }
    .clusterItem { width: 100%; }
