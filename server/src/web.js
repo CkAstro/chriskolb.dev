@@ -4,7 +4,7 @@ import express from 'express';
 import cors from 'cors';
 import fs from 'fs';
 
-import { PORT, MAIL } from './config/index.js';
+import { PORT, MAIL_TOKEN } from './config/index.js';
 'use strict';
 
 // ----- init ----- //
@@ -60,7 +60,7 @@ app.post('/api/contact', (req, res) => {
       service: 'gmail',
       auth: {
          user: 'astro.cekolb@gmail.com',
-         pass: MAIL,
+         pass: MAIL_TOKEN,
       }
    });
    const mailOptions = {
@@ -90,4 +90,4 @@ const unknownEndpoint = (request, response) => {
 app.use(unknownEndpoint);
 
 // ----- listen ----- //
-const server = app.listen(PORT, () => console.log(`DataVis server running on port ${PORT}`));
+const server = app.listen(PORT, () => console.log(`Web server running on port ${PORT}`));
