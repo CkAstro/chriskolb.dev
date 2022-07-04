@@ -26,41 +26,6 @@ const About = () => {
       <div className={style.flexColumns}>
          <SketchCard>
             <h1>Languages</h1>
-            <SketchItem percent='90'>Javascript</SketchItem>
-            <SketchItem percent='90'>HTML5 / CSS3 / SVG</SketchItem>
-            <SketchItem percent='80'>Python</SketchItem>
-            <SketchItem percent='80'>OpenGL / WebGL / GLSL</SketchItem>
-            <SketchItem percent='75'>FORTRAN</SketchItem>
-            <SketchItem percent='75'>Bash</SketchItem>
-            <SketchItem percent='75'>LaTeX</SketchItem>
-            <SketchItem percent='50'>C / C++</SketchItem>
-            <SketchItem percent='50'>PHP</SketchItem>
-            <SketchItem percent='25'>Java</SketchItem>
-         </SketchCard>
-         <SketchCard cardDelay='0.25s'>
-            <h1>Frameworks <span style={{fontWeight: '100'}}>&</span> APIs</h1>
-            <SketchItem percent='90'>React</SketchItem>
-            <SketchItem percent='90'>NodeJS / Express</SketchItem>
-            <SketchItem percent='90'>RESTful</SketchItem>
-            <SketchItem percent='90'>OpenMP / MPI</SketchItem>
-            <SketchItem percent='50'>Redux</SketchItem>
-            <SketchItem percent='50'>OpenACC</SketchItem>
-         </SketchCard>
-         <SketchCard cardDelay='0.5s'>
-            <h1>Tools <span style={{fontWeight: '100'}}>&</span> Software</h1>
-            <SketchItem percent='95'>NumPy / SciPy</SketchItem>
-            <SketchItem percent='90'>UNIX / Linux / Windows</SketchItem>
-            <SketchItem percent='90'>Microsoft Office Suite</SketchItem>
-            <SketchItem percent='80'>GiT</SketchItem>
-            <SketchItem percent='75'>PANDAS</SketchItem>
-            <SketchItem percent='75'>GIMP / Photoshop</SketchItem>
-            <SketchItem percent='50'>Blender</SketchItem>
-         </SketchCard>
-      </div>
-
-      <div style={{marginTop: '200px'}} className={style.flexColumns}>
-         <SketchCard>
-            <h1>Languages</h1>
             <SketchItem percent='90' itemDelay='0.05s'>Javascript</SketchItem>
             <SketchItem percent='90' itemDelay='0.10s'>HTML5 / CSS3 / SVG</SketchItem>
             <SketchItem percent='80' itemDelay='0.15s'>Python</SketchItem>
