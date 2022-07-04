@@ -19,7 +19,7 @@ const Footer = () => {
       <a href='https://github.com/CkAstro' target='_blank'><Icons.GitHub size={24}/></a>
       <a href='https://www.linkedin.com/in/christopher-kolb-071334232/' target='_blank'><Icons.LinkedIn size={24}/></a>
       <div className={style.email}>astro.cekolb@gmail.com</div>
-      <div className={style.copyright}>Copyright Christopher Kolb, 2022</div>
+      <div className={style.copyright}>Site design by me. Copyright Christopher Kolb, 2022</div>
    </div>;
 }
 
