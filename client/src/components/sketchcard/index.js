@@ -2,20 +2,20 @@ import { useRef } from 'react'
 import useIsVisible from '../../hooks/useisvisible';
 import style from './sketchcard.module.css';
 
-const SketchCard = ({ children }) => {
+const SketchCard = ({ cardDelay='0s', children }) => {
    const divRef = useRef(null);
    const isVisible = useIsVisible(divRef, true);
 
    return (
-      <div ref={divRef} className={`${style.sketchCard} ${isVisible ? style.active : ''}`}>
+      <div ref={divRef} style={{'--card-delay': cardDelay}} className={`${style.sketchCard} ${isVisible ? style.active : ''}`}>
          {children}
       </div>
    );
 }
 
-const SketchItem = ({ percent, children }) => {
+const SketchItem = ({ percent, itemDelay='0s', children }) => {
    return (
-      <div className={style.sketchItem}>
+      <div style={{'--item-delay': itemDelay}} className={style.sketchItem}>
          <div style={{'--width': `${percent}%`}}className={style.sketchItemBar}>
             {children}
          </div>

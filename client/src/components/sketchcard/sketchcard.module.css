@@ -1,6 +1,9 @@
 
 /* ----- SketchCard ----- */
 .sketchCard {
+   --card-delay: 0s;
+   --default-delay: 0.5s;
+   --card-animation: 2s;
    --gap: 20px;
    --sketch-background: repeating-linear-gradient(
       45deg,
@@ -28,9 +31,10 @@
 }
 
 .sketchCard.active {
-   animation: 2.5s 0.5s 1 sketch1;
-   -moz-animation: 2.5s 0.5s 1 sketch1;
-   -webkit-animation: 2.5s 0.5s 1 sketch1;
+   --net-card-delay: calc( var(--card-delay) + var(--default-delay) );  /* 0.5 + n */
+   animation: var(--card-animation) var(--net-card-delay) 1 sketch1;    /* 0.5 + n + 2 = 2.5 + n */
+   -moz-animation: var(--card-animation) var(--net-card-delay) 1 sketch1;
+   -webkit-animation: var(--card-animation) var(--net-card-delay) 1 sketch1;
 
    animation-fill-mode: forwards;
    -moz-animation-fill-mode: forwards;
@@ -73,7 +77,9 @@
 
 
 /* ----- SketchItem ----- */
-.sketchItem {
+.sketchCard .sketchItem {
+   --item-delay: 0s;
+   --item-animation: 1.5s;
    box-sizing: border-box;
    position: relative;
    margin: 6px 0px;
@@ -83,9 +89,12 @@
 }
 
 .sketchCard.active .sketchItem {
-   animation: 2.0s 2.25s 1 sketch2;
-   -moz-animation: 2.0s 2.25s 1 sketch2;
-   -webkit-animation: 2.0s 2.25s 1 sketch2;
+   /* 0.5 + n + 2 + m = 2.5 + n + m */
+   /* 1.5 + 2.5 + n + m = 4.0 + n + m */
+   --net-item-delay: calc(var(--net-card-delay) + var(--card-animation) + var(--item-delay));
+   animation: var(--item-animation) var(--net-item-delay) 1 sketch2;
+   -moz-animation: var(--item-animation) var(--net-item-delay) 1 sketch2;
+   -webkit-animation: var(--item-animation) var(--net-item-delay) 1 sketch2;
 
    animation-fill-mode: forwards;
    -moz-animation-fill-mode: forwards;
@@ -118,7 +127,10 @@
    }
 }
 
-.sketchItemBar {
+.sketchCard .sketchItem .sketchItemBar {
+   --itembar-delay: 0.05s;
+   --itembar-animation: 1.0s;
+
    background: var(--color-white);
    border-right: 2px solid var(--color-primary);
    white-space: nowrap;
@@ -131,10 +143,13 @@
    visibility: hidden;
 }
 
-.sketchCard.active .sketchItemBar {
-   animation: 1.5s 4.0s 1 sketch3;
-   -moz-animation: 1.5s 4.0s 1 sketch3;
-   -webkit-animation: 1.5s 4.0s 1 sketch3;
+.sketchCard.active .sketchItem .sketchItemBar {
+   /* 2.5 + n + m + 1.5 = 4.0 + n + m */
+   --net-itembar-delay: calc(var(--net-item-delay) + var(--item-animation) + var(--itembar-delay));
+
+   animation: var(--itembar-animation) var(--net-itembar-delay) 1 sketch3;
+   -moz-animation: var(--itembar-animation) var(--net-itembar-delay) 1 sketch3;
+   -webkit-animation: var(--itembar-animation) var(--net-itembar-delay) 1 sketch3;
 
    animation-fill-mode: forwards;
    -moz-animation-fill-mode: forwards;
