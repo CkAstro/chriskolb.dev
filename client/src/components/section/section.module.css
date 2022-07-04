@@ -13,6 +13,6 @@
    padding: 0;
 }
 
-@media only screen and (max-width: 550px) {
-   .sectionContainer { max-height: 2160px !important; }
+@media only screen and (max-width: 750px) {
+   .sectionContainer { max-height: none !important; }
 }
