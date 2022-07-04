@@ -22,7 +22,7 @@ const Main = () => {
       <ContentModal/>
       <Navbar scrollValue={scrollValue}/>
       <Section navId='home' styleAdjust={{height: '100vh', background: 'var(--color-black)', paddingTop: '0'}}><Header/></Section>
-      <Section navId='about' isContent styleAdjust={{minHeight: '100vh', background: 'var(--color-white)'}}><About/></Section>
+      <Section navId='about' isContent styleAdjust={{minHeight: 'min(100vh, 1440px)', maxHeight: '1440px', background: 'var(--color-white)'}}><About/></Section>
       <Section navId='projects' isContent styleAdjust={{background: 'var(--color-white)'}}><Projects/></Section>
       <Section navId='research' isContent styleAdjust={{background: '#568ea3'}}><Research/></Section>
       <Section navId='contact' isContent styleAdjust={{minHeight: '100vh', background: 'var(--color-white)'}}><Contact/></Section>
