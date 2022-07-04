@@ -11,7 +11,7 @@
    flex-direction: column;
    align-items: flex-start;
    padding: 40px 40px;
-   color: #999;
+   color: var(--color-white);
 }
 
 .headerContainer h1 {
