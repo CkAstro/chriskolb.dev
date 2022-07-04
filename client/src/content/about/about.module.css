@@ -7,7 +7,7 @@
 
 .introContainer {
    text-align: center;
-   margin-bottom: 100px;
+   margin-bottom: 50px;
    color: var(--color-black);
 }
 
@@ -60,4 +60,20 @@
    justify-content: center;
    gap: var(--gap);
    padding: 0 var(--gap);
+}
+
+.introContainer .linkIcon {
+   opacity: 0;
+   visibility: hidden;
+   margin-top: 20px;
+}
+
+.introContainer.active .linkIcon {
+   animation: 0.5s var(--delay) 1 reveal;
+   -moz-animation: 0.5s var(--delay) 1 reveal;
+   -webkit-animation: 0.5s var(--delay) 1 reveal;
+
+   animation-fill-mode: forwards;
+   -moz-animation-fill-mode: forwards;
+   -webkit-animation-fill-mode: forwards;
 }
