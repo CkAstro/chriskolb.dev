@@ -3,7 +3,7 @@
 .sketchCard {
    --card-delay: 0s;
    --default-delay: 0.5s;
-   --card-animation: 2s;
+   --card-animation: 1.5s;
    --gap: 20px;
    --sketch-background: repeating-linear-gradient(
       45deg,
@@ -79,7 +79,7 @@
 /* ----- SketchItem ----- */
 .sketchCard .sketchItem {
    --item-delay: 0s;
-   --item-animation: 1.5s;
+   --item-animation: 0.5s;
    box-sizing: border-box;
    position: relative;
    margin: 6px 0px;
@@ -128,12 +128,13 @@
 }
 
 .sketchCard .sketchItem .sketchItemBar {
-   --itembar-delay: 0.05s;
-   --itembar-animation: 1.0s;
+   --itembar-delay: 0.1s;
+   --itembar-animation: 0.5s;
 
    background: var(--color-white);
    border-right: 2px solid var(--color-primary);
    white-space: nowrap;
+   text-overflow: ' ';
    overflow: hidden;
    margin: 0;
    padding: 4px 6px;
