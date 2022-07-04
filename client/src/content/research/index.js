@@ -7,7 +7,7 @@ import style from './research.module.css';
 const Research = () => {
    return <>
       <div className={style.headerContainer}>
-         <h1 className={style.style1}>Astrophysics <span style={{fontWeight: '900'}}>Research</span></h1>
+         <h1 style={{color: 'var(--color-white)'}} className={style.style1}>Astrophysics <span style={{fontWeight: '900'}}>Research</span></h1>
       </div>
       <Cluster>
          <Binary/>
