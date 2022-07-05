@@ -36,9 +36,9 @@ const Projects = () => {
       
       <InteractiveHeader/>
       <Cluster>
-         <Emission/>
-         <CSM/>
          <Instability/>
+         <CSM/>
+         <Emission/>
       </Cluster>
    </>;
 }

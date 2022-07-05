@@ -21,9 +21,11 @@ const reversi = {
             
             <p>The front-end is created in React and uses a Websocket and RESTful API calls to communicate with the server. The back-end runs on Node.js with Express to handle those API requests and server/client communication. All game logic is done server-side to prevent cheating.</p>
 
-            <a href='https://reversi.chriskolb.dev'><FancyButton.Style2>Play Now</FancyButton.Style2></a>
+            <p>Continue reading for instructions.</p>
 
-            <p>or, continue reading for instructions.</p>
+            <a href='https://reversi.chriskolb.dev' target='_blank'>
+               <FancyButton.Style2>Play Now</FancyButton.Style2>
+            </a>
          </div>
       </ContentPage>,
 

@@ -19,12 +19,17 @@ const App = () => {
    const [ sliderValue, setSliderValue ] = useState(95);
    const [ editMode, setEditMode ] = useState(false);
    const [ textValue, setTextValue ] = useState('9.5');
+   const [ canvasWidth, setCanvasWidth ] = useState(Math.min(600, window.innerWidth));
    const [ scene, setScene ] = useState({
       nu: 9.5,
       unHideCSM: true, 
       volDim: 256,
       camera: { zoom: -1.5, azi: 0.0, pol: 0.0 }, 
    });
+
+   useEffect(() => {
+      setCanvasWidth(Math.min(500, window.innerWidth));
+   }, [window.innerWidth]);
 
    const updateCamera = (gl, mouseInfo) => {
       const newScene = { ...scene };
@@ -105,15 +110,14 @@ const App = () => {
       }, 2000);
    }, []);
 
-   return <div className={style.contentContainer}>
-      <h1>Synchrotron Emission from a Supernova</h1>
+   return <>
       <GL2Canvas
          draw={drawScene}
          scene={scene}
          objects={objs}
          onInteract={updateCamera}
-         setStyle={{ width: '600px', height: '400px', margin: '0 auto' }}
-         canvasStyle={{ width: '600px', height: '400px' }}
+         setStyle={{ width: `${canvasWidth}px`, height: '400px', margin: '0 auto' }}
+         canvasStyle={{ width: `${canvasWidth}px`, height: '400px' }}
       />
       <div className={style.controllContainer}>
          <input type='range'
@@ -127,7 +131,7 @@ const App = () => {
          </div>
          <div className={`noselect ${style.csmButton}`} onClick={toggleCSM}>Toggle CSM</div>
       </div>
-   </div>;
+   </>;
 }
 
 export default App;

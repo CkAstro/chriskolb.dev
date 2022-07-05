@@ -50,7 +50,6 @@ const NetworkDisplay = ({ draw, mask, setOutput }) => {
 
    useEffect(() => {
       if (!mask) return setOutput(Array(10).fill({z: null, a: null}));
-      console.log('mask', mask);
       const l1Active = layer1Data.map((data, ind) => {
          let z = data.bias;
          for (let i=0; i<data.weights.length; i++) {

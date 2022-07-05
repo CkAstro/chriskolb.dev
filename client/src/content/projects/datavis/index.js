@@ -21,7 +21,9 @@ const datavis = {
 
             <p>The front-end is created in React and uses a custom WebGL/GLSL implementation to quickly render volumetric data mapped to planar and spherical shapes, or shown as an iso-surface (a surface of constant value). The back-end runs on Node.js with Express and will process incomming datasets to add an easily-renderable data format to the API response.</p>
 
-            <a href='https://datavis.chriskolb.dev'><FancyButton.Style2>View App</FancyButton.Style2></a>
+            <a href='https://datavis.chriskolb.dev' target='_blank'>
+               <FancyButton.Style2>View App</FancyButton.Style2>
+            </a>
          </div>
       </ContentPage>,
 

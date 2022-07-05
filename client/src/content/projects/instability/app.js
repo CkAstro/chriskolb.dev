@@ -17,6 +17,7 @@ const drawScene = (gl, scene, objects) => {
 const App = () => {
    const [ slowMo, setSlowMo ] = useState(false);
    const [ pause, _setPause ] = useState(false);
+   const [ canvasWidth, setCanvasWidth ] = useState(Math.min(500, window.innerWidth));
    const [ scene, _setScene ] = useState({
       volDim: 256,
       image: 0,
@@ -28,6 +29,10 @@ const App = () => {
       sceneRef.current = data;
       _setScene(data);
    }
+
+   useEffect(() => {
+      setCanvasWidth(Math.min(500, window.innerWidth));
+   }, [window.innerWidth]);
 
    const incrementImage = arg => {
       if (pauseRef.current && !arg) return;
@@ -74,28 +79,35 @@ const App = () => {
       _setPause(data);
    }
    const handlePause = () => setPause(!pauseRef.current);
-   const handleSlowMotion = () => setSlowMo(!slowMo);
+   const handleSlowMotion = () => {
+      setSlowMo(!slowMo);
+      setPause(false);
+   }
    const handlePrev = () => decrementImage();
    const handleNext = () => incrementImage(true);
 
+   const prevButton = <div className={`noselect ${style.interactButton} ${pause ? '' : style.hidden}`} onClick={handlePrev}>&laquo; prev</div>;
+   const pauseButton = <div className={`noselect ${style.interactButton} ${pause ? style.active : null}`} onClick={handlePause}>{pause ? 'play' : 'pause'}</div>;
+   const slowmoButton = <div className={`noselect ${style.interactButton} ${slowMo ? style.active : null}`} onClick={handleSlowMotion}>{slowMo ? 'normal' : 'slow-mo'}</div>;
+   const nextButton = <div className={`noselect ${style.interactButton} ${pause ? '' : style.hidden}`} onClick={handleNext}>next &raquo;</div>;
 
-   return <div className={style.contentContainer}>
-      <h1>A Rayleigh-Taylor Instability</h1>
+
+   return <>
       <GL2Canvas
          draw={drawScene}
          scene={scene}
          objects={[null]}
          onInteract={updateCamera}
-         setStyle={{ width: '500px', height: '400px', margin: '0 auto' }}
-         canvasStyle={{ width: '500px', height: '400px', background: 'black' }}
+         setStyle={{ width: `${canvasWidth}px`, height: '400px', margin: '0 auto' }}
+         canvasStyle={{ width: `${canvasWidth}px`, height: '400px', background: 'black' }}
       />
       <div className={style.buttonContainer}>
-         <div className={`noselect ${style.interactButton}`} onClick={handlePrev}>&laquo; prev</div>
-         <div className={`noselect ${style.interactButton} ${pause ? style.active : null}`} onClick={handlePause}>pause</div>
-         <div className={`noselect ${style.interactButton} ${slowMo ? style.active : null}`} onClick={handleSlowMotion}>slow-mo</div>
-         <div className={`noselect ${style.interactButton}`} onClick={handleNext}>next &raquo;</div>
+         {prevButton}
+         {pauseButton}
+         {slowmoButton}
+         {nextButton}
       </div>
-   </div>
+   </>;
 }
 
 export default App;

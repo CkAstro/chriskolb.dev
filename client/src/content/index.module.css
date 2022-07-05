@@ -17,6 +17,10 @@
    box-sizing: border-box;
 }
 
+.contentContainer h1 {
+   text-align: left;
+}
+
 .contentContainer .center {
    display: flex;
    align-items: center;

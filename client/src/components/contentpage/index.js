@@ -1,8 +1,8 @@
 import style from './contentpage.module.css';
 
-const ContentPage = ({ children }) => {
+const ContentPage = ({ setStyle, children }) => {
    return (
-      <div className={style.contentPage}>
+      <div style={setStyle} className={style.contentPage}>
          {children}
       </div>
    );

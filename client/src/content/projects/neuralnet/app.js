@@ -26,6 +26,12 @@ const App = () => {
    const [ normalizedInput, setNormalizedInput ] = useState(null);
    const [ output, setOutput ] = useState(Array(10).fill({z: null, a: null, i: null}));
    const [ userResponse, setUserResponse ] = useState(null);
+   const [ displayIsHidden, setDisplayIsHidden ] = useState(false);
+
+   useEffect(() => {
+      if (window.innerWidth < 830) return setDisplayIsHidden(true);
+      setDisplayIsHidden(false);
+   }, [window.innerWidth]);
 
    const handleInteract = (ctx, mouseInfo, data) => {
       if (!mouseInfo.isActive) return;
@@ -84,8 +90,12 @@ const App = () => {
       <p>If you would like to help build this system, please select the number you drew from above, and it will be submitted to the server.</p>
    </div>;
 
-   return <div className={style.contentContainer}>
-      <h1>Neural Network</h1>
+   const networkDisplay = displayIsHidden 
+      ? <NetworkDisplay draw={() => null} mask={mask} setOutput={setOutput}/> 
+      : <NetworkDisplay draw={drawCanvas} mask={mask} setOutput={setOutput}/>
+   ;
+
+   return (
       <div className={style.networkContainer}>
          <div className={style.interactContainer}>
             <NetworkInput
@@ -97,9 +107,9 @@ const App = () => {
             <NetworkOutput mask={mask} output={output} handleClear={handleClear} userResponse={userResponse}/>
             <div className={style.guessContainer}>{userResponse ? afterResponseMessage : buildGuess()}</div>
          </div>
-         <NetworkDisplay draw={drawCanvas} mask={mask} setOutput={setOutput}/>
+         {networkDisplay}
       </div>
-   </div>
+   );
 }
 
 export default App;

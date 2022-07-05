@@ -1,12 +1,7 @@
 
 .imageContainer { composes: imageContainer from '../../index.module.css'; }
 .contentContainer { composes: contentContainer from '../../index.module.css'; }
-
-.contentContainer {
-   --button-size: 50px;
-   --button-gap: 12px;
-   --canvas-size: 112px;
-}
+.center { composes: center from '../../index.module.css'; }
 
 .contentContainer h1 {
    margin-bottom: 12px;
@@ -15,6 +10,9 @@
 
 /* ----- main container (app.js) ----- */
 .networkContainer {
+   --button-size: 50px;
+   --button-gap: 12px;
+   --canvas-size: 112px;
    display: flex;
    gap: var(--button-gap);
    justify-content: center;
@@ -26,6 +24,10 @@
    gap: var(--button-gap);
    width: calc( 4*var(--canvas-size) + 3*var(--button-gap) );
    flex-wrap: wrap;
+}
+
+@media only screen and (max-width: 830px) {
+   .displayContainer { display: none; }
 }
 
 /* ----- input + output container (app.js) ----- */

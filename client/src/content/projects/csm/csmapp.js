@@ -67,14 +67,14 @@ const CSMApp = () => {
       </div>
 
       <div className={style.canvasGrid}>
+         <div className={style.rightGrid}>
+            <PolarPlot data={polarData} setDataPoint={setDataPoint}/>
+         </div>
          <div className={style.leftGrid}>
             <AngularPlot data={angularData} setDataPoint={setDataPoint}/>
          </div>
          <div className={style.leftGrid}>
             <RadialPlot data={radialData} setDataPoint={setDataPoint}/>
-         </div>
-         <div className={style.rightGrid}>
-            <PolarPlot data={polarData} setDataPoint={setDataPoint}/>
          </div>
       </div>
    </>;
