@@ -1,6 +1,7 @@
 import Showcase from '../../../components/showcase';
 import ContentPage from '../../../components/contentpage';
 import FancyButton from '../../../components/fancybutton';
+import Icons from '../../../components/icons';
 import style from './reversi.module.css';
 
 const reversi = {
@@ -15,7 +16,7 @@ const reversi = {
             <img src={require('./reversi.png')}/>
          </div>
          <div className={style.contentContainer}>
-            <h1 style={{fontWeight: '100'}}>Multiplayer <span style={{fontWeight: '700'}}>Reversi</span></h1>
+            <h1 style={{fontWeight: '100'}}><a href='https://github.com/CkAstro/reversi' target='_blank' title='View on GitHub'><Icons.GitHub fill='black' size={24}/></a> Multiplayer <span style={{fontWeight: '700'}}>Reversi</span></h1>
 
             <p>Play Reversi (aka Othello) online with your friends in this web-app which supports multiple concurrent games, live-game observation, replay mode, and more.</p>
             
