@@ -41,8 +41,8 @@ const GL2Canvas = ({ draw, scene, objects, onInteract, setStyle, canvasStyle }) 
       canvas.addEventListener('touchmove', e => e.preventDefault());
    }, []);
 
-   const handleMouseDown = event => {
-      event.preventDefault();
+   const handleMouseDown = (event, prevent=true) => {
+      if (prevent) event.preventDefault();
       const location = { x: event.clientX, y: event.clientY };
       const mouseInfo = {
          clickLocation: location,
@@ -58,12 +58,13 @@ const GL2Canvas = ({ draw, scene, objects, onInteract, setStyle, canvasStyle }) 
       setIsActive(true);
    }
 
-   const handleMouseUp = event => {
-      event.preventDefault();
+   const handleMouseUp = (event, prevent=true) => {
+      if (prevent) event.preventDefault();
       setIsActive(false);
    }
 
-   const handleMouseMove = event => {
+   const handleMouseMove = (event, prevent=true) => {
+      if (prevent) event.preventDefault();
       const location = { x: event.clientX, y: event.clientY };
       const mouseInfo = {
          clickLocation: clickLocation,
@@ -94,15 +95,15 @@ const GL2Canvas = ({ draw, scene, objects, onInteract, setStyle, canvasStyle }) 
    }
 
    const handleTouchStart = event => {
-      handleMouseDown(event.nativeEvent.changedTouches[0]);
+      handleMouseDown(event.nativeEvent.changedTouches[0], false);
    }
 
    const handleTouchEnd = event => {
-      handleMouseDown(event.nativeEvent.changedTouches[0]);
+      handleMouseUp(event.nativeEvent.changedTouches[0], false);
    }
 
    const handleTouchMove = event => {
-      handleMouseMove(event.nativeEvent.changedTouches[0]);
+      handleMouseMove(event.nativeEvent.changedTouches[0], false);
    }
 
    return <div style={setStyle}>

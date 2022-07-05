@@ -37,8 +37,8 @@ const InteractiveCanvas = ({ draw, onInteract, data, setStyle }) => {
       canvas.addEventListener('touchmove', e => e.preventDefault());
    }, []);
 
-   const handleMouseDown = event => {
-      event.preventDefault();
+   const handleMouseDown = (event, prevent=true) => {
+      if (prevent) event.preventDefault();
       const rect = canvasRef.current.getBoundingClientRect();
       const location = { x: event.clientX, y: event.clientY };
       const mouseInfo = {
@@ -55,8 +55,8 @@ const InteractiveCanvas = ({ draw, onInteract, data, setStyle }) => {
       setIsActive(true);
    }
 
-   const handleMouseUp = event => {
-      event.preventDefault();
+   const handleMouseUp = (event, prevent=true) => {
+      if (prevent) event.preventDefault();
       const rect = canvasRef.current.getBoundingClientRect();
       const location = { x: event.clientX, y: event.clientY };
       const mouseInfo = {
@@ -71,8 +71,8 @@ const InteractiveCanvas = ({ draw, onInteract, data, setStyle }) => {
       setIsActive(false);
    }
 
-   const handleMouseMove = event => {
-      event.preventDefault();
+   const handleMouseMove = (event, prevent=true) => {
+      if (prevent) event.preventDefault();
       const rect = canvasRef.current.getBoundingClientRect();
       const location = { x: event.clientX, y: event.clientY };
       const mouseInfo = {
@@ -119,15 +119,15 @@ const InteractiveCanvas = ({ draw, onInteract, data, setStyle }) => {
    }
 
    const handleTouchStart = event => {
-      handleMouseDown(event.nativeEvent.changedTouches[0]);
+      handleMouseDown(event.nativeEvent.changedTouches[0], false);
    }
 
    const handleTouchEnd = event => {
-      handleMouseDown(event.nativeEvent.changedTouches[0]);
+      handleMouseDown(event.nativeEvent.changedTouches[0], false);
    }
 
    const handleTouchMove = event => {
-      handleMouseMove(event.nativeEvent.changedTouches[0]);
+      handleMouseMove(event.nativeEvent.changedTouches[0], false);
    }
 
    return <canvas ref={canvasRef}
