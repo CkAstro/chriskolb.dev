@@ -123,7 +123,7 @@ const InteractiveCanvas = ({ draw, onInteract, data, setStyle }) => {
    }
 
    const handleTouchEnd = event => {
-      handleMouseDown(event.nativeEvent.changedTouches[0], false);
+      handleMouseUp(event.nativeEvent.changedTouches[0], false);
    }
 
    const handleTouchMove = event => {
