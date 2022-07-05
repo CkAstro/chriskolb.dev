@@ -31,5 +31,10 @@ const sendUserMessage = data => {
    return request.then(response => response.data);
 } 
 
-export { getCSMData, getNeuralNet, putNeuralNet, getImage, sendUserMessage };
-export default { getCSMData, getNeuralNet, putNeuralNet, getImage, sendUserMessage };
+const getResume = () => {
+   const request = axios.get(`${baseUrl}/resume`);
+   return request.then(response => response.data);
+}
+
+export { baseUrl, getCSMData, getNeuralNet, putNeuralNet, getImage, sendUserMessage, getResume };
+export default { baseUrl, getCSMData, getNeuralNet, putNeuralNet, getImage, sendUserMessage, getResume };

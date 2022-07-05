@@ -50,6 +50,10 @@ app.post('/api/nn', (req, res) => {
    res.send(true);
 });
 
+app.get('/api/resume', (req, res) => {
+   res.sendFile('./src/data/resume/resume.pdf', {root: '.'});
+});
+
 app.get('/api/img/:file', (req, res) => {
    res.sendFile(`./src/data/img/${req.params.file}`, {root: '.'});
 });

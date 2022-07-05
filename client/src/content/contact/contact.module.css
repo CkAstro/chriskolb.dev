@@ -31,7 +31,16 @@ h1.style1 {
    margin-top: 0;
 }
 
+.footer .resume { margin: 6px; }
+.footer .resume a { text-decoration: none; color: var(--color-white); }
+
 .footer .copyright {
    position: relative;
    margin: 50px auto 0 auto;
+}
+
+@media only screen and (max-width: 500px) {
+   .footer { height: 20%; font-size: 14px; padding: 12px; }
+   .footer .resume { margin: 0px; }
+   .footer .copyright { margin: 12px auto; }
 }
