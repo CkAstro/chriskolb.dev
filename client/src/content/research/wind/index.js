@@ -3,10 +3,10 @@ import ContentPage from '../../../components/contentpage';
 import style from './wind.module.css';
 
 const wind = {
-   title: 'Stellar Wind',
+   title: <h1 style={{fontWeight: '400', color: 'var(--color-white)'}}>Stellar <span style={{fontWeight: '900'}}>Wind</span></h1>,
    components: 'Python / Post-Processing / Algorithms',
    image: require('./TychoP_thumb.png'),
-   description: 'What is stellar wind? Learn how and why stars expel matter.',
+   description: <div style={{color: 'var(--color-white)'}}>What is stellar wind? Learn how and why stars expel matter.</div>,
    pages: [
       <ContentPage>
          <div className={style.contentContainer}>

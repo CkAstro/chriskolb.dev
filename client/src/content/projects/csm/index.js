@@ -4,7 +4,7 @@ import CSMApp from './csmapp';
 import style from './csm.module.css';
 
 const csm = {
-   title: 'Circumstellar Data',
+   title: <h1 style={{fontWeight: '400'}}><span style={{fontWeight: '900'}}>Circumstellar</span> Data</h1>,
    components: 'HTML5 Canvas / REST / Post-Processing',
    image: require('./test_img.png'),
    description: 'Select from 36 CSM research models and view + export data in detail.',

@@ -4,7 +4,7 @@ import App from './app';
 import style from './instability.module.css';
 
 const instability = {
-   title: 'Fluid Instabilities',
+   title: <h1 style={{fontWeight: '400'}}>Fluid <span style={{fontWeight: '900'}}>Instabilities</span></h1>,
    components: 'React / WebGL / Fetch API',
    image: require('./instability.png'),
    description: 'Watch a fluid instability evolve in full 3D.',

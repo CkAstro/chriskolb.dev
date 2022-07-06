@@ -10,8 +10,8 @@ const Research = () => {
          <h1 style={{color: 'var(--color-white)'}} className={style.style1}>Astrophysics <span style={{fontWeight: '900'}}>Research</span></h1>
       </div>
       <Cluster>
-         <Binary/>
          <Wind/>
+         <Binary/>
          <CSNRs/>
       </Cluster>
    </>;

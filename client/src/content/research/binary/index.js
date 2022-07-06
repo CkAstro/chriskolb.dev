@@ -3,10 +3,10 @@ import ContentPage from '../../../components/contentpage';
 import style from './binary.module.css';
 
 const binary = {
-   title: 'Binary CSM',
+   title: <h1 style={{fontWeight: '400', color: 'var(--color-white)'}}><span style={{fontWeight: '900'}}>Binary</span> CSM</h1>,
    components: 'FORTRAN / MPI / HPC / Bash',
    image: require('./binary_thumb.png'),
-   description: 'Explore the unique environment around evolved stars before they supernova.',
+   description: <div style={{color: 'var(--color-white)'}}>Explore the unique environment around evolved stars before they supernova.</div>,
    pages: [
       <ContentPage>
          <div className={style.contentContainer}>
