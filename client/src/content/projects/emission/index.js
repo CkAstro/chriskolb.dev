@@ -4,7 +4,7 @@ import App from './app';
 import style from './emission.module.css';
 
 const emission = {
-   title: <h1 style={{fontWeight: '400'}}>Supernova <span style={{fontWeight: '900'}}>Emission</span></h1>,
+   title: <span style={{fontWeight: '400'}}>Supernova <span style={{fontWeight: '900'}}>Emission</span></span>,
    components: 'WebGL / GLSL / Python / FORTRAN',
    image: require('./emission.png'),
    description: 'Interact with a supernova simulation and see how emission changes with the view.',

@@ -5,7 +5,7 @@ import Icons from '../../../components/icons';
 import style from './datavis.module.css';
 
 const datavis = {
-   title: <div style={{fontWeight: '100'}}>use <span style={{fontWeight: '900'}}>DataVis</span> to view data anywhere</div>,
+   title: <span style={{fontWeight: '100'}}>use <span style={{fontWeight: '900'}}>DataVis</span> to view data anywhere</span>,
    components: 'WebGL / GLSL / React / Node / REST',
    image: require('./datavis_display.png'),
    description: 'Upload and view volumetric scalar data.',

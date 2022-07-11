@@ -5,7 +5,7 @@ import Icons from '../../../components/icons';
 import style from './reversi.module.css';
 
 const reversi = {
-   title: <><span style={{fontWeight: '100'}}>Multiplayer</span> <span style={{fontWeight: '700'}}>Reversi</span></>,
+   title: <span style={{fontWeight: '100'}}>Multiplayer <span style={{fontWeight: '700'}}>Reversi</span></span>,
    components: 'React / Node / MongoDB / Websockets',
    image: require('./reversi_tablet.png'),
    description: 'Online multi-player board game. Supports multiple games, observer mode, and replays.',

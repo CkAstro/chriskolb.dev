@@ -42,7 +42,6 @@ const ClusterItem = ({ info }) => {
       >
          <div className={`${style.clusterItemContent} ${isMouseOver ? style.mouseOver : null}`}>
             <img src={info.image}/>
-            {/* <p style={{color: 'white', position: 'absolute', top: '0', bottom: '0', left: '0', right: '0'}}>{`${isMouseOver}, ${isEnabled}, ${touchPos.x}`}</p> */}
             <div className={style.topContent}>
                <h1>{info.title}</h1>
                <h2>{info.components}</h2>

@@ -3,10 +3,10 @@ import ContentPage from '../../../components/contentpage';
 import style from './csnrs.module.css';
 
 const csnrs = {
-   title: <h1 style={{fontWeight: '400', color: 'var(--color-white)'}}>Supernova <span style={{fontWeight: '900'}}>Remnants</span></h1>,
+   title: <span style={{fontWeight: '400', color: 'var(--color-white)'}}>Supernova <span style={{fontWeight: '900'}}>Remnants</span></span>,
    components: 'FORTRAN / Data-Collection / HPC',
    image: require('./csnrs.png'),
-   description: <div style={{color: 'var(--color-white)'}}>What is stellar wind? Learn how and why stars expel matter.</div>,
+   description: <span style={{color: 'var(--color-white)'}}>What is stellar wind? Learn how and why stars expel matter.</span>,
    pages: [
       <ContentPage>
       <div className={style.contentContainer}>
