@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import NetworkInput from './networkinput';
 import NetworkOutput from './networkoutput';
 import NetworkDisplay from './networkdisplay';
+import api from '../../../api';
 import utils from './utils';
 import style from './neuralnet.module.css';
 
@@ -86,13 +87,29 @@ const App = () => {
       ;
    }
 
+   const handleSubmit = ind => {
+      api.putNeuralNet({ mask, output, userResponse, guess: ind })
+         .then(() => setUserResponse('submit'));
+   }
+
    const afterResponseMessage = <div className={style.responseMessage}>
       <p>If you would like to help build this system, please select the number you drew from above, and it will be submitted to the server.</p>
    </div>;
 
+   const afterSubmitMessage = <div className={style.responseMessage}>
+      <p>Thank you for helping to build the network!</p>
+   </div>
+
    const networkDisplay = displayIsHidden 
       ? <NetworkDisplay draw={() => null} mask={mask} setOutput={setOutput}/> 
       : <NetworkDisplay draw={drawCanvas} mask={mask} setOutput={setOutput}/>
+   ;
+
+   const guessAreaMessage = userResponse
+      ? (userResponse === 'submit'
+         ? afterSubmitMessage
+         : afterResponseMessage)
+      : buildGuess()
    ;
 
    return (
@@ -104,8 +121,8 @@ const App = () => {
                inputData={input}
                outputData={normalizedInput}
             />
-            <NetworkOutput mask={mask} output={output} handleClear={handleClear} userResponse={userResponse}/>
-            <div className={style.guessContainer}>{userResponse ? afterResponseMessage : buildGuess()}</div>
+            <NetworkOutput output={output} handleClear={handleClear} handleSubmit={handleSubmit} userResponse={userResponse}/>
+            <div className={style.guessContainer}>{guessAreaMessage}</div>
          </div>
          {networkDisplay}
       </div>
