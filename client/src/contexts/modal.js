@@ -48,12 +48,23 @@ const useModal = () => {
       setModalProps(updatedProps);
    }
 
+   const clearModalContent = () => {
+      const updatedProps = {
+         ...modalProps,
+         content: [null],
+         isActive: false,
+         page: 0,
+      }
+      setModalProps(updatedProps);
+   }
+
    const closeModal = () => {
       const updatedProps = {
          ...modalProps,
          isActive: false,
       }
       setModalProps(updatedProps);
+      setTimeout(() => clearModalContent(), 200);
    }
 
    return {
