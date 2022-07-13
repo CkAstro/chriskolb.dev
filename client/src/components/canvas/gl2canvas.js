@@ -1,7 +1,13 @@
 import { useState, useEffect, useRef } from 'react';
 
-const useGL2Canvas = (glRef, draw, scene, objects) => {
+const useGL2Canvas = (glRef, draw, setStyle, args) => {
    const canvasRef = useRef(null);
+   const renderRef = useRef(null);
+
+   const animate = time => {
+      draw(glRef.current, args);
+      renderRef.current = requestAnimationFrame(animate);
+   }
 
    // init gl instance
    useEffect(() => {
@@ -9,28 +15,25 @@ const useGL2Canvas = (glRef, draw, scene, objects) => {
       const gl = canvas.getContext('webgl2');
       gl.getExtension('OES_texture_float_linear');
 
-      const rect = canvas.getBoundingClientRect();
-      canvas.width = rect.width;
-      canvas.height = rect.height;
+      canvas.width = setStyle.width.slice(0, -2);
+      canvas.height = setStyle.height.slice(0, -2);
       gl.viewport(0, 0, canvas.width, canvas.height);
       glRef.current = gl;
-   }, []);
 
-   // redraw scene on change
-   useEffect(() => {
-      draw(glRef.current, scene, objects);
-   }, [draw, scene, objects]);
+      renderRef.current = requestAnimationFrame(animate);
+      return () => cancelAnimationFrame(renderRef.current);
+   }, []);
 
    return canvasRef;
 }
 
-const GL2Canvas = ({ draw, scene, objects, onInteract, setStyle, canvasStyle }) => {
+const GL2Canvas = ({ draw, onInteract, setStyle, ...args }) => {
    const [ isActive, setIsActive ] = useState(false);
    const [ mouseLocation, setMouseLocation ] = useState({ x: null, y: null });
    const [ clickLocation, setClickLocation ] = useState({ x: null, y: null });
 
    const glRef = useRef(null);
-   const canvasRef = useGL2Canvas(glRef, draw, scene, objects);
+   const canvasRef = useGL2Canvas(glRef, draw, setStyle, args);
    
    // this is necessary to get around 'passive' event listeners
    // see more here: https://github.com/facebook/react/issues/19651
@@ -106,9 +109,10 @@ const GL2Canvas = ({ draw, scene, objects, onInteract, setStyle, canvasStyle }) 
       handleMouseMove(event.nativeEvent.changedTouches[0], false);
    }
 
-   return <div style={setStyle}>
-      <canvas ref={canvasRef}
-         style={canvasStyle}
+   return (
+      <canvas 
+         ref={canvasRef}
+         style={setStyle}
 
          onMouseDown={handleMouseDown}
          onMouseUp={handleMouseUp}
@@ -120,7 +124,7 @@ const GL2Canvas = ({ draw, scene, objects, onInteract, setStyle, canvasStyle }) 
          onTouchEnd={handleTouchEnd}
          onTouchMove={handleTouchMove}
       />
-   </div>;
+   );
 }
 
 export default GL2Canvas;
