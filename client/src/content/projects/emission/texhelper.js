@@ -6,7 +6,8 @@
 //    data, but this is no faster than just recreating from image
 
 class TextureHelper {
-   constructor() {
+   constructor() { 
+      this.loaded = 0;
       this.textures = {
          data: [],
          cmap: [],
@@ -23,6 +24,7 @@ class TextureHelper {
 
    init(gl) {
       this.glInstance = gl;
+      this.loaded = 0;
       this.textures = {
          data: [],
          cmap: [],
@@ -30,8 +32,8 @@ class TextureHelper {
 
       // scaling process in data texture will lock up browser, delay added for CSS transition
       setTimeout(() => {
-         this.textures.data = this.textures.data.concat(this.loadDataFromImage('emission_256.png'));
          this.textures.cmap = this.textures.cmap.concat(this.loadCmapFromImage('emission_cmap.png'));
+         this.textures.data = this.textures.data.concat(this.loadDataFromImage('emission_256.png'));
       }, 750);
 
       this.isInit = true;
@@ -90,7 +92,7 @@ class TextureHelper {
          // loop through image and fill texture
          let sliceCount = Math.floor(volRes**0.5);
          if (volRes % sliceCount) sliceCount += 1;    // add one if not perfect square
-         const dataBuffer = new Float32Array(2*volRes*volRes);
+         const dataBuffer = new Float32Array(2*volRes*volRes*volRes);
          for (let k=0; k<volRes; k++) {
             // grab each slice, scale, and add to dataBuffer
             const x = k % sliceCount;
@@ -101,13 +103,15 @@ class TextureHelper {
                for (let i=0; i<volRes; i++) {
                   const jvExp = img.data[4*j*volRes+4*i+0] / 255.0 * (jvMax-jvMin) + jvMin + logdx; 
                   const kvExp = img.data[4*j*volRes+4*i+1] / 255.0 * (kvMax-kvMin) + kvMin + logdx;
-                  dataBuffer[2*j*volRes+2*i+0] = 10.0**jvExp;
-                  dataBuffer[2*j*volRes+2*i+1] = 10.0**kvExp;
+                  dataBuffer[2*k*volRes*volRes+2*j*volRes+2*i+0] = 10.0**jvExp;
+                  dataBuffer[2*k*volRes*volRes+2*j*volRes+2*i+1] = 10.0**kvExp;
                }
             }
-            // add to texture layer by layer
-            gl.texSubImage3D(gl.TEXTURE_3D, 0, 0, 0, k, volRes, volRes, 1, gl.RG, gl.FLOAT, dataBuffer);
          }
+         
+         // add to texture layer by layer
+         gl.texSubImage3D(gl.TEXTURE_3D, 0, 0, 0, 0, volRes, volRes, volRes, gl.RG, gl.FLOAT, dataBuffer);
+         this.loaded++;
       }
       image.crossOrigin = '';
       image.src = `${this.baseUrl}/${img}`;
@@ -115,4 +119,4 @@ class TextureHelper {
    }
 }
 
-export default new TextureHelper;
+export default TextureHelper;

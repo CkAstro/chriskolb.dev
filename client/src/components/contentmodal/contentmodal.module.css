@@ -47,8 +47,9 @@
 }
 
 @media only screen and (max-width: 550px) {
-   .modalContainer .modal { height: 85%; }
+   .modalContainer .modal { height: 90%; }
 }
+
 .modalContainer:not(.active) .modal {
    width: 0;
    height: 0;

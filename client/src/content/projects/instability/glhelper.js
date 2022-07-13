@@ -1,4 +1,5 @@
 // NOTE: this is a custom gl helper implementation
+//    - renderScene(...) expects image number to be set in 'scene.image'
 //    - majority of scene rendering stuff needs to be moved to Renderables
 
 import { mat4 } from 'gl-matrix';
@@ -151,6 +152,7 @@ class GLHelper {
    }
 
    renderScene(objects, scene, tex) {
+      if (!tex.data || !tex.data[scene.image] || !tex.cmap || !tex.cmap[0]) return;
       const gl = this.glInstance;
 
       // clear window 
@@ -186,4 +188,4 @@ class GLHelper {
    }
 }
 
-export default new GLHelper;
+export default GLHelper;

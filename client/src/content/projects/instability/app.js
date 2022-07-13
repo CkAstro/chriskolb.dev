@@ -1,16 +1,37 @@
 import { useState, useEffect, useRef } from 'react';
 import { GL2Canvas } from '../../../components/canvas';
-import glHelper from './glhelper';
-import texHelper from './texhelper';
+import GLHelper from './glhelper';
+import TextureHelper from './texhelper';
 import buildShader from './shader';
 import style from './instability.module.css';
 
-const drawScene = (gl, scene, objects) => {
-   if (!texHelper.isInit || texHelper.glInstance !== gl) texHelper.init(gl);
+// NOTE: this has been ported from pure javascript and still
+//    needs to be cleaned up
+
+// private globals
+let _showLoadingBar = true;   // for loadingbar quick hack
+let _lastScene = null;        // skip render if nothing changed
+
+const drawScene = (gl, {sceneRef, objsRef, texRef, renderRef}) => {
+   const scene = sceneRef.current;
+   const objects = objsRef.current || [null];
+   const texHelper = texRef.current;
+   const glHelper = renderRef.current;
+
+   if (texHelper.loaded === 41) _showLoadingBar = false;
+   if (_lastScene === scene) return;
+   _lastScene = sceneRef.current;
+
+   if (!texHelper.isInit || texHelper.glInstance !== gl) {
+      _showLoadingBar = true;
+      texHelper.init(gl);
+   }
+
    if (!glHelper.isInit || glHelper.glInstance !== gl) {
       const shader = buildShader(gl);
       glHelper.init(gl, shader);
    }
+
    glHelper.renderScene(objects, scene, texHelper.textures);
 }
 
@@ -36,9 +57,9 @@ const App = () => {
 
    const incrementImage = arg => {
       if (pauseRef.current && !arg) return;
-      const nextCount = sceneRef.current.image === 40 ? 0 : sceneRef.current.image + 1;
+      const nextCount = sceneRef.current.image > texRef.current.textures.data.length-2 ? 0 : sceneRef.current.image + 1;
       const newScene = {
-         ...scene,
+         ...sceneRef.current,
          image: nextCount,
       }
       setScene(newScene);
@@ -48,7 +69,7 @@ const App = () => {
       if (!pauseRef.current) return;
       const nextCount = sceneRef.current.image === 0 ? 40 : sceneRef.current.image - 1;
       const newScene = {
-         ...scene,
+         ...sceneRef.current,
          image: nextCount,
       }
       setScene(newScene);
@@ -63,7 +84,7 @@ const App = () => {
    const updateCamera = (gl, mouseInfo) => {
       const newScene = { ...scene };
       if (mouseInfo.deltaY) {
-         newScene.camera.zoom = newScene.camera.zoom - mouseInfo.deltaY/2000;
+         newScene.camera.zoom = newScene.camera.zoom - mouseInfo.deltaY/1000;
       } else if (!mouseInfo.isActive) {
          return;
       } else {
@@ -78,11 +99,13 @@ const App = () => {
       pauseRef.current = data;
       _setPause(data);
    }
+   
    const handlePause = () => setPause(!pauseRef.current);
    const handleSlowMotion = () => {
       setSlowMo(!slowMo);
       setPause(false);
    }
+
    const handlePrev = () => decrementImage();
    const handleNext = () => incrementImage(true);
 
@@ -91,23 +114,35 @@ const App = () => {
    const slowmoButton = <div className={`noselect ${style.interactButton} ${slowMo ? style.active : null}`} onClick={handleSlowMotion}>{slowMo ? 'normal' : 'slow-mo'}</div>;
    const nextButton = <div className={`noselect ${style.interactButton} ${pause ? '' : style.hidden}`} onClick={handleNext}>next &raquo;</div>;
 
+   const texHelper = new TextureHelper;
+   const glHelper = new GLHelper;
 
-   return <>
-      <GL2Canvas
-         draw={drawScene}
-         scene={scene}
-         objects={[null]}
-         onInteract={updateCamera}
-         setStyle={{ width: `${canvasWidth}px`, height: '400px', margin: '0 auto' }}
-         canvasStyle={{ width: `${canvasWidth}px`, height: '400px', background: 'black' }}
-      />
+   const texRef = useRef(texHelper);
+   const renderRef = useRef(glHelper);
+   const objsRef = useRef(null);
+
+   return (<>
       <div className={style.buttonContainer}>
          {prevButton}
          {pauseButton}
          {slowmoButton}
          {nextButton}
       </div>
-   </>;
+      <div className={style.canvasContainer}>
+         <GL2Canvas
+            draw={drawScene}
+            onInteract={updateCamera}
+            setStyle={{ width: `${canvasWidth}px`, height: `${4/5*canvasWidth}px`}}
+            sceneRef={sceneRef}
+            objsRef={objsRef}
+            texRef={texRef}
+            renderRef={renderRef}
+         />
+         <div className={style.loadingBar} style={_showLoadingBar ? {} : {display: 'none'}}>
+            <div>Loading...</div>
+         </div>
+      </div>
+   </>);
 }
 
 export default App;

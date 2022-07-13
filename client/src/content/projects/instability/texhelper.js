@@ -1,5 +1,5 @@
 // NOTE: this is a custom texture helper implementation
-//    - loadDataFromImage scales texture data for emission calculation
+//    - init() loads 41 data textures for animation
 
 // NOTE: on page switch, a new gl instance is created and this must recreate
 //    all textures; attempted to save texture buffer and recreate from buffer
@@ -7,6 +7,7 @@
 
 class TextureHelper {
    constructor() {
+      this.loaded = 0;
       this.textures = {
          data: [],
          cmap: [],
@@ -23,6 +24,7 @@ class TextureHelper {
 
    init(gl) {
       this.glInstance = gl;
+      this.loaded = 0;
       this.textures = {
          data: [],
          cmap: [],
@@ -108,6 +110,7 @@ class TextureHelper {
          }
          // add to texture layer by layer
          gl.texSubImage3D(gl.TEXTURE_3D, 0, 0, 0, 0, volRes, volRes, volRes, gl.RGBA, gl.FLOAT, dataBuffer);
+         this.loaded++;
       }
       image.crossOrigin = '';
       image.src = `${this.baseUrl}/${img}`;
@@ -115,4 +118,4 @@ class TextureHelper {
    }
 }
 
-export default new TextureHelper;
+export default TextureHelper;
