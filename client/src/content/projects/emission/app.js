@@ -18,7 +18,7 @@ const drawScene = (gl, {sceneRef, objsRef, texRef, renderRef}) => {
    const texHelper = texRef.current;
    const glHelper = renderRef.current;
 
-   if (texHelper.loaded === 1) _showLoadingBar = false;
+   _showLoadingBar = texHelper.loaded !== 1;
    if (_lastScene === scene) return;
    _lastScene = sceneRef.current;
 
@@ -40,6 +40,7 @@ const App = () => {
    const [ editMode, setEditMode ] = useState(false);
    const [ textValue, setTextValue ] = useState('9.5');
    const [ canvasWidth, setCanvasWidth ] = useState(Math.min(500, window.innerWidth));
+   const [ isLoaded, setIsLoaded ] = useState(false);
    const [ scene, _setScene ] = useState({
       nu: 9.5,
       unHideCSM: true, 
@@ -151,6 +152,11 @@ const App = () => {
       if (texRef.current.loaded) setScene({ ...sceneRef.current });
    }, [texRef.current.loaded]);
 
+   useEffect(() => {
+      if (_showLoadingBar) return setIsLoaded(false);
+      setIsLoaded(true);
+   }, [_showLoadingBar]);
+
    return <>
       <div className={style.canvasContainer}>
          <GL2Canvas
@@ -162,7 +168,7 @@ const App = () => {
             texRef={texRef}
             renderRef={renderRef}
          />
-         <div className={style.loadingBar} style={_showLoadingBar ? {} : {display: 'none'}}>
+         <div className={style.loadingBar} style={isLoaded ? {display: 'none'} : {}}>
             <div>Loading...</div>
          </div>
       </div>

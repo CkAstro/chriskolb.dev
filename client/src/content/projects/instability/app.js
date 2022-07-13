@@ -18,7 +18,7 @@ const drawScene = (gl, {sceneRef, objsRef, texRef, renderRef}) => {
    const texHelper = texRef.current;
    const glHelper = renderRef.current;
 
-   if (texHelper.loaded === 41) _showLoadingBar = false;
+   _showLoadingBar = texHelper.loaded !== 41;
    if (_lastScene === scene) return;
    _lastScene = sceneRef.current;
 
@@ -39,6 +39,7 @@ const App = () => {
    const [ slowMo, setSlowMo ] = useState(false);
    const [ pause, _setPause ] = useState(false);
    const [ canvasWidth, setCanvasWidth ] = useState(Math.min(500, window.innerWidth));
+   const [ isLoaded, setIsLoaded ] = useState(false);
    const [ scene, _setScene ] = useState({
       volDim: 256,
       image: 0,
@@ -121,6 +122,11 @@ const App = () => {
    const renderRef = useRef(glHelper);
    const objsRef = useRef(null);
 
+   useEffect(() => {
+      if (_showLoadingBar) return setIsLoaded(false);
+      setIsLoaded(true);
+   }, [_showLoadingBar]);
+
    return (<>
       <div className={style.buttonContainer}>
          {prevButton}
@@ -138,7 +144,7 @@ const App = () => {
             texRef={texRef}
             renderRef={renderRef}
          />
-         <div className={style.loadingBar} style={_showLoadingBar ? {} : {display: 'none'}}>
+         <div className={style.loadingBar} style={isLoaded ? {display: 'none'} : {}}>
             <div>Loading...</div>
          </div>
       </div>
