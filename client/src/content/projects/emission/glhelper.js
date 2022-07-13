@@ -108,7 +108,6 @@ class GLHelper {
 
    getProjectionMatrix() {
       const { width, height } = this.glInstance.canvas;
-      console.log(width, height);
       return mat4.perspective(
          mat4.create(),
          this.FoV * Math.PI / 180.0,

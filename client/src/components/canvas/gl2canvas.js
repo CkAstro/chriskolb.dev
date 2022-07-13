@@ -50,7 +50,7 @@ const GL2Canvas = ({ draw, onInteract, setStyle, ...args }) => {
       const mouseInfo = {
          clickLocation: location,
          mouseLocation: location,
-         lastMouseLocation: mouseLocation,
+         lastMouseLocation: prevent ? mouseLocation : null,
          deltaY: null,
          isActive: true,
       }

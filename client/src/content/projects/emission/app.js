@@ -32,8 +32,6 @@ const drawScene = (gl, {sceneRef, objsRef, texRef, renderRef}) => {
       glHelper.init(gl, shader);
    }
 
-   console.log(texHelper.loaded);
-
    glHelper.renderScene(objects, scene, texHelper.textures);
 }
 
@@ -63,7 +61,7 @@ const App = () => {
       const newScene = { ...sceneRef.current };
       if (mouseInfo.deltaY) {
          newScene.camera.zoom = newScene.camera.zoom - mouseInfo.deltaY/1000;
-      } else if (!mouseInfo.isActive) {
+      } else if (!mouseInfo.isActive || !mouseInfo.lastMouseLocation) {
          return;
       } else {
          newScene.camera.azi = newScene.camera.azi - (mouseInfo.lastMouseLocation.x - mouseInfo.mouseLocation.x);
@@ -147,6 +145,11 @@ const App = () => {
    const texRef = useRef(texHelper);
    const renderRef = useRef(glHelper);
    const objsRef = useRef(null);
+
+   // force loading bar out after data is loaded
+   useEffect(() => {
+      if (texRef.current.loaded) setScene({ ...sceneRef.current });
+   }, [texRef.current.loaded]);
 
    return <>
       <div className={style.canvasContainer}>

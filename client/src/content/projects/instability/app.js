@@ -85,7 +85,7 @@ const App = () => {
       const newScene = { ...scene };
       if (mouseInfo.deltaY) {
          newScene.camera.zoom = newScene.camera.zoom - mouseInfo.deltaY/1000;
-      } else if (!mouseInfo.isActive) {
+      } else if (!mouseInfo.isActive || !mouseInfo.lastMouseLocation) {
          return;
       } else {
          newScene.camera.azi = newScene.camera.azi - (mouseInfo.lastMouseLocation.x - mouseInfo.mouseLocation.x);
