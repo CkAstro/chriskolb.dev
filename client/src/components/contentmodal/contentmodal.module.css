@@ -54,6 +54,7 @@
    width: 0;
    height: 0;
    opacity: 0;
+   visibility: hidden;
 }
 
 .modalContainer .modal .modalContent {
@@ -145,4 +146,11 @@
    justify-content: center;
    align-items: center;
    text-align: center;
+}
+
+
+.modalContainer:not(.active) .closeButton,
+.modalContainer:not(.active) .nextButton,
+.modalContainer:not(.active) .prevButton {
+   visibility: hidden;
 }
