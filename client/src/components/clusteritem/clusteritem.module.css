@@ -68,7 +68,7 @@
    padding: 0 20px;
 }
 
-@media screen and (max-width: 1000px) {
+@media screen and (max-width: 1050px) {
    .clusterItemContainer {
       --cluster-gap: var(--secondary-spacing);
       --cluster-item-size: calc( (100% - var(--cluster-gap)) / 2 );
