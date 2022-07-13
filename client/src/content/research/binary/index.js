@@ -5,7 +5,7 @@ import style from './binary.module.css';
 const binary = {
    title: <span style={{fontWeight: '400', color: 'var(--color-white)'}}><span style={{fontWeight: '900'}}>Binary</span> CSM</span>,
    components: 'FORTRAN / MPI / HPC / Bash',
-   image: require('./binary_thumb.png'),
+   image: require('./binary.png'),
    description: <span style={{color: 'var(--color-white)'}}>Explore the unique environment around evolved stars before they supernova.</span>,
    pages: [
       <ContentPage>

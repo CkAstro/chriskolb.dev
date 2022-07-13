@@ -5,7 +5,7 @@ import style from './wind.module.css';
 const wind = {
    title: <span style={{fontWeight: '400', color: 'var(--color-white)'}}>Stellar <span style={{fontWeight: '900'}}>Wind</span></span>,
    components: 'Python / Post-Processing / Algorithms',
-   image: require('./TychoP_thumb.png'),
+   image: require('./wind.png'),
    description: <span style={{color: 'var(--color-white)'}}>What is stellar wind? Learn how and why stars expel matter.</span>,
    pages: [
       <ContentPage>
