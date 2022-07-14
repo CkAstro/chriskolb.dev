@@ -1,14 +1,17 @@
 import { memo } from 'react';
 import style from './nucleoitem.module.css';
 
-const EmptyItem = memo(() => <div className={style.nucleoItemContainer} style={{background: 'none'}}/>);
+const EmptyItem = memo(() => <div className={style.nucleoItemContainer} style={{background: 'var(--color-black)'}}/>);
 
-const NucleoItem = ({ props, isMouseOver, isDisabled, setStyle }) => {
+const NucleoItem = ({ props, isMouseOver }) => {
    const { element, isotope, proton, stable } = props; 
 
-   return <div style={setStyle} 
-      className={`noselect ${stable ? style.stable : ''} ${style.nucleoItemContainer} ${isDisabled ? style.disable : null} ${isMouseOver ? style.mouseOver : null}`}
-   >
+   return <div className={`
+      noselect 
+      ${stable ? style.stable : ''} 
+      ${style.nucleoItemContainer} 
+      ${isMouseOver ? style.mouseOver : ''}
+   `}>
       <div className={style.background}/>
       <div className={style.border}/>
       <div className={style.elementContainer}>{element}</div>

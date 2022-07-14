@@ -1,3 +1,4 @@
+import { useState, useEffect } from 'react';
 
 const range = (start, end) => {
    let items = [];
@@ -23,7 +24,23 @@ const nucleoChart = [
    {element: 'Li', isotopes: range(3, 12), stable: [6, 7]},
    {element: 'He', isotopes: range(3, 10), stable: [3, 4]},
    {element: 'H', isotopes: range(1, 7), stable: [1, 2]},
-   {element: 'N', isotopes: [null], stable: []},
+   {element: 'N', isotopes: [0,null], stable: [], exclude: [0]},
 ];
 
-export { nucleoChart, range };
+const useSquareSize = () => {
+   const [ squareSize, setSquareSize ] = useState(null);
+
+   useEffect(() => {
+      if (window.innerWidth < 461) return setSquareSize(54);
+      if (window.innerWidth < 1921) return setSquareSize(66);
+      return setSquareSize(90);
+   }, [window.innerWidth]);
+
+   return { squareSize };
+}
+
+export {
+   nucleoChart,
+   range, 
+   useSquareSize
+}
