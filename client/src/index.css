@@ -18,7 +18,7 @@
    font-weight: 100;
 }
 
-body, html, a {
+body, html {
    margin: 0px;
    padding: 0px;
    -webkit-font-smoothing: antialiased;
@@ -27,8 +27,9 @@ body, html, a {
    color: var(--color-black);
    width: 100vw;
    height: 100vh;
-   text-decoration: none;
 }
+
+a { text-decoration: none; }
 
 /* ----- globals ----- */
 :root {
