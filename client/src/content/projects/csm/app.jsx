@@ -1,12 +1,12 @@
 import { useState, useEffect } from 'react';
-import ButtonGroup from '../../../components/buttongroup';
-import API from '../../../api';
+import { ButtonGroup } from 'components/elements';
+import api from 'api';
 import PolarPlot from './polarplot';
 import RadialPlot from './radialplot';
 import AngularPlot from './angularplot';
 import style from './csm.module.css';
 
-const CSMApp = () => {
+const App = () => {
    const [ mrto, setMrto ] = useState('10');
    const [ vwind, setVwind ] = useState('15');
    const [ vrto, setVrto ] = useState('10');
@@ -42,42 +42,43 @@ const CSMApp = () => {
    } : null;
 
    useEffect(() => {
-      API.getCSMData(mrto, vwind, vrto)
+      api.getCSMData(mrto, vwind, vrto)
          .then(response => setCSMData(response));
    }, [mrto, vwind, vrto]);
 
-   return <>
-      <div className={style.buttonContainer}>
-         <ButtonGroup setter={setMrto} header={'Mass Ratio'}>{[
-            {text: '1.0', value: '10'},
-            {text: '1.5', value: '15'},
-            {text: '2.0', value: '20'},
-            {text: '2.5', value: '25'},
-         ]}</ButtonGroup>
-         <ButtonGroup setter={setVwind} header={'Wind Speed'}>{[
-            {text: '15', value: '15'},
-            {text: '20', value: '20'},
-            {text: '25', value: '25'},
-         ]}</ButtonGroup>
-         <ButtonGroup setter={setVrto} header={'Speed Ratio'}>{[
-            {text: '1.0', value: '10'},
-            {text: '1.5', value: '15'},
-            {text: '2.0', value: '20'},
-         ]}</ButtonGroup>
-      </div>
-
-      <div className={style.canvasGrid}>
-         <div className={style.rightGrid}>
-            <PolarPlot data={polarData} setDataPoint={setDataPoint}/>
+   return (
+      <>
+         <div className={style.buttonContainer}>
+            <ButtonGroup setter={setMrto} header={'Mass Ratio'}>{[
+               {text: '1.0', value: '10'},
+               {text: '1.5', value: '15'},
+               {text: '2.0', value: '20'},
+               {text: '2.5', value: '25'},
+            ]}</ButtonGroup>
+            <ButtonGroup setter={setVwind} header={'Wind Speed'}>{[
+               {text: '15', value: '15'},
+               {text: '20', value: '20'},
+               {text: '25', value: '25'},
+            ]}</ButtonGroup>
+            <ButtonGroup setter={setVrto} header={'Speed Ratio'}>{[
+               {text: '1.0', value: '10'},
+               {text: '1.5', value: '15'},
+               {text: '2.0', value: '20'},
+            ]}</ButtonGroup>
          </div>
-         <div className={style.leftGrid}>
-            <AngularPlot data={angularData} setDataPoint={setDataPoint}/>
+         <div className={style.canvasGrid}>
+            <div className={style.rightGrid}>
+               <PolarPlot data={polarData} setDataPoint={setDataPoint}/>
+            </div>
+            <div className={style.leftGrid}>
+               <AngularPlot data={angularData} setDataPoint={setDataPoint}/>
+            </div>
+            <div className={style.leftGrid}>
+               <RadialPlot data={radialData} setDataPoint={setDataPoint}/>
+            </div>
          </div>
-         <div className={style.leftGrid}>
-            <RadialPlot data={radialData} setDataPoint={setDataPoint}/>
-         </div>
-      </div>
-   </>;
+      </>
+   );
 }
 
-export default CSMApp;
+export default App;

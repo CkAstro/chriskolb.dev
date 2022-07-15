@@ -1,4 +1,5 @@
-import { InteractiveCanvas } from '../../../components/canvas';
+import { InteractiveCanvas } from 'components/elements';
+
 const pi = Math.PI;
 const _boxSize = 4;     // for crosshairs
 const _mainLineWidth = 1;
@@ -193,12 +194,14 @@ const PolarPlot = ({ data, setDataPoint }) => {
       });
    }
 
-   return <InteractiveCanvas
-      draw={drawPolarPlot}
-      onInteract={updateDataPoint}
-      data={data}
-      setStyle={{width: '100%', height: '100%'}}
-   />
+   return (
+      <InteractiveCanvas
+         draw={drawPolarPlot}
+         onInteract={updateDataPoint}
+         data={data}
+         setStyle={{width: '100%', height: '100%'}}
+      />
+   );
 }
 
 export default PolarPlot;

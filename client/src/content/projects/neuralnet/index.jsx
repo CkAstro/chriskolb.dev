@@ -1,5 +1,4 @@
-import ContentPage from '../../../components/contentpage';
-import Showcase from '../../../components/showcase';
+import { ContentPage, Showcase } from 'components/containers';
 import App from './app';
 import style from './neuralnet.module.css';
 

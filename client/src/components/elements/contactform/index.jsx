@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import API from '../../api';
+import api from 'api';
 import style from './contactform.module.css';
 
 const ContactForm = () => {
@@ -27,36 +27,40 @@ const ContactForm = () => {
 
       const regex = /(^[\w+-\.]+)@((?:[\w]+\.)+)([a-zA-Z]+)/;
       if (!regex.test(email)) return alert('Please enter a valid email. If you see this message in error, contact me directly at astro.cekolb@gmail.com');
-      const res = API.sendUserMessage({ name, email, message }).then(res => {
+
+      // TODO : lock submission until we get api response
+      api.sendUserMessage({ name, email, message }).then(res => {
          if (res.success) setSentMessage({ name, email, message });
          alert(res.message);
       });
    }
 
-   return <div className={style.formContainer}>
-      <form onSubmit={handleSubmit}>
-         <input type='text'
-            className={`${style.nameInput} ${name === defaultName || name === sentMessage.name ? style.inactive : null}`}
-            onFocus={handleFocus} 
-            value={name} 
-            onChange={handleNameChange}
-         />
-         <input type='text' 
-            className={`${style.emailInput} ${email === defaultEmail || email === sentMessage.email ? style.inactive : null}`}
-            onFocus={handleFocus} 
-            value={email} 
-            onChange={handleEmailChange}
-         />
-         <textarea 
-            className={`${style.messageInput} ${message === defaultMessage || message === sentMessage.message ? style.inactive : null}`}
-            onFocus={handleFocus} 
-            value={message} 
-            onChange={handleMessageChange}
-            rows={8}
-         />
-         <div className={style.submitButton} onClick={handleSubmit}>Submit</div>
-      </form>
-   </div>;
+   return (
+      <div className={style.formContainer}>
+         <form onSubmit={handleSubmit}>
+            <input type='text'
+               className={`${style.nameInput} ${name === defaultName || name === sentMessage.name ? style.inactive : ''}`}
+               onFocus={handleFocus} 
+               value={name} 
+               onChange={handleNameChange}
+            />
+            <input type='text' 
+               className={`${style.emailInput} ${email === defaultEmail || email === sentMessage.email ? style.inactive : ''}`}
+               onFocus={handleFocus} 
+               value={email} 
+               onChange={handleEmailChange}
+            />
+            <textarea 
+               className={`${style.messageInput} ${message === defaultMessage || message === sentMessage.message ? style.inactive : ''}`}
+               onFocus={handleFocus} 
+               value={message} 
+               onChange={handleMessageChange}
+               rows={8}
+            />
+            <div className={style.submitButton} onClick={handleSubmit}>Submit</div>
+         </form>
+      </div>
+   );
 }
 
 export default ContactForm;

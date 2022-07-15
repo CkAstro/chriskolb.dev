@@ -1,7 +1,5 @@
-import Showcase from '../../../components/showcase';
-import ContentPage from '../../../components/contentpage';
-import FancyButton from '../../../components/fancybutton';
-import Icons from '../../../components/icons';
+import { ContentPage, Showcase } from 'components/containers';
+import { FancyButton, Icons } from 'components/elements';
 import style from './reversi.module.css';
 
 const reversi = {
@@ -29,7 +27,6 @@ const reversi = {
             </a>
          </div>
       </ContentPage>,
-
       <ContentPage>
          <div className={style.contentContainer}>
             <h1>Gameplay</h1>
@@ -46,7 +43,6 @@ const reversi = {
             <p>The game ends when neither player has a legal move. This occurs either when the game board has filled up, or no move will flip either player's pieces. The winner is the player with the most pieces once the game has ended.</p>
          </div>
       </ContentPage>,
-
       <ContentPage>
          <div className={style.contentContainer}>
             <h1>Using the App</h1>

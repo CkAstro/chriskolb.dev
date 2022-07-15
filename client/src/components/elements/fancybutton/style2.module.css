@@ -1,0 +1,78 @@
+
+.buttonContainer { composes: buttonContainer from './fancybutton.module.css'; }
+
+.normalButton2 {
+   position: absolute;
+   top: 0;
+   left: 0;
+   right: 0;
+   padding: 8px 16px;
+   width: var(--button-width);
+   border: 2px solid var(--color-primary);
+   margin: auto;
+   border-radius: 16px;
+   box-sizing: border-box;
+}
+
+.hoverButton2 {
+   position: absolute;
+   border-radius: 16px;
+   top: 0;
+   left: 0;
+   right: 0;
+   padding: 8px 16px;
+   width: var(--button-width);
+   border: 2px solid var(--color-primary);
+   margin: auto;
+   background: #0080a7;
+   color: var(--color-white);
+   clip-path: circle(25% at -25% 50%);
+   transition: all 1.0s;
+   box-sizing: border-box;
+}
+
+.hoverButton2.hover {
+   clip-path: circle(25% at 100% 50%);
+}
+
+.extraButton2 {
+   position: absolute;
+   border-radius: 16px;
+   top: 0;
+   left: 0;
+   right: 0;
+   padding: 8px 16px;
+   width: var(--button-width);
+   border: 2px solid var(--color-primary);
+   margin: auto;
+   background: var(--color-primary);
+   color: var(--color-white);
+   clip-path: circle(25% at -35% 50%);
+   transition: all 1.0s;
+   box-sizing: border-box;
+}
+
+.extraButton2.hover {
+   clip-path: circle(25% at 90% 50%);
+}
+
+.coverButton2 {
+   position: absolute;
+   border-radius: 16px;
+   top: 0;
+   left: 0;
+   right: 0;
+   padding: 8px 16px;
+   width: var(--button-width);
+   border: 2px solid var(--color-primary);
+   margin: auto;
+   background: var(--color-primary);
+   color: var(--color-white);
+   clip-path: polygon(0% 0%,   -35% 0%,    -35% 100%,    0% 100%);
+   transition: all 1.0s;
+   box-sizing: border-box;
+}
+
+.coverButton2.hover {
+   clip-path: polygon(0% 0%,   90% 0%,    90% 100%,    0% 100%);
+}

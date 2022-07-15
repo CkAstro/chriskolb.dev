@@ -1,4 +1,5 @@
-import { InteractiveCanvas } from "../../../components/canvas";
+import { InteractiveCanvas } from 'components/elements';
+
 const _xTickCount = 6;
 const _boxSize = 4;
 const _mainLineWidth = 2;
@@ -192,12 +193,14 @@ const AngularPlot = ({ data, setDataPoint }) => {
       setDataPoint({ x: data.dataPoint.x, y: theAdjust });
    }
    
-   return <InteractiveCanvas
-      draw={drawRadialPlot}
-      onInteract={updateDataPoint}
-      data={data}
-      setStyle={{width: '100%', height: '100%'}}
-   />
+   return (
+      <InteractiveCanvas
+         draw={drawRadialPlot}
+         onInteract={updateDataPoint}
+         data={data}
+         setStyle={{width: '100%', height: '100%'}}
+      />
+   );
 }
 
 export default AngularPlot;

@@ -1,5 +1,4 @@
-import ClusterItem from '../../../components/clusteritem';
-import ContentPage from '../../../components/contentpage';
+import { ClusterItem, ContentPage } from 'components/containers';
 import App from './app';
 import style from './instability.module.css';
 

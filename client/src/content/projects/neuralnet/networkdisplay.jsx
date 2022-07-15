@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
-import { InteractiveCanvas } from '../../../components/canvas';
-import API from '../../../api';
+import { InteractiveCanvas } from 'components/elements';
+import api from 'api';
 import style from './neuralnet.module.css';
 import utils from './utils';
 
@@ -9,12 +9,15 @@ const Neuron = ({ draw, weights, mask }) => {
       ? utils.scaleUpData(weights, true, mask) 
       : utils.scaleUpData(weights)
    ;
-   return <InteractiveCanvas
-      draw={draw}
-      onInteract={() => null}
-      data={maskedWeights}
-      setStyle={{width: '112px', height: '112px'}}
-   />
+
+   return (
+      <InteractiveCanvas
+         draw={draw}
+         onInteract={() => null}
+         data={maskedWeights}
+         setStyle={{width: '112px', height: '112px'}}
+      />
+   );
 }
 
 const NetworkDisplay = ({ draw, mask, setOutput }) => {
@@ -25,7 +28,7 @@ const NetworkDisplay = ({ draw, mask, setOutput }) => {
 
    // get network data on init
    useEffect(() => {
-      API.getNeuralNet().then(data => setNetworkData(data));
+      api.getNeuralNet().then(data => setNetworkData(data));
    }, []);
 
    // set layer data
@@ -75,9 +78,11 @@ const NetworkDisplay = ({ draw, mask, setOutput }) => {
       return <Neuron key={ind} draw={draw} weights={node.weights} mask={mask}/>;
    });
 
-   return <div className={style.displayContainer}>
-      {getNetworkNodes()}
-   </div>;
+   return (
+      <div className={style.displayContainer}>
+         {getNetworkNodes()}
+      </div>
+   );
 }
 
 export default NetworkDisplay;

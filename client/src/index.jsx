@@ -1,17 +1,10 @@
-import React, { useState } from 'react';
-import { ModalProvider } from './contexts/modal';
-import { DisplayProvider } from './contexts/display';
-import { MousePositionProvider } from './contexts/mouseposition';
+import { useState } from 'react';
 import ReactDOM from 'react-dom/client';
-import Section from './components/section';
-import Header from './components/header';
-import Navbar from './components/navbar';
-import ContentModal from './components/contentmodal';
-import About from './content/about';
-import Projects from './content/projects';
-import Research from './content/research';
-import Contact from './content/contact';
-import './index.css';      // global impor
+import { ModalProvider, DisplayProvider, MousePositionProvider } from 'contexts'
+import { ContentModal, Section } from 'components/containers';
+import { Navbar } from 'components/elements';
+import { Header, About, Projects, Research, Contact } from 'content';
+import './index.css';      // global import
 
 const Main = () => {
    const [ scrollValue, setScrollValue ] = useState(0);

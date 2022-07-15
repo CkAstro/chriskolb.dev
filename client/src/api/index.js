@@ -36,5 +36,5 @@ const getResume = () => {
    return request.then(response => response.data);
 }
 
-export { baseUrl, getCSMData, getNeuralNet, putNeuralNet, getImage, sendUserMessage, getResume };
 export default { baseUrl, getCSMData, getNeuralNet, putNeuralNet, getImage, sendUserMessage, getResume };
+export { baseUrl, getCSMData, getNeuralNet, putNeuralNet, getImage, sendUserMessage, getResume };

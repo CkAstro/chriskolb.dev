@@ -130,19 +130,21 @@ const InteractiveCanvas = ({ draw, onInteract, data, setStyle }) => {
       handleMouseMove(event.nativeEvent.changedTouches[0], false);
    }
 
-   return <canvas ref={canvasRef}
-      style={setStyle}
+   return (
+      <canvas ref={canvasRef}
+         style={setStyle}
 
-      onMouseDown={handleMouseDown}
-      onMouseUp={handleMouseUp}
-      onMouseMove={handleMouseMove}
-      onMouseLeave={handleMouseLeave}
-      onWheel={handleScroll}
+         onMouseDown={handleMouseDown}
+         onMouseUp={handleMouseUp}
+         onMouseMove={handleMouseMove}
+         onMouseLeave={handleMouseLeave}
+         onWheel={handleScroll}
 
-      onTouchStart={handleTouchStart}
-      onTouchEnd={handleTouchEnd}
-      onTouchMove={handleTouchMove}
-   />;
+         onTouchStart={handleTouchStart}
+         onTouchEnd={handleTouchEnd}
+         onTouchMove={handleTouchMove}
+      />
+   );
 }
 
 export default InteractiveCanvas;

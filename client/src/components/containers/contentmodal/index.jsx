@@ -1,5 +1,5 @@
 import { useEffect, useRef } from 'react';
-import { useModal } from '../../contexts/modal';
+import { useModal } from 'contexts';
 import style from './contentmodal.module.css';
 
 const ContentModal = () => {
@@ -15,7 +15,7 @@ const ContentModal = () => {
    const handleClose = () => closeModal();
 
    return (
-      <div className={`${style.modalContainer} ${modalProps.isActive ? style.active : null}`} onClick={handleClose}>
+      <div className={`${style.modalContainer} ${modalProps.isActive ? style.active : ''}`} onClick={handleClose}>
          <div className={style.modal} onClick={handleClick}>
             <div ref={divRef} className={style.modalContent}>
                {modalProps.content && modalProps.content[modalProps.page] 

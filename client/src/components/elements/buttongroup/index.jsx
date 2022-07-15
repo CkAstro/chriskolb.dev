@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
-import Button from "./button";
+import Button from './button';
 import style from './buttongroup.module.css';
 
 const ButtonGroup = ({ setter, header, children }) => {
@@ -8,14 +8,14 @@ const ButtonGroup = ({ setter, header, children }) => {
    const divRef = useRef(null);
 
    const getButtons = () => {
-      return children.map((item, ind) => {
-         return <Button key={ind}
+      return children.map((item, ind) => (
+         <Button key={ind}
             isActive={activeButton === ind}
             onClick={() => setActiveButton(ind)}
          >
             {item.text}
-         </Button>;
-      });
+         </Button>
+      ));
    }
 
    const getHeader = header ? <Button width={headerWidth}>{header}</Button> : <div/>;
@@ -33,10 +33,12 @@ const ButtonGroup = ({ setter, header, children }) => {
       gridTemplateColumns: `repeat(${children.length}, 1fr)`,
    }
 
-   return <div ref={divRef} className={style.buttonGroup}>
-      {getHeader}
-      <div style={gridStyle}>{getButtons()}</div>
-   </div>;
+   return (
+      <div ref={divRef} className={style.buttonGroup}>
+         {getHeader}
+         <div style={gridStyle}>{getButtons()}</div>
+      </div>
+   );
 }
 
 export default ButtonGroup;

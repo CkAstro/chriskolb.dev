@@ -1,4 +1,7 @@
 import { useState, useEffect } from 'react';
+import buildStableSquares from './buildstablesquares';
+import buildDisplayChart from './builddisplaychart';
+import organizeChart from './organizechart';
 
 const range = (start, end) => {
    let items = [];
@@ -42,5 +45,8 @@ const useSquareSize = () => {
 export {
    nucleoChart,
    range, 
-   useSquareSize
+   useSquareSize,
+   buildStableSquares,
+   buildDisplayChart,
+   organizeChart,
 }

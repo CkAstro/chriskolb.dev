@@ -1,5 +1,5 @@
 import { memo } from 'react';
-import { useMousePosition } from '../../contexts/mouseposition';
+import { useMousePosition } from 'contexts';
 import { useSquareSize } from './utils';
 import style from './nucleodisplay.module.css';
 
@@ -57,7 +57,6 @@ const Spotlight = ({ squares, divRef }) => {
 // the spotlight mask the stable elements
 const Masks = memo(({ squares, squareSize }) => {
    if (!squares) return;
-
    return squares.map((pos, ind) => <rect key={ind} x={pos.x} y={pos.y} width={squareSize} height={squareSize} fill='white'/>);
 });
 

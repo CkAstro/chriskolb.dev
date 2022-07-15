@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react';
-import { useModal } from '../../contexts/modal';
-import { useDisplay } from '../../contexts/display';
-import FancyButton from '../fancybutton';
+import { useModal, useDisplay } from 'contexts';
+import { FancyButton } from 'components/elements';
 import style from './clusteritem.module.css';
 
 const ClusterItem = ({ info }) => {
@@ -40,7 +39,7 @@ const ClusterItem = ({ info }) => {
          onTouchMove={handleTouchMove}
          onTouchEnd={handleTouchEnd}
       >
-         <div className={`${style.clusterItemContent} ${isMouseOver ? style.mouseOver : null}`}>
+         <div className={`${style.clusterItemContent} ${isMouseOver ? style.mouseOver : ''}`}>
             <img src={info.image}/>
             <div className={style.topContent}>
                <h1>{info.title}</h1>

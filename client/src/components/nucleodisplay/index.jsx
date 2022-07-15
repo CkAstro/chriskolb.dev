@@ -1,18 +1,21 @@
 import { useEffect, useState, useRef } from 'react';
-import { useMousePosition } from '../../contexts/mouseposition';
-import { nucleoChart, useSquareSize } from './utils';
-import buildDisplayChart from './builddisplaychart';
-import organizeChart from './organizechart';
+import { useMousePosition } from 'contexts';
+import {
+   nucleoChart, 
+   useSquareSize, 
+   buildStableSquares, 
+   buildDisplayChart, 
+   organizeChart
+} from './utils';
 import Spotlight from './spotlight';
-import buildStableSquares from './buildstablesquares';
 import style from './nucleodisplay.module.css';
 
 const NucleoDisplay = () => {
    const [ displayChart, setDisplayChart ] = useState(null);
    const [ organizedChart, setOrganizedChart ] = useState(null);
    const [ stableSquares, setStableSquares ] = useState([]);
-   const { mousePosition } = useMousePosition();
 
+   const { mousePosition } = useMousePosition();
    const { squareSize } = useSquareSize();
 
    const divRef = useRef(null);
@@ -29,6 +32,7 @@ const NucleoDisplay = () => {
       setDisplayChart(chart);
    }, [mousePosition, organizedChart, squareSize]);
 
+   // then build background masks for spotlight
    useEffect(() => {
       const squares = buildStableSquares(organizedChart, squareSize, divRef);
       setStableSquares(squares);

@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import style from './fancybutton.module.css';
+import style from './style1.module.css';
 
 const FancyButton = ({ children }) => {
    const [ isMouseOver, setIsMouseOver ] = useState(false);

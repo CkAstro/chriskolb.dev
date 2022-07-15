@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
-import { GL2Canvas } from '../../../components/canvas';
+import { GL2Canvas } from 'components/elements';
 import GLHelper from './glhelper';
 import TextureHelper from './texhelper';
 import buildShader from './shader';
@@ -157,34 +157,36 @@ const App = () => {
       setIsLoaded(true);
    }, [_showLoadingBar]);
 
-   return <>
-      <div className={style.canvasContainer}>
-         <GL2Canvas
-            draw={drawScene}
-            onInteract={updateCamera}
-            setStyle={{ width: `${canvasWidth}px`, height: `${4/5*canvasWidth}px`}}
-            sceneRef={sceneRef}
-            objsRef={objsRef}
-            texRef={texRef}
-            renderRef={renderRef}
-         />
-         <div className={style.loadingBar} style={isLoaded ? {display: 'none'} : {}}>
-            <div>Loading...</div>
+   return (
+      <>
+         <div className={style.canvasContainer}>
+            <GL2Canvas
+               draw={drawScene}
+               onInteract={updateCamera}
+               setStyle={{ width: `${canvasWidth}px`, height: `${4/5*canvasWidth}px`}}
+               sceneRef={sceneRef}
+               objsRef={objsRef}
+               texRef={texRef}
+               renderRef={renderRef}
+            />
+            <div className={style.loadingBar} style={isLoaded ? {display: 'none'} : {}}>
+               <div>Loading...</div>
+            </div>
          </div>
-      </div>
-      <div className={style.controllContainer}>
-         <input type='range'
-            onChange={handleChange}
-            min={70}
-            max={120}
-            value={sliderValue}
-         />
-         <div className={`noselect ${style.valDisplay}`}>
-            {valDisplay}
+         <div className={style.controllContainer}>
+            <input type='range'
+               onChange={handleChange}
+               min={70}
+               max={120}
+               value={sliderValue}
+            />
+            <div className={`noselect ${style.valDisplay}`}>
+               {valDisplay}
+            </div>
+            <div className={`noselect ${style.csmButton}`} onClick={toggleCSM}>Toggle CSM</div>
          </div>
-         <div className={`noselect ${style.csmButton}`} onClick={toggleCSM}>Toggle CSM</div>
-      </div>
-   </>;
+      </>
+   );
 }
 
 export default App;

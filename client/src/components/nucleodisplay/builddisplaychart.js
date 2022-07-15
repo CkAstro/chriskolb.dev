@@ -1,4 +1,4 @@
-import NucleoItem, { EmptyItem } from '../nucleoitem';
+import NucleoItem, { EmptyItem } from './nucleoitem';
 import NucleoInfo from './nucleoinfo';
 import style from './nucleodisplay.module.css';
 
@@ -29,23 +29,25 @@ const buildDisplayChart = (inputChart, mousePosition, squareSize, divRef) => {
       if (!row) return;
 
       // loop through each column
-      return <div key={rowInd} className={style.nucleodisplayRow}>
-         {row.map((col, colInd) => {
-            if (!col) return <EmptyItem key={colInd}/>;     // fill with empty boxes
+      return (
+         <div key={rowInd} className={style.nucleodisplayRow}>
+            {row.map((col, colInd) => {
+               if (!col) return <EmptyItem key={colInd}/>;     // fill with empty boxes
 
-            // determine which square gets hover effect
-            const activeRow = Math.floor((buffer - mousePosition.y) / squareSize) === col.yloc;
-            const activeCol = Math.floor((mousePosition.x - paddingX) / squareSize) === col.xloc;
+               // determine which square gets hover effect
+               const activeRow = Math.floor((buffer - mousePosition.y) / squareSize) === col.yloc;
+               const activeCol = Math.floor((mousePosition.x - paddingX) / squareSize) === col.xloc;
 
-            // return an element item
-            return <NucleoItem key={colInd}
-               props={col.props}
-               isMouseOver={activeRow && activeCol}
-            />;
-         })}
-         {rowInd === inputChart.length-1 && <NucleoInfo setStyle={{width: `${5*squareSize-6}px`}}/>}
-         <EmptyItem key='end'/>     {/* add the 'flex: 1' box */}
-      </div>
+               // return an element item
+               return <NucleoItem key={colInd}
+                  props={col.props}
+                  isMouseOver={activeRow && activeCol}
+               />;
+            })}
+            {rowInd === inputChart.length-1 && <NucleoInfo setStyle={{width: `${5*squareSize-6}px`}}/>}
+            <EmptyItem key='end'/>     {/* add the 'flex: 1' box */}
+         </div>
+      )
    });
    return newChart;
 }

@@ -1,7 +1,5 @@
-import ContentPage from '../../../components/contentpage';
-import FancyButton from '../../../components/fancybutton';
-import Showcase from '../../../components/showcase';
-import Icons from '../../../components/icons';
+import { ContentPage, Showcase } from 'components/containers';
+import { FancyButton, Icons } from 'components/elements';
 import style from './datavis.module.css';
 
 const datavis = {

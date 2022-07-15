@@ -30,14 +30,16 @@ const Navbar = ({ scrollValue }) => {
       >{dir.name}</Link>
    ));
 
-   return <div className={`${style.navContainer} ${isStatic ? style.static : null}`}>
-      <div className='contentContainer'>
-         <div className={style.navbar}>
-            {buildNavLinks()}
-            <div className={`noselect ${style.brand}`}>CHRISTOPHER KOLB</div>
+   return (
+      <div className={`${style.navContainer} ${isStatic ? style.static : ''}`}>
+         <div className='contentContainer'>
+            <div className={style.navbar}>
+               {buildNavLinks()}
+               <div className={`noselect ${style.brand}`}>CHRISTOPHER KOLB</div>
+            </div>
          </div>
       </div>
-   </div>;
+   );
 }
 
 export default Navbar;

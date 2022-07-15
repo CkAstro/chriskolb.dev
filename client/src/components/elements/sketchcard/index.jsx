@@ -1,5 +1,5 @@
 import { useRef } from 'react'
-import useIsVisible from '../../hooks/useisvisible';
+import { useIsVisible } from 'hooks';
 import style from './sketchcard.module.css';
 
 const SketchCard = ({ cardDelay='0s', children }) => {
@@ -13,15 +13,13 @@ const SketchCard = ({ cardDelay='0s', children }) => {
    );
 }
 
-const SketchItem = ({ percent, itemDelay='0s', children }) => {
-   return (
-      <div style={{'--item-delay': itemDelay}} className={style.sketchItem}>
-         <div style={{'--width': `${percent}%`}}className={style.sketchItemBar}>
-            {children}
-         </div>
+const SketchItem = ({ percent, itemDelay='0s', children }) => (
+   <div style={{'--item-delay': itemDelay}} className={style.sketchItem}>
+      <div style={{'--width': `${percent}%`}}className={style.sketchItemBar}>
+         {children}
       </div>
-   );
-}
+   </div>
+);
 
 export default { SketchCard, SketchItem };
 export { SketchCard, SketchItem };

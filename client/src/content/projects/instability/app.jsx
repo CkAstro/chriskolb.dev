@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
-import { GL2Canvas } from '../../../components/canvas';
+import { GL2Canvas } from 'components/elements';
 import GLHelper from './glhelper';
 import TextureHelper from './texhelper';
 import buildShader from './shader';
@@ -111,8 +111,8 @@ const App = () => {
    const handleNext = () => incrementImage(true);
 
    const prevButton = <div className={`noselect ${style.interactButton} ${pause ? '' : style.hidden}`} onClick={handlePrev}>&laquo; prev</div>;
-   const pauseButton = <div className={`noselect ${style.interactButton} ${pause ? style.active : null}`} onClick={handlePause}>{pause ? 'play' : 'pause'}</div>;
-   const slowmoButton = <div className={`noselect ${style.interactButton} ${slowMo ? style.active : null}`} onClick={handleSlowMotion}>{slowMo ? 'normal' : 'slow-mo'}</div>;
+   const pauseButton = <div className={`noselect ${style.interactButton} ${pause ? style.active : ''}`} onClick={handlePause}>{pause ? 'play' : 'pause'}</div>;
+   const slowmoButton = <div className={`noselect ${style.interactButton} ${slowMo ? style.active : ''}`} onClick={handleSlowMotion}>{slowMo ? 'normal' : 'slow-mo'}</div>;
    const nextButton = <div className={`noselect ${style.interactButton} ${pause ? '' : style.hidden}`} onClick={handleNext}>next &raquo;</div>;
 
    const texHelper = new TextureHelper;
@@ -127,28 +127,30 @@ const App = () => {
       setIsLoaded(true);
    }, [_showLoadingBar]);
 
-   return (<>
-      <div className={style.buttonContainer}>
-         {prevButton}
-         {pauseButton}
-         {slowmoButton}
-         {nextButton}
-      </div>
-      <div className={style.canvasContainer}>
-         <GL2Canvas
-            draw={drawScene}
-            onInteract={updateCamera}
-            setStyle={{ width: `${canvasWidth}px`, height: `${4/5*canvasWidth}px`}}
-            sceneRef={sceneRef}
-            objsRef={objsRef}
-            texRef={texRef}
-            renderRef={renderRef}
-         />
-         <div className={style.loadingBar} style={isLoaded ? {display: 'none'} : {}}>
-            <div>Loading...</div>
+   return (
+      <>
+         <div className={style.buttonContainer}>
+            {prevButton}
+            {pauseButton}
+            {slowmoButton}
+            {nextButton}
          </div>
-      </div>
-   </>);
+         <div className={style.canvasContainer}>
+            <GL2Canvas
+               draw={drawScene}
+               onInteract={updateCamera}
+               setStyle={{ width: `${canvasWidth}px`, height: `${4/5*canvasWidth}px`}}
+               sceneRef={sceneRef}
+               objsRef={objsRef}
+               texRef={texRef}
+               renderRef={renderRef}
+            />
+            <div className={style.loadingBar} style={isLoaded ? {display: 'none'} : {}}>
+               <div>Loading...</div>
+            </div>
+         </div>
+      </>
+   );
 }
 
 export default App;

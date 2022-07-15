@@ -1,7 +1,7 @@
 import { useRef } from 'react';
 import { Link } from 'react-scroll';
-import Icons from '../../components/icons';
-import useIsVisible from '../../hooks/useisvisible';
+import { Icons } from 'components/elements';
+import { useIsVisible } from 'hooks';
 import style from './about.module.css';
 
 const IntroContainer = () => {
@@ -24,4 +24,5 @@ const IntroContainer = () => {
       </div>
    </div>;
 }
+
 export default IntroContainer;
