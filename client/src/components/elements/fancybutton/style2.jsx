@@ -12,10 +12,11 @@ const FancyButton = ({ children }) => {
          onMouseLeave={() => setIsMouseOver(false)}
          onTouchEnd={handleTouch}
       >
-         <div className={`${style.normalButton2} ${isMouseOver ? style.hover : null}`}>{children}</div>
-         <div className={`${style.hoverButton2} ${isMouseOver ? style.hover : null}`}>{children}</div>
-         <div className={`${style.extraButton2} ${isMouseOver ? style.hover : null}`}>{children}</div>
-         <div className={`${style.coverButton2} ${isMouseOver ? style.hover : null}`}>{children}</div>
+         <div className={`${style.buttonContainer__default} ${isMouseOver ? style.mouseOver : ''}`}>{children}</div>
+         <div className={`${style.buttonContainer__layer1} ${isMouseOver ? style.mouseOver : ''}`}>{children}</div>
+         <div className={`${style['buttonContainer__layer1-cover']} ${isMouseOver ? style.mouseOver : ''}`}>{children}</div>
+         <div className={`${style.buttonContainer__layer2} ${isMouseOver ? style.mouseOver : ''}`}>{children}</div>
+         {/* <div className={`${style['buttonContainer__layer2-cover']} ${isMouseOver ? style.mouseOver : ''}`}>{children}</div> */}
       </div>
    );
 }

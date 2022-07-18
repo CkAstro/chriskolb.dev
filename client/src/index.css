@@ -35,10 +35,9 @@ a { text-decoration: none; color: var(--color-black); margin: 0; padding: 0; }
 /* ----- globals ----- */
 :root {
    --color-primary: #113377;
+   --color-secondary: #568ea3;
    --color-white: #fbf9ff;
    --color-black: #1e1e1e;
-
-
 
    --color-dark-red: #900;
    --color-light-red: #c00;
