@@ -5,13 +5,13 @@ import style from './datavis.module.css';
 const datavis = {
    title: <span style={{fontWeight: '100'}}>use <span style={{fontWeight: '900'}}>DataVis</span> to view data anywhere</span>,
    components: 'WebGL / GLSL / React / Node / REST',
-   image: require('./datavis_display.png'),
+   image: require('assets/img/datavis_display.webp'),
    description: 'Upload and view volumetric scalar data.',
    link: 'https://datavis.chriskolb.dev',
    pages: [
       <ContentPage>
          <div className={style.imageContainer}>
-            <img src={require('./datavis.png')}/>
+            <img src={require('assets/img/datavis.webp')}/>
          </div>
          <div className={`${style.contentContainer}`}>
             <h1><a href='https://github.com/CkAstro/datavis' target='_blank' title='View project on GitHub'><Icons.GitHub fill='black' size={24}/></a> DataVis</h1>

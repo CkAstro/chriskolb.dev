@@ -5,7 +5,7 @@ import style from './instability.module.css';
 const instability = {
    title: <span style={{fontWeight: '400'}}>Fluid <span style={{fontWeight: '900'}}>Instabilities</span></span>,
    components: 'React / WebGL / Fetch API',
-   image: require('./instability.png'),
+   image: require('assets/img/instability.webp'),
    description: 'Watch a fluid instability evolve in full 3D.',
    pages: [
       <ContentPage>

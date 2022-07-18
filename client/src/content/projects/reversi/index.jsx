@@ -5,13 +5,13 @@ import style from './reversi.module.css';
 const reversi = {
    title: <span style={{fontWeight: '100'}}>Multiplayer <span style={{fontWeight: '700'}}>Reversi</span></span>,
    components: 'React / Node / MongoDB / Websockets',
-   image: require('./reversi_tablet.png'),
+   image: require('assets/img/reversi_tablet.webp'),
    description: 'Online multi-player board game. Supports multiple games, observer mode, and replays.',
    link: 'https://reversi.chriskolb.dev',
    pages: [
       <ContentPage>
          <div className={style.imageContainer}>
-            <img src={require('./reversi.png')}/>
+            <img src={require('assets/img/reversi.webp')}/>
          </div>
          <div className={style.contentContainer}>
             <h1 style={{fontWeight: '100'}}><a href='https://github.com/CkAstro/reversi' target='_blank' title='View on GitHub'><Icons.GitHub fill='black' size={24}/></a> Multiplayer <span style={{fontWeight: '700'}}>Reversi</span></h1>
