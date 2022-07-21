@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import { GL2Canvas } from 'components/elements';
+import Tex2SVG from 'react-hook-mathjax';
 import GLHelper from './glhelper';
 import TextureHelper from './texhelper';
 import buildShader from './shader';
@@ -128,7 +129,12 @@ const App = () => {
       </form>
    );
 
-   const valDisplayArea = <span onDoubleClick={enableEdit}>{`10^${sliderValue/10.0}`}</span>;
+   const valDisplayArea = (
+      <span onDoubleClick={enableEdit}>
+         <Tex2SVG display='inline' latex='\log_{10}(\nu) = '/>
+         {` ${sliderValue/10.0}`}
+      </span>
+   );
 
    const valDisplay = editMode ? valChangeArea : valDisplayArea;
 
@@ -159,6 +165,18 @@ const App = () => {
 
    return (
       <>
+         <div className={style.controllContainer}>
+            <input type='range'
+               onChange={handleChange}
+               min={70}
+               max={120}
+               value={sliderValue}
+            />
+            <div className={`noselect ${style.valDisplay}`}>
+               {valDisplay}
+            </div>
+            <div className={`noselect ${style.csmButton}`} onClick={toggleCSM}>Toggle CSM</div>
+         </div>
          <div className={style.canvasContainer}>
             <GL2Canvas
                draw={drawScene}
@@ -172,18 +190,6 @@ const App = () => {
             <div className={style.loadingBar} style={isLoaded ? {display: 'none'} : {}}>
                <div>Loading...</div>
             </div>
-         </div>
-         <div className={style.controllContainer}>
-            <input type='range'
-               onChange={handleChange}
-               min={70}
-               max={120}
-               value={sliderValue}
-            />
-            <div className={`noselect ${style.valDisplay}`}>
-               {valDisplay}
-            </div>
-            <div className={`noselect ${style.csmButton}`} onClick={toggleCSM}>Toggle CSM</div>
          </div>
       </>
    );

@@ -2,6 +2,9 @@
 .imageContainer { composes: imageContainer from '../../index.module.css'; }
 .contentContainer { composes: contentContainer from '../../index.module.css'; }
 .center { composes: center from '../../index.module.css'; }
+.contentContainer__flexSection { 
+   composes: contentContainer__flexSection from '../../index.module.css';
+}
 
 .contentContainer {
    display: flex;
@@ -23,7 +26,7 @@
 .buttonContainer {
    display: flex;
    justify-content: center;
-   margin: 12px auto;
+   margin: 0 auto;
    position: relative;
    border-style: double none;
    border-color: var(--ncsu-dark-gray);
@@ -36,6 +39,8 @@
    width: 75px;
    text-align: center;
    position: relative;
+   font-weight: 700;
+   transition: color 0.2s;
 }
 
 .interactButton:not(:last-child)::after {
@@ -53,8 +58,6 @@
 
 .interactButton:hover {
    color: var(--color-primary);
-   transition: color 0.2s;
-   font-weight: 700;
 }
 
 /* ----- loading bar ----- */

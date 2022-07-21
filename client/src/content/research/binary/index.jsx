@@ -9,9 +9,10 @@ const binary = {
    pages: [
       <ContentPage>
          <div className={style.contentContainer}>
-            <div className={style.center}>
-               <p>Coming soon...</p>
-            </div>
+            <h1 style={{fontWeight: '400'}}>The <span style={{fontWeight: '900'}}>Circumstellar Medium</span> around a Binary</h1>
+
+            <img src={require('assets/img/AFGL.webp')} style={{margin: '0 auto'}}/>
+            <img src={require('assets/img/RSculp.webp')} style={{margin: '0 auto'}}/>
          </div>
       </ContentPage>
    ],

@@ -16,13 +16,6 @@ const neuralnet = {
             <App/>
          </div>
       </ContentPage>,
-      <ContentPage>
-         <div className={style.contentContainer}>
-            <div className={style.center}>
-               <p>Coming soon...</p>
-            </div>
-         </div>
-      </ContentPage>,
    ],
 }
 
