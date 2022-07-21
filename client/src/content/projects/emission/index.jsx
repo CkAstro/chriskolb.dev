@@ -40,16 +40,17 @@ const emission = {
                </div>
                <div style={{maxWidth: '500px'}}>
                   <h2>The Supernova</h2>
-                  <p></p>
-                  <p></p>
+                  <p>Once the stellar core collapses and the star explodes, material is forced radially outward at over 1/10th the speed of light. Material in the polar region will meet little resistance, while material in the orbital plane will encounter resistance from the dense CSM disk.</p>
+                  <p>This results in an hourglass-like shape in the supernova. The more dense the CSM, the thinner the mid-section is. Bright spots will form near the outer edges of the blastwave (orange in the figure to the left) as surrounding gas is shock-heated by the blastwave.</p>
                </div>
             </div>
 
             <div className={style.contentContainer__flexSection}>
                <div>
                   <h2>Synchrotron Emission</h2>
-                  <p></p>
-                  <p></p>
+                  <p>The shock-heated gas will begin to radiate light at all frequencies, with intensity dependent on wavelength.</p>
+                  <p>This light will radiate outward in all directions.</p>
+                  <p>Although only one light source is shown in this figure, each point on the blastwave is emanating <i>some</i> light.</p>
                </div>
                <div>
                   <img src={require('assets/img/emission_light.webp')} width='350px'/>
@@ -59,8 +60,8 @@ const emission = {
             <div className={style.contentContainer__flexSection}>
                <div>
                   <h2>Observing the Light</h2>
-                  <p></p>
-                  <p></p>
+                  <p>Observers on Earth happen to place a camera as shown in the image to the right. We will receive a certain amount of light from this point on the supernova. We will receive some light from all bright spots on the supernova and we can construct an image similar to the figure on the previous page.</p>
+                  <p>But what happens if the system is rotated?</p>
                </div>
                <div>
                   <img src={require('assets/img/emission_obs1.webp')} width='350px'/>
@@ -73,8 +74,9 @@ const emission = {
                </div>
                <div style={{maxWidth: '500px'}}>
                   <h2>A Different Orientation</h2>
-                  <p></p>
-                  <p></p>
+                  <p>Here, the supernova is rotated 60 degrees. We are in the same location, and now the light must pass through the dense circumstellar medium.</p>
+                  <p>It turns out this will block some of the light we receive. In fact, any light from the 'other side' of the dense disk is obscured. Low-frequency light (try setting <Tex2SVG display='inline' latex='\log_{10}(\nu) < 8.5'/>) can barely penetrate this and the observer will only ever see one half of the explosion. High-frequency light, however, can penetrate reletively easily and the full supernova may be observed at that wavelength.</p>
+                  <p>Turning on the CSM (blue in the figure on the previous page) will reveal the area blocking the light. Rotating the figure will demonstrate how this light may be revealed at different orientations.</p>
                </div>
             </div>
 
