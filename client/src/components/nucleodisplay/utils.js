@@ -1,7 +1,4 @@
-import { useState, useEffect } from 'react';
-import buildStableSquares from './buildstablesquares';
-import buildDisplayChart from './builddisplaychart';
-import organizeChart from './organizechart';
+import getSquares from './getsquares';
 
 const range = (start, end) => {
    let items = [];
@@ -13,6 +10,14 @@ const range = (start, end) => {
 
 // reference: https://upload.wikimedia.org/wikipedia/commons/b/b5/NuclideMap_stitched.png
 const nucleoChart = [
+   {element: 'Ti', isotopes: range(39, 63), stable: [46, 47, 48, 49, 50]},
+   {element: 'Sc', isotopes: range(36, 60), stable: [45], exclude: [38]},
+   {element: 'Ca', isotopes: range(34, 57), stable: [42, 43, 44]},
+   {element: 'K', isotopes: range(32, 55), stable: [39, 41]},
+   {element: 'Ar', isotopes: range(30, 53), stable: [36, 38, 40]},
+   {element: 'Cl', isotopes: range(28, 51), stable: [35, 37]},
+   {element: 'S', isotopes: range(26, 49), stable: [32, 33, 34, 36], exclude: [47]},
+   {element: 'P', isotopes: range(24, 46), stable: [31]},
    {element: 'Si', isotopes: range(22, 44), stable: [28, 29, 30]},
    {element: 'Al', isotopes: range(21, 42), stable: [27]},
    {element: 'Mg', isotopes: range(19, 40), stable: [24, 25, 26]},
@@ -27,26 +32,39 @@ const nucleoChart = [
    {element: 'Li', isotopes: range(3, 12), stable: [6, 7]},
    {element: 'He', isotopes: range(3, 10), stable: [3, 4]},
    {element: 'H', isotopes: range(1, 7), stable: [1, 2]},
-   {element: 'N', isotopes: [0,null], stable: [], exclude: [0]},
+   {element: 'N', isotopes: range(1, 1), stable: []},
 ];
 
-const useSquareSize = () => {
-   const [ squareSize, setSquareSize ] = useState(null);
-
-   useEffect(() => {
-      if (window.innerWidth < 461) return setSquareSize(54);
-      if (window.innerWidth < 1921) return setSquareSize(66);
-      return setSquareSize(90);
-   }, [window.innerWidth]);
-
-   return { squareSize };
+const getSquareSize = () => {
+   if (window.innerWidth < 461) return {
+      square: 54,
+      gap: 4,
+      border: 2,
+      mainText: '18px',
+      subText: '10px',
+      subMargin: 1,
+   }
+   if (window.innerWidth < 1921) return {
+      square: 66,
+      gap: 6,
+      border: 2,
+      mainText: '24px',
+      subText: '12px',
+      subMargin: 2,
+   }
+   return {
+      square: 85,
+      gap: 6,
+      border: 3,
+      mainText: '32px',
+      subText: '16px',
+      subMargin: 4,
+   }
 }
 
 export {
    nucleoChart,
    range, 
-   useSquareSize,
-   buildStableSquares,
-   buildDisplayChart,
-   organizeChart,
+   getSquareSize,
+   getSquares,
 }

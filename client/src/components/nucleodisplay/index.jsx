@@ -1,48 +1,65 @@
 import { useEffect, useState, useRef } from 'react';
-import { useMousePosition } from 'contexts';
-import {
-   nucleoChart, 
-   useSquareSize, 
-   buildStableSquares, 
-   buildDisplayChart, 
-   organizeChart
-} from './utils';
+import { nucleoChart, getSquareSize, getSquares } from './utils';
+import ElementArray from './elementarray';
+import NucleoInfo from './nucleoinfo';
 import Spotlight from './spotlight';
+import Overlay from './overlay';
 import style from './nucleodisplay.module.css';
 
+// The glowing border effect on this display is done by placing a 'spotlight'
+//    on the lowest layer; a circular glow effect which follows the mouse
+//    The 'grid' and elements are then drawn on top of the spotlight with a 2px
+//    gap in between. This gap allows the spotlight to come through and acts as
+//    the interactive border
+//
+// The effect relies heavily on useMousePosition context even though it is not used 
+//    in the main component - this allows us to easily use the spotlight along with 
+//    the hover effect and also makes implementing a planned idle effect much easier
+//
+// NOTE : The element blocks are drawn as SVGs to fix a zoom issue in Firefox
+//    it also seems to be a slight performance boost
+//
+// NOTE : for now we prop drill squareSize/rect rather than use a context
+//    so we can save on rerenders
+//
+// TODO : convert all SVG elements to relative coordinates so viewbox will move
+//    the display as the window is resized
+//     - resizing window currently doesn't trigger re-render, boxes remane in 
+//       same position until mouse movement triggers re-render
+//     - forcing re-render on resize causes all boxes to re-render (very laggy) 
+
 const NucleoDisplay = () => {
-   const [ displayChart, setDisplayChart ] = useState(null);
-   const [ organizedChart, setOrganizedChart ] = useState(null);
-   const [ stableSquares, setStableSquares ] = useState([]);
-
-   const { mousePosition } = useMousePosition();
-   const { squareSize } = useSquareSize();
-
+   const [ squares, setSquares ] = useState(null);
+   const [ squareSize, setSquareSize ] = useState(0);
    const divRef = useRef(null);
 
-   // organize data on init
+   // set up element squares on init
    useEffect(() => {
-      const chart = organizeChart(nucleoChart)
-      setOrganizedChart(chart);
+      const newSquares = getSquares(nucleoChart)
+      setSquares(newSquares);
    }, []);
 
-   // then build display chart
-   useEffect(() => {
-      const chart = buildDisplayChart(organizedChart, mousePosition, squareSize, divRef);
-      setDisplayChart(chart);
-   }, [mousePosition, organizedChart, squareSize]);
+   // we'll need main container bounding client to determine where to draw squares and spotlight
+   const rect = divRef.current ? divRef.current.getBoundingClientRect() : null;
 
-   // then build background masks for spotlight
+   // resize squares if window width changes size
    useEffect(() => {
-      const squares = buildStableSquares(organizedChart, squareSize, divRef);
-      setStableSquares(squares);
-   }, [organizedChart, window.innerWidth, window.innerHeight, squareSize]);
+      const newSquareSize = getSquareSize();
+      if (!squareSize || newSquareSize.square !== squareSize.square) setSquareSize(newSquareSize);
+   }, [window.innerWidth]);
 
    return (
-      <div ref={divRef} className={style.nucleodisplayContainer}>
-         <div className={style.flexFill}/>
-         <Spotlight squares={stableSquares} divRef={divRef}/>
-         {displayChart}
+      <div ref={divRef} className={style.nucleo}>
+         <div className={style.nucleo__container}>
+            <Spotlight squares={squares} squareSize={squareSize} rect={rect}/>
+         </div>
+         <div className={style.nucleo__container}>
+            <Overlay squares={squares} squareSize={squareSize} rect={rect}/>
+         </div>
+         <div className={style.nucleo__container}>
+            <ElementArray squares={squares} squareSize={squareSize} rect={rect}/>
+         </div>
+         <NucleoInfo setStyle={{'--squareSize': `${squareSize.square}px`}}/>
       </div>
    );
 }
