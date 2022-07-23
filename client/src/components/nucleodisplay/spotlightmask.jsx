@@ -3,17 +3,15 @@ import { memo } from 'react';
 // This components sets up the spotlight gradients and masks
 // It should only render once
 
-const SpotlightDefs = ({ squares, squareSize, rect }) => {
-   if (!squares || !squareSize || !rect) return;
-
-   const { height } = rect;
+const SpotlightDefs = ({ squares, squareSize }) => {
+   if (!squares || !squareSize ) return;
 
    // set up mask for red glow effect of stable elements
    const stableSquares = squares.map((square, ind) => {
       if (!square.props.stable) return;
 
       const xloc = square.col * squareSize.square;
-      const yloc = height - (square.row+1)*squareSize.square;
+      const yloc = square.row * squareSize.square;
       return (
          <rect key={ind} 
             x={xloc}
@@ -32,7 +30,7 @@ const SpotlightDefs = ({ squares, squareSize, rect }) => {
             <stop offset='70%' stopColor='rgba(100, 0, 0, 0.1)'/>
             <stop offset='100%' stopColor='rgba(100, 0, 0, 0.0)'/>
          </radialGradient>
-         
+
          <radialGradient id='whiteSpotlight'>
             <stop offset='10%' stopColor='rgba(100, 100, 100, 0.5)'/>
             <stop offset='70%' stopColor='rgba(100, 100, 100, 0.1)'/>

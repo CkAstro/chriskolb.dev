@@ -1,4 +1,3 @@
-import getSquares from './getsquares';
 
 const range = (start, end) => {
    let items = [];
@@ -35,36 +34,4 @@ const nucleoChart = [
    {element: 'N', isotopes: range(1, 1), stable: []},
 ];
 
-const getSquareSize = () => {
-   if (window.innerWidth < 461) return {
-      square: 54,
-      gap: 4,
-      border: 2,
-      mainText: '18px',
-      subText: '10px',
-      subMargin: 1,
-   }
-   if (window.innerWidth < 1921) return {
-      square: 66,
-      gap: 6,
-      border: 2,
-      mainText: '24px',
-      subText: '12px',
-      subMargin: 2,
-   }
-   return {
-      square: 85,
-      gap: 6,
-      border: 3,
-      mainText: '32px',
-      subText: '16px',
-      subMargin: 4,
-   }
-}
-
-export {
-   nucleoChart,
-   range, 
-   getSquareSize,
-   getSquares,
-}
+export default nucleoChart;

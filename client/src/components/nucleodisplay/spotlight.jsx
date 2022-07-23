@@ -14,23 +14,32 @@ import style from './nucleodisplay.module.css';
 // NOTE : '#redMask' and '#whiteMask' masks as well as '#redSpotlight' 
 //    and '#whiteSpotlight' radial gradients used here are defined in 
 //    the 'SpotlightDefs' component
+//
+// NOTE : scale(1, -1) used here  in order to fix display to bottom of 
+//    section rather than top
+//     - this requires inverting mouse y position from
+//       mousePosition.y - top                    to
+//       top - mousePosition.y + height
 
-const Spotlight = ({ squares, squareSize, rect }) => {
+const Spotlight = ({ squares, squareSize, divRef }) => {
    const { mousePosition } = useMousePosition();
+   if (!squares || !squareSize || !divRef.current) return;
 
-   if (!squares || !squareSize || !rect) return;
-   const { top } = rect;
+   const rect = divRef.current.getBoundingClientRect();
+   const { top, height } = rect;
+   const buffer = top + height;
 
    // 'nucleo__spotlight' container is necessary so the un-highlighted background 
-   //    matches the element containers
+   //    matches the element containers (and presumably renders faster than drawing
+   //    an additional 100% rect here each frame)
    //    - without it, the border will 'appear' rather than 'glow'
    return (
       <div className={style.nucleo__spotlight}>
-         <svg width='100%' height='100%'>
-            <SpotlightDefs squares={squares} squareSize={squareSize} rect={rect}/>
+         <svg width='100%' height='100%' transform='scale(1, -1)'>
+            <SpotlightDefs squares={squares} squareSize={squareSize}/>
 
-            <circle cx={`${mousePosition.x}px`} cy={`${mousePosition.y-top}px`} r='300' fill='url(#whiteSpotlight)' mask='url(#whiteMask)'/>
-            <circle cx={`${mousePosition.x}px`} cy={`${mousePosition.y-top}px`} r='300' fill='url(#redSpotlight)' mask='url(#redMask)'/>
+            <circle cx={`${mousePosition.x}px`} cy={`${buffer-mousePosition.y}px`} r='300' fill='url(#whiteSpotlight)' mask='url(#whiteMask)'/>
+            <circle cx={`${mousePosition.x}px`} cy={`${buffer-mousePosition.y}px`} r='300' fill='url(#redSpotlight)' mask='url(#redMask)'/>
          </svg>
       </div>
    );
