@@ -1,7 +1,7 @@
 import { memo } from 'react';
 import { SketchCard, SketchItem } from 'components/elements';
 import IntroContainer from './introcontainer';
-import Tex2SVG from 'react-hook-mathjax';
+import { LaTeX } from 'assets/latex';
 import style from './about.module.css';
 
 const About = () => {
@@ -17,7 +17,7 @@ const About = () => {
             <SketchItem percent='80' itemDelay='0.20s'>OpenGL / WebGL / GLSL</SketchItem>
             <SketchItem percent='75' itemDelay='0.25s'>FORTRAN</SketchItem>
             <SketchItem percent='75' itemDelay='0.30s'>Bash</SketchItem>
-            <SketchItem percent='75' itemDelay='0.35s'><Tex2SVG display='inline' latex='\LaTeX'/><span style={{opacity: '0'}}>LaTeX</span></SketchItem>
+            <SketchItem percent='75' itemDelay='0.35s'><LaTeX/><span style={{opacity: '0'}}>LaTeX</span></SketchItem>
             <SketchItem percent='50' itemDelay='0.40s'>C / C++</SketchItem>
             <SketchItem percent='50' itemDelay='0.45s'>PHP</SketchItem>
             <SketchItem percent='35' itemDelay='0.45s'>Typescript</SketchItem>
