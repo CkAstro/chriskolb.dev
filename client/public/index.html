@@ -10,25 +10,39 @@
       content="Christopher Kolb"
     />
 
+    <!-- force early load of 400 and 900 weight roboto; earch are overwritten in index.css -->
+    <style>html{font-family:'Roboto',Arial,sans-serif}body{font-weight:900}</style>
+
+    <!-- <link rel="preload" as="font" type="font/ttf" href="fonts/Roboto-Regular.ttf" crossorigin />
+    <link rel="preload" as="font" type="font/ttf" href="fonts/Roboto-Black.ttf" crossorigin /> -->
+
     <style>
       @font-face {
          font-family: 'Roboto';
-         src: url('fonts/Roboto-Regular.ttf');
+         src: url('fonts/roboto-v30-latin-regular.woff2') format('woff2'),
+              url('fonts/roboto-v30-latin-regular.woff') format('woff');
+         font-display: swap;
       }
       @font-face {
          font-family: 'Roboto';
-         src: url('fonts/Roboto-Bold.ttf');
+         src: url('fonts/roboto-v30-latin-700.woff2') format('woff2'),
+              url('fonts/roboto-v30-latin-700.woff') format('woff');
          font-weight: 700;
+         font-display: swap;
       }
       @font-face {
          font-family: 'Roboto';
-         src: url('fonts/Roboto-Black.ttf');
+         src: url('fonts/roboto-v30-latin-900.woff2') format('woff2'),
+              url('fonts/roboto-v30-latin-900.woff') format('woff');
          font-weight: 900;
+         font-display: swap;
       }
       @font-face {
          font-family: 'Roboto';
-         src: url('fonts/Roboto-Thin.ttf');
+         src: url('fonts/roboto-v30-latin-100.woff2') format('woff2'),
+              url('fonts/roboto-v30-latin-100.woff') format('woff');
          font-weight: 100;
+         font-display: swap;
       }
    </style>
 
@@ -64,3 +78,4 @@
     -->
   </body>
 </html>
+
