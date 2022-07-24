@@ -5,12 +5,22 @@ const useSquares = () => {
    const [ squares, setSquares ] = useState(null);
    const [ squareSize, setSquareSize ] = useState(null);
 
+   // convert the display chart to a 1D array of objects
+   //    containing location and isotope info
+   // chart will only include on-screen elements to save
+   //    render time
    useEffect(() => {
+      if (!squareSize) return;
+      const maxRow = window.innerHeight / squareSize.square + 1;
+      const maxCol = window.innerWidth / squareSize.square;
+
       let newSquares = [];
       nucleoChart.map((row, rowInd) => {
+         if (nucleoChart.length - rowInd > maxRow) return;
          const shiftedInd = nucleoChart.length - rowInd;
          const yloc = shiftedInd - 1;        // proton count
          row.isotopes.map((col, colInd) => {
+            if (colInd > maxCol) return;
             const xloc = col-shiftedInd+1;   // neutron count
             if (row.exclude && row.exclude.includes(col)) return;
             newSquares = newSquares.concat({
@@ -26,8 +36,9 @@ const useSquares = () => {
          });
       });
       setSquares(newSquares);
-   }, []);
+   }, [squareSize, window.innerWidth, window.innerHeight]);
 
+   // configure element square sizing based on window width
    useEffect(() => {
       let newSquareSize;
       if (window.innerWidth < 461) {
