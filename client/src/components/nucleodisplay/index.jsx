@@ -1,5 +1,5 @@
 import { useRef } from 'react';
-import { useSquares } from 'hooks';
+import { useSquares, useMeander } from 'hooks';
 import ElementArray from './elementarray';
 import NucleoInfo from './nucleoinfo';
 import Spotlight from './spotlight';
@@ -25,6 +25,7 @@ import style from './nucleodisplay.module.css';
 const NucleoDisplay = () => {
    const { squares, squareSize } = useSquares();
    const divRef = useRef(null);
+   useMeander(divRef, squareSize);
 
    return (
       <div ref={divRef} className={style.nucleo}>

@@ -1,8 +1,9 @@
 import { useState, useContext, createContext } from 'react';
 
 const defaultPosition = {
-   x: 0,
-   y: 0,
+   x: 200,
+   y: window.innerHeight - 200,
+   isActive: true,      // required for 'useMeander' hook
 }
 
 const MousePositionContext = createContext();

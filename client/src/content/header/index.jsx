@@ -8,7 +8,7 @@ const Header = () => {
    // capture mouse movement for spotlight and hover effects in NucleoDisplay
    const handleMouseMove = event => {
       const { clientX, clientY } = event;
-      setMousePosition({ x: clientX, y: clientY });
+      setMousePosition({ x: clientX, y: clientY, isActive: true });
    }
 
    return (
