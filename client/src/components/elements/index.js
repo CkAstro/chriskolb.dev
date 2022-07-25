@@ -3,6 +3,7 @@ import ButtonGroup from './buttongroup';
 import ContactForm from './contactform';
 import Icons from './icons';
 import Navbar from './navbar';
+import PageLoading from './pageloading';
 
 export * from './canvas';
 export * from './sketchcard';
@@ -12,4 +13,5 @@ export {
    ContactForm,
    Icons,
    Navbar,
+   PageLoading,
 }
