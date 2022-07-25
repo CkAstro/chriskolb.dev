@@ -7,11 +7,8 @@
    margin: 0 auto;
 }
 
-@media only screen and (max-device-width: 460px) {
-   .formContainer, .messageInput {
-      min-width: 300px !important;
-      max-width: 300px !important;
-   }
+@media only screen and (max-width: 460px) {
+   .formContainer { --max-width: calc(100vw - 24px); }
 }
 
 form {
@@ -19,6 +16,7 @@ form {
    grid-template-columns: 100px 1fr 1fr 100px;
    grid-column-gap: 6px;
    grid-row-gap: 6px;
+   max-width: var(--max-width);
 }
 
 .nameInput {
