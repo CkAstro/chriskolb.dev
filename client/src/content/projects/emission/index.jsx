@@ -1,5 +1,6 @@
 import { lazy, Suspense } from 'react';
 import { ClusterItem, ContentPage } from 'components/containers';
+import { PageLoading } from 'components/elements';
 
 const Page1 = lazy(() => import('./page1'));
 const Page2 = lazy(() => import('./page2'));
@@ -11,10 +12,10 @@ const emission = {
    description: 'Interact with a supernova simulation and see how emission changes with the view.',
    pages: [
       <ContentPage>
-         <Suspense fallback={<div>Loading...</div>}><Page1/></Suspense>
+         <Suspense fallback={<PageLoading/>}><Page1/></Suspense>
       </ContentPage>,
       <ContentPage>
-         <Suspense fallback={<div>Loading...</div>}><Page2/></Suspense>
+         <Suspense fallback={<PageLoading/>}><Page2/></Suspense>
       </ContentPage>,
    ],
 }

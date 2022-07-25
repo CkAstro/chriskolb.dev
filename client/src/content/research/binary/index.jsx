@@ -1,5 +1,6 @@
 import { lazy, Suspense } from 'react';
 import { ClusterItem, ContentPage } from 'components/containers';
+import { PageLoading } from 'components/elements';
 
 const Page1 = lazy(() => import('./page1'));
 
@@ -10,7 +11,7 @@ const binary = {
    description: <span style={{color: 'var(--color-white)'}}>Explore the unique environment around evolved stars before they supernova.</span>,
    pages: [
       <ContentPage>
-         <Suspense fallback={<div>Loading...</div>}><Page1/></Suspense>
+         <Suspense fallback={<PageLoading/>}><Page1/></Suspense>
       </ContentPage>
    ],
 }

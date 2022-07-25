@@ -1,6 +1,6 @@
 import { lazy, Suspense } from 'react';
 import { ContentPage, Showcase } from 'components/containers';
-import { FancyButton, Icons } from 'components/elements';
+import { FancyButton, Icons, PageLoading } from 'components/elements';
 import style from './datavis.module.css';
 
 // we don't split page1 so there is no wait on a showcase item
@@ -32,13 +32,13 @@ const datavis = {
          </div>
       </ContentPage>,
       <ContentPage>
-         <Suspense fallback={<div>Loading...</div>}><Page2/></Suspense>
+         <Suspense fallback={<PageLoading/>}><Page2/></Suspense>
       </ContentPage>,
       <ContentPage>
-         <Suspense fallback={<div>Loading...</div>}><Page3/></Suspense>
+         <Suspense fallback={<PageLoading/>}><Page3/></Suspense>
       </ContentPage>,
       <ContentPage>
-         <Suspense fallback={<div>Loading...</div>}><Page4/></Suspense>
+         <Suspense fallback={<PageLoading/>}><Page4/></Suspense>
       </ContentPage>
    ],
 }
