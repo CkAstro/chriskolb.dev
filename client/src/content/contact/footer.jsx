@@ -4,11 +4,17 @@ import style from './contact.module.css';
 
 const Footer = () => (
    <div className={style.footer}>
-      <a href='https://github.com/CkAstro' target='_blank'><Icons.GitHub size={24}/></a>
-      <a href='https://www.linkedin.com/in/christopher-kolb-071334232/' target='_blank'><Icons.LinkedIn size={24}/></a>
+      <div className={style.linkContainer}>
+         <div alt='View me on Github' onClick={() => window.open('https://github.com/CkAstro', '_blank')}>
+            <Icons.GitHub size={24}/>
+         </div>
+         <div className={style.resume}><a href={`${api.baseUrl}/resume`} target='_blank'>resume</a></div>
+         <div alt='View me on LinkedIn' onClick={() => window.open('https://www.linkedin.com/in/christopher-kolb-071334232/', '_blank')}>
+            <Icons.LinkedIn size={24}/>
+         </div>
+      </div>
       {/* <div className={style.email}>astro.cekolb@gmail.com</div> */}
-      <div className={style.resume}><a href={`${api.baseUrl}/resume`} target='_blank'>resume</a></div>
-      <div className={style.copyright}>Copyright Christopher Kolb, 2022. Site designed by me.</div>
+      <div className={style.copyright}>Copyright Christopher Kolb, 2022. Site design by me.</div>
    </div>
 );
 

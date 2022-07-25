@@ -38,25 +38,31 @@ const ContactForm = () => {
    return (
       <div className={style.formContainer}>
          <form onSubmit={handleSubmit}>
-            <input type='text'
-               className={`${style.nameInput} ${name === defaultName || name === sentMessage.name ? style.inactive : ''}`}
-               onFocus={handleFocus} 
-               value={name} 
-               onChange={handleNameChange}
-            />
-            <input type='text' 
-               className={`${style.emailInput} ${email === defaultEmail || email === sentMessage.email ? style.inactive : ''}`}
-               onFocus={handleFocus} 
-               value={email} 
-               onChange={handleEmailChange}
-            />
-            <textarea 
-               className={`${style.messageInput} ${message === defaultMessage || message === sentMessage.message ? style.inactive : ''}`}
-               onFocus={handleFocus} 
-               value={message} 
-               onChange={handleMessageChange}
-               rows={8}
-            />
+            <label className={style.nameInput}>
+               <input type='text'
+                  className={`${style.nameInput} ${name === defaultName || name === sentMessage.name ? style.inactive : ''}`}
+                  onFocus={handleFocus} 
+                  value={name} 
+                  onChange={handleNameChange}
+               />
+            </label>
+            <label className={style.emailInput}>
+               <input type='text' 
+                  className={`${style.emailInput} ${email === defaultEmail || email === sentMessage.email ? style.inactive : ''}`}
+                  onFocus={handleFocus} 
+                  value={email} 
+                  onChange={handleEmailChange}
+               />
+            </label>
+            <label className={style.messageInput}>
+               <textarea 
+                  className={`${style.messageInput} ${message === defaultMessage || message === sentMessage.message ? style.inactive : ''}`}
+                  onFocus={handleFocus} 
+                  value={message} 
+                  onChange={handleMessageChange}
+                  rows={8}
+               />
+            </label>
             <div className={style.submitButton} onClick={handleSubmit}>Submit</div>
          </form>
       </div>

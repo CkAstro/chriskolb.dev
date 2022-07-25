@@ -40,7 +40,7 @@ const ClusterItem = ({ info }) => {
          onTouchEnd={handleTouchEnd}
       >
          <div className={`${style.clusterItemContent} ${isMouseOver ? style.mouseOver : ''}`}>
-            <img src={info.image}/>
+            <img src={info.image} alt={info.description}/>
             <div className={style.topContent}>
                <h1>{info.title}</h1>
                <h2>{info.components}</h2>

@@ -14,7 +14,7 @@ const Showcase = ({ info }) => {
    return (
       <div ref={divRef} className={`${style.showcaseContainer} ${isVisible ? style.active : ''}`}>
          <div className={style.showcaseImageContainer}>
-            <img src={info.image}/>
+            <img src={info.image} alt={info.description}/>
          </div>
          <div className={style.showcaseContent}>
             <h1>{info.title}</h1>

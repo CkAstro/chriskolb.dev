@@ -26,13 +26,28 @@ h1.style1 {
    padding: 20px;
 }
 
-.footer a svg{
-   margin: 12px 12px;
-   margin-top: 0;
+.footer .linkContainer {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   gap: 12px;
 }
 
-.footer .resume { margin: 6px; }
-.footer .resume a { text-decoration: none; color: var(--color-white); }
+.footer div svg {
+   margin-top: 6px;
+   cursor: pointer;
+   transition: fill 0.2s;
+}
+
+.footer div svg:hover { fill: var(--color-secondary); }
+
+.footer .resume { display: block; margin: 6px; }
+.footer .resume a {
+   text-decoration: none; 
+   color: var(--color-white); 
+   transition: color 0.2s;
+}
+.footer .resume a:hover { color: var(--color-secondary); }
 
 .footer .copyright {
    position: relative;
